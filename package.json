@@ -20,7 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prettier:base": "prettier 'src/**' '*.md'",
+    "prettier:base": "prettier 'src/**'",
     "prettier:check": "npm run prettier:base -- --list-different",
     "prettier:write": "npm run prettier:base -- --write"
   },
