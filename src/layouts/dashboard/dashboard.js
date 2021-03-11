@@ -1,6 +1,11 @@
+import DashboardSummary from '../../components/molecules/ui/dashboardSummary/dashboardSummary';
+
 function Dashboard() {
   return (
-    <p>Hello World</p>
+    <div>
+      <p>Hello World</p>
+      <DashboardSummary />
+    </div>
   );
 }
 
