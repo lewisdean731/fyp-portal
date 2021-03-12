@@ -1,4 +1,4 @@
-import DashboardSummary from '../../components/molecules/ui/dashboardSummary/dashboardSummary';
+import DashboardSummary from '../../components/organisms/ui/dashboardSummary/dashboardSummary';
 
 function Dashboard() {
   return (
