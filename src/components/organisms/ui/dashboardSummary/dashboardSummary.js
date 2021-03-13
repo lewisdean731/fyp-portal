@@ -7,7 +7,7 @@ import Classes from "./dashboardSummary.module.scss";
 function DashboardSummary() {
   return (
     <Container className={Classes.DashboardSummary}>
-      <Row>
+      <Row className="justify-content-md-center">
         <Col>
           <DashboardItem colour1={'grey'} colour2={'black'} text1={10} text2={'Total Projects'}/>
         </Col>

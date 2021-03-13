@@ -1,6 +1,8 @@
+@import "../../../../styles/resources.scss";
+
 .DashboardSummary{
   text-align: center;
-  border: 1px solid grey;
+  border: 1px solid $colour-grey;
   border-radius: 10px;
-  margin: auto;
+  margin: 16px;
 }
