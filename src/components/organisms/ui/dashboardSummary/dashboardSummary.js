@@ -6,18 +6,18 @@ import Classes from "./dashboardSummary.module.scss";
 
 function DashboardSummary() {
   return (
-    <Container className={Classes.DashboardSummary}>
+    <Container className={Classes.dashboardSummary}>
       <Row className="justify-content-md-center">
-        <Col>
+        <Col className={Classes.col}>
           <DashboardItem colour1={'grey'} colour2={'black'} text1={10} text2={'Total Projects'}/>
         </Col>
-        <Col>
+        <Col className={Classes.col}>
           <DashboardItem colour1={'green'} colour2={'black'} text1={6} text2={'Green Projects'}/>
         </Col>
-        <Col>
+        <Col className={Classes.col}>
           <DashboardItem colour1={'yellow'} colour2={'black'} text1={3} text2={'Yellow Projects'}/>
         </Col>
-        <Col>
+        <Col className={Classes.col}>
           <DashboardItem colour1={'red'} colour2={'black'} text1={1} text2={'Red Projects'}/>
         </Col>
       </Row>

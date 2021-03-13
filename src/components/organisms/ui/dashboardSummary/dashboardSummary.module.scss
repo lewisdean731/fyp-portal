@@ -1,8 +1,11 @@
 @import "../../../../styles/resources.scss";
 
-.DashboardSummary{
+.dashboardSummary{
   text-align: center;
   border: 1px solid $colour-grey;
   border-radius: 10px;
-  margin: 16px;
+}
+
+.col{
+  padding: 24px;
 }
