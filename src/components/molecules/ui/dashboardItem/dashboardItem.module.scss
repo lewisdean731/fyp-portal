@@ -1,0 +1,10 @@
+@import "../../../../styles//resources.scss";
+
+.dashboardItem {
+  border: 1px solid $colour-grey;
+  background-color: $colour-light-grey;
+  border-radius: 3px;
+  margin: auto;
+  width: 180px;
+  height: 120px;
+}
