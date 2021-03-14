@@ -1,5 +1,6 @@
 import React from "react";
 import {Row, Col, Container} from "react-bootstrap";
+import TextMedium from "../../../atoms/text/medium/textMedium";
 import DashboardItem from "../../../molecules/ui/dashboardItem/dashboardItem";
 
 import Classes from "./dashboardSummary.module.scss";
@@ -7,6 +8,7 @@ import Classes from "./dashboardSummary.module.scss";
 function DashboardSummary() {
   return (
     <Container className={Classes.dashboardSummary}>
+      <TextMedium colour={'grey'}>At a Glance</TextMedium>
       <Row className="justify-content-md-center">
         <Col className={Classes.col}>
           <DashboardItem colour1={'grey'} colour2={'black'} text1={10} text2={'Total Projects'}/>
