@@ -1,0 +1,11 @@
+@import "../../../../styles//resources.scss";
+
+.dashboardNotificationItem{
+  border: 1px solid $colour-light-grey;
+  background-color: $colour-light-grey;
+  border-radius: 3px;
+  p{
+    margin: 3px;
+    float: left;
+  }
+}
