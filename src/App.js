@@ -8,7 +8,7 @@ function App() {
     <Container fluid className={Classes.app}>
       <Topbar />
       <Sidebar />
-      <Container fluid noGutters className={Classes.mainContent}>
+      <Container fluid className={Classes.mainContent}>
         <Dashboard />
       </Container>
     </Container>

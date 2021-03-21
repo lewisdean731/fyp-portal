@@ -3,11 +3,12 @@
 .app {
   text-align: center;
   background-color: $colour-white-bright;
-  display: flex;
-  flex-direction: column;
+  //display: flex;
+  //flex-direction: column;
   min-height: 100vh;
   font-family: Roboto;
 }
 .mainContent {
-  margin-left: 240px;
+  padding-left: 255px; //240 for sidebar + 15
+  min-height: 100vh;
 }
