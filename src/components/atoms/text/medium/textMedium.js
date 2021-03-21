@@ -3,7 +3,7 @@ import Classes from "./textMedium.module.scss";
 
 function TextMedium(props) {
   return (
-    <p className={`${Classes.textMedium} ${Classes[props.colour]}`}>
+    <p className={`${Classes.textMedium} ${Classes[props.colour]} ${props.className}`}>
       {props.children}
     </p>
   );
