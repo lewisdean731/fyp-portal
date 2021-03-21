@@ -6,7 +6,7 @@ import Topbar from "./components/organisms/ui/topbar/topbar";
 function App() {
   return (
     <Container fluid className={Classes.app}>
-    <Container fluid className={Classes.App}>
+      <Topbar />
       <Sidebar />
       <Container fluid noGutters className={Classes.mainContent}>
         <Dashboard />
