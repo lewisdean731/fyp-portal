@@ -1,10 +1,13 @@
 @import "./styles/resources.scss";
 
-.App {
+.app {
   text-align: center;
-  background-color: $colour-white;
+  background-color: $colour-white-bright;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   font-family: Roboto;
+}
+.mainContent {
+  margin-left: 240px;
 }
