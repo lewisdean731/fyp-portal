@@ -1,10 +1,14 @@
 @import "./styles/resources.scss";
 
-.App {
+.app {
   text-align: center;
-  background-color: $colour-white;
-  display: flex;
-  flex-direction: column;
+  background-color: $colour-white-bright;
+  //display: flex;
+  //flex-direction: column;
   min-height: 100vh;
   font-family: Roboto;
+}
+.mainContent {
+  padding-left: 255px; //240 for sidebar + 15
+  min-height: 100vh;
 }

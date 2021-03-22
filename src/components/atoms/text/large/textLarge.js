@@ -3,7 +3,11 @@ import Classes from "./textLarge.module.scss";
 
 function TextLarge(props) {
   return (
-    <p className={`${Classes.textLarge} ${Classes[props.colour]}`}>
+    <p
+      className={`${Classes.textLarge} ${Classes[props.colour]} ${
+        props.className
+      }`}
+    >
       {props.children}
     </p>
   );

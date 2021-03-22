@@ -1,0 +1,39 @@
+@import "../../../../styles/resources.scss";
+
+.sidebar {
+  display: block;
+  position: fixed;
+  top: 64px;
+  left: 0;
+  width: 240px;
+  height: 100%;
+  background-color: $colour-white-light;
+  //border-right: 1px solid $colour-light-grey;
+  z-index: 100;
+}
+.border {
+  background: linear-gradient(
+    270deg,
+    rgba(9, 30, 66, 0.13) 0,
+    rgba(9, 30, 66, 0.13) 1px,
+    rgba(9, 30, 66, 0.08) 1px,
+    rgba(9, 30, 66, 0) 4px
+  );
+  display: block;
+  position: fixed;
+  top: 64px;
+  left: 236px;
+  width: 4px;
+  height: 100%;
+  z-index: 100;
+}
+.hidden {
+  display: none;
+}
+
+.padding64 {
+  height: 64px;
+}
+.padding24 {
+  height: 24px;
+}

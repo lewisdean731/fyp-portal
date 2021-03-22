@@ -1,0 +1,16 @@
+@import "../../../../../styles/resources.scss";
+
+.button {
+  width: 90%;
+  border: 0;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding: 10px;
+  color: $colour-grey;
+  background-color: $colour-white-light;
+}
+
+.button:hover {
+  color: $colour-grey; //override bootstrap
+  background-color: $colour-light-grey;
+}

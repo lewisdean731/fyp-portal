@@ -1,0 +1,48 @@
+@import "../../../../styles/resources.scss";
+
+.topbar {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  background-color: $colour-white-light;
+  z-index: 200;
+  margin: 0;
+}
+.border {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  z-index: 200;
+  background: linear-gradient(
+    180deg,
+    rgba(9, 30, 66, 0.13) 0,
+    rgba(9, 30, 66, 0.13) 1px,
+    rgba(9, 30, 66, 0.08) 1px,
+    rgba(9, 30, 66, 0) 4px
+  );
+}
+.logo {
+  float: left;
+  padding-left: 15px;
+  height: 64px;
+}
+.logoText {
+  float: left;
+  line-height: 64px;
+  padding: 0 15px 0 15px;
+}
+.username {
+  right: 15px;
+  position: fixed;
+  line-height: 64px;
+  padding: 0 15px 0 15px;
+}
+.searchbar {
+  position: fixed;
+  right: 115px;
+  height: 64px;
+  padding: 15px 15px 0 15px;
+}
