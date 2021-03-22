@@ -31,7 +31,7 @@ export function PieChart(props) {
           display: true,
           text: "Some Metric Here",
           fontSize: 20,
-          maintainAspectRatio: false
+          maintainAspectRatio: false,
         },
         legend: {
           display: true,

@@ -1,7 +1,7 @@
-import {Row, Col} from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import SidebarButton from "../../../atoms/ui/sidebar/sidebarButton/sidebarButton";
-export default function SidebarButtons(){
-  return(
+export default function SidebarButtons() {
+  return (
     <div>
       <Row>
         <Col>
@@ -29,5 +29,5 @@ export default function SidebarButtons(){
         </Col>
       </Row>
     </div>
-  )
+  );
 }
