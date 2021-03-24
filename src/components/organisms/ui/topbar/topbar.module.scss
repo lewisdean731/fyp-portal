@@ -1,5 +1,8 @@
 @import "../../../../styles/resources.scss";
 
+.fakeTopbar {
+  height: 64px;
+}
 .topbar {
   position: fixed;
   left: 0;
