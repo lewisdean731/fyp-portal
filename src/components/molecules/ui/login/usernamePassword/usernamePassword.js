@@ -1,6 +1,7 @@
 import { Row, Col, Form, Button } from "react-bootstrap";
-import Classes from "./usernamePassword.module.scss"
-export default function LoginUsernamePassword(props){
+import Classes from "./usernamePassword.module.scss";
+
+export default function LoginUsernamePassword(props) {
   return (
     <Row className={`${Classes.login} ${props.className}`}>
       <Col noGutters>
@@ -26,5 +27,5 @@ export default function LoginUsernamePassword(props){
         </Form>
       </Col>
     </Row>
-  )
+  );
 }
