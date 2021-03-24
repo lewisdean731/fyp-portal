@@ -10,7 +10,7 @@ function App() {
   return (
     <Container fluid className={Classes.app}>
       <Row>
-        <Col>
+        <Col className={Classes.topbar}>
           <Topbar />
         </Col>
       </Row>
@@ -18,7 +18,7 @@ function App() {
         <Col className={Classes.sidebar}>
           <Sidebar />
         </Col>
-        <Col className={Classes.mainContent}>
+        <Col>
           <RenderRoutes routes={ROUTES} />
         </Col>
       </Row>

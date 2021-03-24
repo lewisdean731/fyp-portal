@@ -17,7 +17,6 @@ export default function Topbar(props) {
       <SearchTopbar className={Classes.searchbar} />
       <div className={Classes.border}></div>
     </Row>
-    <Row className={Classes.fakeTopbar}></Row>
     </Container>
   );
 }
