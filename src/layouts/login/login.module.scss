@@ -1,0 +1,18 @@
+@import "../../styles/resources.scss";
+
+.container {
+  background-color: $colour-white-light;
+}
+.logoBlurb {
+  padding-top: 10px;
+  img {
+    float: left;
+    height: 50%;
+  }
+}
+.login {
+  padding-bottom: 150px;
+}
+.usernamePassword {
+  margin: auto;
+}
