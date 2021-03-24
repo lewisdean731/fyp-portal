@@ -9,6 +9,10 @@
   font-family: Roboto;
 }
 .mainContent {
-  padding-left: 255px; //240 for sidebar + 15
-  min-height: 100vh;
+  //padding-left: 255px; //240 for sidebar + 15
+  //height: calc(100vh - 64px);
+}
+.sidebar {
+  max-width: 240px;
+  padding: 0;
 }
