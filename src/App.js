@@ -6,7 +6,6 @@ import Topbar from "./components/organisms/ui/topbar/topbar";
 import ROUTES, { RenderRoutes } from "./routes";
 
 function App() {
-
   return (
     <Container fluid className={Classes.app}>
       <Row>
