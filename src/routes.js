@@ -1,8 +1,8 @@
-//initially built following some great info from 
+//initially built following some great info from
 //https://www.ryanjyost.com/react-routing/
 
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 // Page Templates
 import Login from "./layouts/login/login";
@@ -13,11 +13,20 @@ const ROUTES = [
   {
     path: "/",
     key: "APP",
-    component: RenderRoutes,
+    component: (props) => {
+      if (!process.env.REACT_APP_DEBUG_AUTHENTICATED) {
+        alert("Please login to continue");
+        return <Redirect to={"/"} />;
+      }
+      console.log(
+        `REACT_APP_DEBUG_AUTHENTICATED == ${process.env.REACT_APP_DEBUG_AUTHENTICATED}`
+      );
+      return <RenderRoutes {...props} />;
+    },
     routes: [
       {
         path: "/dashboard",
-        key: "APP_ROOT",
+        key: "DASHBOARD",
         exact: true,
         component: () => <Dashboard />,
       },
@@ -32,7 +41,7 @@ function RouteWithSubRoutes(route) {
     <Route
       path={route.path}
       exact={route.exact}
-      render={props => <route.component {...props} routes={route.routes} />}
+      render={(props) => <route.component {...props} routes={route.routes} />}
     />
   );
 }
