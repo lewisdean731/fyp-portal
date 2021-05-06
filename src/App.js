@@ -16,6 +16,8 @@ import Topbar from "./components/organisms/ui/topbar/topbar";
 import Login from "./layouts/login/login";
 import ROUTES, { RenderRoutes } from "./routes";
 
+import authUtil from "./utils/auth/authutil";
+
 function App() {
   return (
     <FirebaseAuthProvider firebase={firebase} {...firebaseConfig}>
@@ -25,7 +27,7 @@ function App() {
         }}
       </IfFirebaseUnAuthed>
       <IfFirebaseAuthed>
-        {() => {
+        {(isSignedIn, user, providerId) => {
           return (
             <Container fluid className={Classes.app}>
               <Row>
@@ -39,6 +41,18 @@ function App() {
                 </Col>
                 <Col>
                   <RenderRoutes routes={ROUTES} />
+                  <button
+                    onClick={() => {
+                      firebase
+                        .auth()
+                        .currentUser.getIdToken(/* forceRefresh */ true)
+                        .then(function (idToken) {
+                          authUtil.verifyToken(idToken);
+                        });
+                    }}
+                  >
+                    Verify Token
+                  </button>
                 </Col>
               </Row>
             </Container>
