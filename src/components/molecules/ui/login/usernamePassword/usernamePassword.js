@@ -45,7 +45,7 @@ export default function LoginUsernamePassword(props) {
             Log In
           </Button>
           <br />
-          <LoginErrors errMessage={errMessage} errCode={errCode}/>
+          <LoginErrors errMessage={errMessage} errCode={errCode} />
           <hr />
           <Button variant="link" href={"fake.link"} className={Classes.wide}>
             Forgotten Password?
