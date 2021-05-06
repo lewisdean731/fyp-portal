@@ -13,3 +13,10 @@
   max-width: 240px;
   padding: 0;
 }
+
+.debugAuthButtons {
+  position: fixed;
+  z-index: 10000;
+  left: 50%;
+  top: 0;
+}
