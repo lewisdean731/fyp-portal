@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import firebase from "firebase/app";
 import Classes from "./usernamePassword.module.scss";
+import LoginErrors from "../../../../molecules/login/loginErrors/loginErrors";
 
 export default function LoginUsernamePassword(props) {
   const [signInEmail, setSignInEmail] = useState("");
   const [signInPassword, setSignInPassword] = useState("");
+  const [errMessage, setErrMessage] = useState("");
+  const [errCode, setErrCode] = useState("");
   return (
     <Row className={`${Classes.login} ${props.className}`}>
       <Col>
@@ -32,11 +35,17 @@ export default function LoginUsernamePassword(props) {
             onClick={() => {
               firebase
                 .auth()
-                .signInWithEmailAndPassword(signInEmail, signInPassword);
+                .signInWithEmailAndPassword(signInEmail, signInPassword)
+                .catch((error) => {
+                  setErrMessage(error.message);
+                  setErrCode(`(${error.code})`);
+                });
             }}
           >
             Log In
           </Button>
+          <br />
+          <LoginErrors errMessage={errMessage} errCode={errCode}/>
           <hr />
           <Button variant="link" href={"fake.link"} className={Classes.wide}>
             Forgotten Password?
