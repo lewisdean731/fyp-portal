@@ -14,7 +14,7 @@ const ROUTES = [
     path: "/",
     key: "APP",
     component: (props) => {
-      if (!process.env.REACT_APP_DEBUG_AUTHENTICATED) {
+      if (true == false) { // tempoary until authenticaion is implemented
         alert("Please login to continue");
         return <Redirect to={"/"} />;
       }
