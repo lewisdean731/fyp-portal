@@ -9,21 +9,28 @@ import Login from "./layouts/login/login";
 import Dashboard from "./layouts/dashboard/dashboard";
 
 const ROUTES = [
-  { path: "/", key: "ROOT", exact: true, component: () => <Login /> },
+  {
+    path: "/",
+    key: "ROOT",
+    exact: true,
+    component: () => <Redirect to={"/dashboard"} />,
+  },
   {
     path: "/",
     key: "APP",
     component: (props) => {
-      if (true == false) { // tempoary until authenticaion is implemented
-        alert("Please login to continue");
-        return <Redirect to={"/"} />;
-      }
-      console.log(
-        `REACT_APP_DEBUG_AUTHENTICATED == ${process.env.REACT_APP_DEBUG_AUTHENTICATED}`
-      );
       return <RenderRoutes {...props} />;
     },
     routes: [
+      {
+        path: "/login",
+        key: "LOGIN",
+        exact: true,
+        component: () => <Redirect to={"/dashboard"} />,
+        // Login will still show up if the user is not authenticated.
+        // This stops the login route rendering with the topbar and sidebar
+        // around it if an authed user goes to /login.
+      },
       {
         path: "/dashboard",
         key: "DASHBOARD",
