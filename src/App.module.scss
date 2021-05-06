@@ -3,12 +3,13 @@
 .app {
   text-align: center;
   background-color: $colour-white-bright;
-  //display: flex;
-  //flex-direction: column;
   min-height: 100vh;
   font-family: Roboto;
 }
-.mainContent {
-  padding-left: 255px; //240 for sidebar + 15
-  min-height: 100vh;
+.topbar {
+  min-height: 112px; // topbar + 48px for space between it and the content below
+}
+.sidebar {
+  max-width: 240px;
+  padding: 0;
 }
