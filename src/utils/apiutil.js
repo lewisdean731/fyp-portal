@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const asyncGetRequest = async (url) => {
   try {
     console.log(`GET ${url}`);

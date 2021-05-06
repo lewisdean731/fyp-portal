@@ -1,7 +1,7 @@
-import apiUtil from "../apiUtil";
+import {asyncGetRequest} from "../apiUtil";
 
 export const verifyToken = async (token) => {
   console.log("Checking login status..");
-  return await apiUtil.asyncGetRequest(`/api/auth/verifytoken?token=${token}
+  return await asyncGetRequest(`/api/auth/verifytoken?token=${token}
   `);
 };

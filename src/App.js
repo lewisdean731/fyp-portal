@@ -16,7 +16,7 @@ import Topbar from "./components/organisms/ui/topbar/topbar";
 import Login from "./layouts/login/login";
 import ROUTES, { RenderRoutes } from "./routes";
 
-import authUtil from "./utils/auth/authutil";
+import {verifyToken} from "./utils/auth/authUtil";
 
 function App() {
   return (
@@ -47,7 +47,7 @@ function App() {
                         .auth()
                         .currentUser.getIdToken(/* forceRefresh */ true)
                         .then(function (idToken) {
-                          authUtil.verifyToken(idToken);
+                          verifyToken(idToken);
                         });
                     }}
                   >
