@@ -1,9 +1,13 @@
 import axios from "axios";
 
-export const asyncGetRequest = async (url) => {
+export const asyncGetRequest = async (url, token) => {
   try {
     console.log(`GET ${url}`);
-    const response = await axios.get(url);
+    const response = await axios.get(url, {
+      headers: {
+        Authorization: token,
+      },
+    });
     return response.data;
   } catch (error) {
     console.log(error);
