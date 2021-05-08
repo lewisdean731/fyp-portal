@@ -16,7 +16,7 @@ import Topbar from "./components/organisms/ui/topbar/topbar";
 import Login from "./layouts/login/login";
 import ROUTES, { RenderRoutes } from "./routes";
 
-import {verifyToken} from "./utils/auth/authUtil";
+import { verifyToken } from "./utils/auth/authUtil";
 
 function App() {
   return (

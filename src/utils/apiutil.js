@@ -5,8 +5,8 @@ export const asyncGetRequest = async (url, token) => {
     console.log(`GET ${url}`);
     const response = await axios.get(url, {
       headers: {
-        'Authorization': token 
-      }
+        Authorization: token,
+      },
     });
     return response.data;
   } catch (error) {
