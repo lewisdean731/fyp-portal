@@ -34,11 +34,7 @@ function App() {
             console.log(userJson)
             return (
               <Container fluid className={Classes.app}>
-                <Row>
-                  <Col className={Classes.topbar}>
-                    <Topbar userData={userJson} />
-                  </Col>
-                </Row>
+                <Topbar userData={userJson} />
                 <Row>
                   <Col className={Classes.sidebar}>
                     <Sidebar />
