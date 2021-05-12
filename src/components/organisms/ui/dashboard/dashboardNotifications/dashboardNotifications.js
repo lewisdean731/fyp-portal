@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col, Container } from "react-bootstrap";
-import TextMedium from "../../../atoms/text/medium/textMedium";
-import DashboardNotificationItem from "../../../molecules/ui/dashboardNotificationItem/dashboardNotificationItem";
+import TextMedium from "../../../../atoms/text/medium/textMedium";
+import DashboardNotificationItem from "../../../../molecules/ui/dashboardNotificationItem/dashboardNotificationItem";
 import Classes from "./dashboardNotifications.module.scss";
 
 function dashboardNotifications() {
