@@ -35,26 +35,16 @@ function App() {
             return (
               <div fluid className={Classes.app}>
                 <Topbar userData={userJson} />
-                <Row>
-                  <Col className={Classes.sidebar}>
-                    <Sidebar />
-                  </Col>
-                  <Col>
-                    <RenderRoutes userData={userJson}/>
-                  </Col>
-                </Row>
-                <button
-                  onClick={() => {
-                    firebase
-                      .auth()
-                      .currentUser.getIdToken(/* forceRefresh */ true)
-                      .then(function (idToken) {
-                        verifyToken(idToken);
-                      });
-                  }}
-                >
-                  Verify Token
-                </button>
+                <Container fluid>
+                  <Row>
+                    <Col className={Classes.sidebar}>
+                      <Sidebar />
+                    </Col>
+                    <Col>
+                      <RenderRoutes userData={userJson}/>
+                    </Col>
+                  </Row>
+                </Container>
               </div>
             );
           }}
@@ -74,6 +64,18 @@ function App() {
           }}
         >
           Sign In Anon.
+        </button>
+        <button
+          onClick={() => {
+            firebase
+              .auth()
+              .currentUser.getIdToken(/* forceRefresh */ true)
+              .then(function (idToken) {
+                verifyToken(idToken);
+              });
+          }}
+        >
+          Verify Token
         </button>
       </div>
     </FirebaseAuthProvider>
