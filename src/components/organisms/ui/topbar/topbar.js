@@ -16,7 +16,7 @@ export default function Topbar(props) {
         </Form>
         <Nav className={"mr"}>
           <NavDropdown title={props.userData.user["displayName"]} alignRight id="basic-nav-dropdown">
-            <NavDropdown.Item href="#">Account Settings</NavDropdown.Item>
+            <NavDropdown.Item href="/user">Account Settings</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item href="#">Sign Out</NavDropdown.Item>
           </NavDropdown>
