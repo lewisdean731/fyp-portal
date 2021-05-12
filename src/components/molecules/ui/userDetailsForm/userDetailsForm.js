@@ -6,7 +6,7 @@ function UserDetailsForm(props) {
     <div>
       <Form className={Classes.personalDetails}>
         <Form.Row>
-          <Form.Group as={Col} controlId="formPlaintextPersonalDetails01">
+          <Form.Group as={Col}>
             <Form.Label>Name</Form.Label>
             <Form.Control readOnly defaultValue={props.userData.user["displayName"]} />
           </Form.Group>
@@ -26,7 +26,7 @@ function UserDetailsForm(props) {
         </Form.Row>
         <br />
         <Form.Row> 
-          <Form.Group as={Col} controlId="formPlaintextSubmitButton">   
+          <Form.Group as={Col}>
             <Button variant="primary" type="submit">
                   Update Details
             </Button>
@@ -39,7 +39,7 @@ function UserDetailsForm(props) {
 
       <Form className={Classes.updatePassword}>
         <Form.Row>
-          <Form.Group as={Col} controlId="formPlaintextPassword">
+          <Form.Group as={Col}>
             <Form.Label>Update Password</Form.Label>
               <Form.Control readOnly type="password" placeholder="Old Password" />
               <br />
