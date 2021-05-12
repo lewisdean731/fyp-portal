@@ -33,29 +33,29 @@ function App() {
             const userJson = (JSON.parse(JSON.stringify({ isSignedIn, user, providerId })))
             console.log(userJson)
             return (
-              <Container fluid className={Classes.app}>
+              <div fluid className={Classes.app}>
                 <Topbar userData={userJson} />
                 <Row>
                   <Col className={Classes.sidebar}>
                     <Sidebar />
                   </Col>
                   <Col>
-                    <RenderRoutes routes={ROUTES} />
-                    <button
-                      onClick={() => {
-                        firebase
-                          .auth()
-                          .currentUser.getIdToken(/* forceRefresh */ true)
-                          .then(function (idToken) {
-                            verifyToken(idToken);
-                          });
-                      }}
-                    >
-                      Verify Token
-                    </button>
+                    <RenderRoutes userData={userJson}/>
                   </Col>
                 </Row>
-              </Container>
+                <button
+                  onClick={() => {
+                    firebase
+                      .auth()
+                      .currentUser.getIdToken(/* forceRefresh */ true)
+                      .then(function (idToken) {
+                        verifyToken(idToken);
+                      });
+                  }}
+                >
+                  Verify Token
+                </button>
+              </div>
             );
           }}
         </FirebaseAuthConsumer>
