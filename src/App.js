@@ -36,7 +36,7 @@ function App() {
               <Container fluid className={Classes.app}>
                 <Row>
                   <Col className={Classes.topbar}>
-                    <Topbar />
+                    <Topbar userData={userJson} />
                   </Col>
                 </Row>
                 <Row>

@@ -12,7 +12,7 @@ export default function Topbar(props) {
           MoniTor
         </TextMedium>
         <TextSmall className={Classes.username} colour={"grey"}>
-          Username
+          {props.userData.user["displayName"]}
         </TextSmall>
         <SearchTopbar className={Classes.searchbar} />
         <div className={Classes.border}></div>
