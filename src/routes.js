@@ -22,11 +22,11 @@ export const RenderRoutes = (props) => {
             )} />
 
           <Route exact path="/dashboard" render={() => (
-            <Dashboard props={props} />
+            <Dashboard {...props} />
             )} />
 
           <Route exact path="/user" render={() => (
-            <User props={props} />
+            <User {...props} />
             )} />
         </Switch>
     </BrowserRouter>
