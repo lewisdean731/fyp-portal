@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 // Page Templates
 import Dashboard from "./layouts/dashboard/dashboard";
 import User from "./layouts/user/user";
+import Team from "./layouts/team/team";
 
 export const RenderRoutes = (props) => {
   return (
@@ -16,13 +17,11 @@ export const RenderRoutes = (props) => {
 
         <Route path="/login" render={() => <Redirect to={"/dashboard"} />} />
 
-        <Route
-          exact
-          path="/dashboard"
-          render={() => <Dashboard {...props} />}
-        />
+        <Route path="/dashboard" render={() => <Dashboard {...props} />} />
 
-        <Route exact path="/user" render={() => <User {...props} />} />
+        <Route  path="/user" render={() => <User {...props} />} />
+
+        <Route  path="/team/:teamId" render={() => <Team {...props} />} />
       </Switch>
     </BrowserRouter>
   );
