@@ -8,27 +8,22 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Dashboard from "./layouts/dashboard/dashboard";
 import User from "./layouts/user/user";
 
-
 export const RenderRoutes = (props) => {
   return (
     <BrowserRouter>
-        <Switch>
-          <Route exact path="/" render={() => (
-            <Redirect to={"/dashboard"} />
-            )} />
+      <Switch>
+        <Route exact path="/" render={() => <Redirect to={"/dashboard"} />} />
 
-          <Route path="/login" render={() => (
-            <Redirect to={"/dashboard"} />
-            )} />
+        <Route path="/login" render={() => <Redirect to={"/dashboard"} />} />
 
-          <Route exact path="/dashboard" render={() => (
-            <Dashboard {...props} />
-            )} />
+        <Route
+          exact
+          path="/dashboard"
+          render={() => <Dashboard {...props} />}
+        />
 
-          <Route exact path="/user" render={() => (
-            <User {...props} />
-            )} />
-        </Switch>
+        <Route exact path="/user" render={() => <User {...props} />} />
+      </Switch>
     </BrowserRouter>
   );
-}
+};

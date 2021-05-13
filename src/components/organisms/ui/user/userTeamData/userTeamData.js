@@ -8,7 +8,6 @@ import UserTeamsDisplay from "../userTeamsDisplay/userTeamsDisplay";
 import Classes from "./userTeamData.module.scss";
 
 function UserTeamData(props) {
-  
   return (
     <Container fluid className={Classes.userTeamData}>
       <TextMedium colour={"grey"}>Teams</TextMedium>

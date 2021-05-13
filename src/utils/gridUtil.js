@@ -1,26 +1,23 @@
-
 export const createRowArray = (cols, children) => {
-  let rows=[];
+  let rows = [];
   let count = 1;
-  let row = []
+  let row = [];
 
-  for(const child in children) {
-    if(count === cols) {
-      row.push(child)
-      rows.push(row)
-      row = []
-      count = 1
-      
+  for (const child in children) {
+    if (count === cols) {
+      row.push(child);
+      rows.push(row);
+      row = [];
+      count = 1;
     } else {
       count += 1;
-      row.push(child)
+      row.push(child);
     }
-    console.log(child)
+    console.log(child);
   }
-  rows.push(row)
+  rows.push(row);
 
-  return rows
+  return rows;
+};
 
-}
- 
-export default createRowArray
+export default createRowArray;

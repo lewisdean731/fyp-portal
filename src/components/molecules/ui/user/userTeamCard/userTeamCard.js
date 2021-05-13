@@ -1,17 +1,15 @@
 import { Card, Button } from "react-bootstrap";
 
 function UserTeamCard(props) {
-  return(
-    <Card style={{ width: '18rem' }}>
+  return (
+    <Card style={{ width: "18rem" }}>
       <Card.Body>
         <Card.Title>Team Name</Card.Title>
-        <Card.Text>
-          ID: {props.id}
-        </Card.Text>
+        <Card.Text>ID: {props.id}</Card.Text>
         <Button variant="primary">Go to Team Page</Button>
       </Card.Body>
     </Card>
-  )
+  );
 }
 
 export default UserTeamCard;

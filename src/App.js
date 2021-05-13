@@ -6,7 +6,7 @@ import {
   FirebaseAuthProvider,
   IfFirebaseAuthed,
   IfFirebaseUnAuthed,
-  FirebaseAuthConsumer
+  FirebaseAuthConsumer,
 } from "@react-firebase/auth";
 
 import { Container, Row, Col } from "react-bootstrap";
@@ -29,9 +29,11 @@ function App() {
       </IfFirebaseUnAuthed>
       <IfFirebaseAuthed>
         <FirebaseAuthConsumer>
-         {({ isSignedIn, user, providerId }) => {
-            const userJson = (JSON.parse(JSON.stringify({ isSignedIn, user, providerId })))
-            console.log(userJson)
+          {({ isSignedIn, user, providerId }) => {
+            const userJson = JSON.parse(
+              JSON.stringify({ isSignedIn, user, providerId })
+            );
+            console.log(userJson);
             return (
               <div fluid className={Classes.app}>
                 <Topbar userData={userJson} />
@@ -41,7 +43,7 @@ function App() {
                       <Sidebar />
                     </Col>
                     <Col>
-                      <RenderRoutes userData={userJson}/>
+                      <RenderRoutes userData={userJson} />
                     </Col>
                   </Row>
                 </Container>

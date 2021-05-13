@@ -2,16 +2,15 @@ import { Row, Col } from "react-bootstrap";
 import UserTeamCard from "../../../../molecules/ui/user/userTeamCard/userTeamCard";
 import { createRowArray } from "../../../../../utils/gridUtil";
 
-function UserTeamsDisplay(props) { 
+function UserTeamsDisplay(props) {
+  const teams = props.teams ? props.teams : ["No Team Data Available"]; //Handle no teams in props
 
-  const teams = props.teams?props.teams:["No Team Data Available"] //Handle no teams in props
+  const grid = createRowArray(4, teams);
 
-  const grid = createRowArray(4, teams)
-
-  //The two maps create a set of rows and columns containing an arbtrary no. of 
+  //The two maps create a set of rows and columns containing an arbtrary no. of
   //Cards
 
-  return(
+  return (
     <div>
       {grid.map((x, row) => {
         return (
@@ -21,16 +20,16 @@ function UserTeamsDisplay(props) {
                 return (
                   <Col md={3}>
                     <UserTeamCard id={teams[index]} />
-                  </Col> 
-                )
+                  </Col>
+                );
               })}
             </Row>
-            <br />  
+            <br />
           </div>
-        )
+        );
       })}
     </div>
-  )
+  );
 }
 
-export default UserTeamsDisplay
+export default UserTeamsDisplay;

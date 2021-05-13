@@ -6,21 +6,22 @@ import UserTeamData from "../../components/organisms/ui/user/userTeamData/userTe
 import { getUserFirestoreInformation } from "../../utils/apiUtil";
 
 function User(props) {
-  
   const [userFirestoreData, setUserFirestoreData] = useState("");
 
-  useEffect(async() => {
-    await getUserFirestoreInformation(props.userData.user["uid"], props.userData.user.stsTokenManager["accessToken"])
-    .then((data) => {
-      console.log(data)
-      setUserFirestoreData(data)
+  useEffect(async () => {
+    await getUserFirestoreInformation(
+      props.userData.user["uid"],
+      props.userData.user.stsTokenManager["accessToken"]
+    ).then((data) => {
+      console.log(data);
+      setUserFirestoreData(data);
     });
   }, []);
 
   return (
     <div>
       <TextLarge>My Account</TextLarge>
-      <UserDetails userData={props.userData}  />
+      <UserDetails userData={props.userData} />
       <br />
       <UserTeamData userFirestoreData={userFirestoreData} />
     </div>
