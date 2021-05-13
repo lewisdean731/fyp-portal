@@ -1,5 +1,5 @@
 import { Row, Col } from "react-bootstrap";
-import UserTeamCard from "../../../../molecules/ui/user/userTeamCard/userTeamCard";
+import UserTeamCard from "../../../../atoms/ui/userTeamCard/userTeamCard";
 import { createRowArray } from "../../../../../utils/gridUtil";
 
 function UserTeamsDisplay(props) {
