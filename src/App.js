@@ -15,7 +15,6 @@ import Sidebar from "./components/organisms/ui/sidebar/sidebar";
 import Topbar from "./components/organisms/ui/topbar/topbar";
 
 import Login from "./layouts/login/login";
-import ROUTES, { RenderRoutes } from "./routes";
 
 import { verifyToken } from "./utils/auth/authUtil";
 
