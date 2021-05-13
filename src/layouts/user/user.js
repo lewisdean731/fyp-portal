@@ -21,6 +21,7 @@ function User(props) {
     <div>
       <TextLarge>My Account</TextLarge>
       <UserDetails userData={props.userData}  />
+      <br />
       <UserTeamData userFirestoreData={userFirestoreData} />
     </div>
   );
