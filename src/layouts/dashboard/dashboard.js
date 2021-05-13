@@ -1,7 +1,7 @@
 import TextLarge from "../../components/atoms/text/large/textLarge";
-import DashboardMetrics from "../../components/organisms/ui/dashboardMetrics/dashboardMetrics";
-import DashboardNotifications from "../../components/organisms/ui/dashboardNotifications/dashboardNotifications";
-import DashboardSummary from "../../components/organisms/ui/dashboardSummary/dashboardSummary";
+import DashboardMetrics from "../../components/organisms/ui/dashboard/dashboardMetrics/dashboardMetrics";
+import DashboardNotifications from "../../components/organisms/ui/dashboard/dashboardNotifications/dashboardNotifications";
+import DashboardSummary from "../../components/organisms/ui/dashboard/dashboardSummary/dashboardSummary";
 
 function Dashboard() {
   return (

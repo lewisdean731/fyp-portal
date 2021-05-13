@@ -14,3 +14,7 @@ export const asyncGetRequest = async (url, token) => {
     return error;
   }
 };
+
+export const getUserFirestoreInformation = async (uid, token) => {
+  return await asyncGetRequest(`/api/user/${uid}`, token);
+};

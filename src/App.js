@@ -6,6 +6,7 @@ import {
   FirebaseAuthProvider,
   IfFirebaseAuthed,
   IfFirebaseUnAuthed,
+  FirebaseAuthConsumer,
 } from "@react-firebase/auth";
 
 import { Container, Row, Col } from "react-bootstrap";
@@ -27,37 +28,29 @@ function App() {
         }}
       </IfFirebaseUnAuthed>
       <IfFirebaseAuthed>
-        {(isSignedIn, user, providerId) => {
-          return (
-            <Container fluid className={Classes.app}>
-              <Row>
-                <Col className={Classes.topbar}>
-                  <Topbar />
-                </Col>
-              </Row>
-              <Row>
-                <Col className={Classes.sidebar}>
-                  <Sidebar />
-                </Col>
-                <Col>
-                  <RenderRoutes routes={ROUTES} />
-                  <button
-                    onClick={() => {
-                      firebase
-                        .auth()
-                        .currentUser.getIdToken(/* forceRefresh */ true)
-                        .then(function (idToken) {
-                          verifyToken(idToken);
-                        });
-                    }}
-                  >
-                    Verify Token
-                  </button>
-                </Col>
-              </Row>
-            </Container>
-          );
-        }}
+        <FirebaseAuthConsumer>
+          {({ isSignedIn, user, providerId }) => {
+            const userJson = JSON.parse(
+              JSON.stringify({ isSignedIn, user, providerId })
+            );
+            console.log(userJson);
+            return (
+              <div fluid className={Classes.app}>
+                <Topbar userData={userJson} />
+                <Container fluid>
+                  <Row>
+                    <Col className={Classes.sidebar}>
+                      <Sidebar />
+                    </Col>
+                    <Col>
+                      <RenderRoutes userData={userJson} />
+                    </Col>
+                  </Row>
+                </Container>
+              </div>
+            );
+          }}
+        </FirebaseAuthConsumer>
       </IfFirebaseAuthed>
       <div className={Classes.debugAuthButtons}>
         <button
@@ -73,6 +66,18 @@ function App() {
           }}
         >
           Sign In Anon.
+        </button>
+        <button
+          onClick={() => {
+            firebase
+              .auth()
+              .currentUser.getIdToken(/* forceRefresh */ true)
+              .then(function (idToken) {
+                verifyToken(idToken);
+              });
+          }}
+        >
+          Verify Token
         </button>
       </div>
     </FirebaseAuthProvider>

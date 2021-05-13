@@ -2,7 +2,7 @@
 
 .sidebar {
   display: block;
-  position: fixed;
+  //position: fixed;
   top: 64px;
   left: 0;
   width: 240px;
@@ -10,6 +10,7 @@
   background-color: $colour-white-light;
   //border-right: 1px solid $colour-light-grey;
   z-index: 100;
+  margin-left: -15px;
 }
 .border {
   background: linear-gradient(
