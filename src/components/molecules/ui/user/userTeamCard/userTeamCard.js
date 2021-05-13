@@ -8,7 +8,7 @@ function UserTeamCard(props) {
         <Card.Text>
           ID: {props.id}
         </Card.Text>
-        <Button variant="primary">Go to team's projects</Button>
+        <Button variant="primary">Go to Team Page</Button>
       </Card.Body>
     </Card>
   )
