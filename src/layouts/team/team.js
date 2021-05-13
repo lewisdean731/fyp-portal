@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import TextLarge from "../../components/atoms/text/large/textLarge";
-import TeamProjectsData from "../../components/organisms/ui/team/teamProjectsData/teamProjectsData"
+import TeamProjectsData from "../../components/organisms/ui/team/teamProjectsData/teamProjectsData";
 import TeamOptionsForm from "../../components/molecules/ui/team/teamOptionsForm/teamOptionsForm";
-import { getTeamFirestoreInformation, getProjectFirestoreInformation } from "../../utils/apiUtil";
+import {
+  getTeamFirestoreInformation,
+  getProjectFirestoreInformation,
+} from "../../utils/apiUtil";
 function Team(props) {
   const [teamData, setTeamData] = useState("");
   const [projectsData, setProjectsData] = useState("");
@@ -14,21 +17,23 @@ function Team(props) {
     await getTeamFirestoreInformation(
       teamId,
       props.userData.user.stsTokenManager["accessToken"]
-    ).then(async (data) => {
-      console.log(data);
-      setTeamData(data);
-      return data
-    }).then((data) => {
-      data.teamProjects.map(async (projectId) => {
-        await getProjectFirestoreInformation(
-          projectId,
-          props.userData.user.stsTokenManager["accessToken"]
-        ).then((data) => {
-          data["projectId"] = projectId
-          setProjectsData((projectsData) => [...projectsData, data])
-        })
+    )
+      .then(async (data) => {
+        console.log(data);
+        setTeamData(data);
+        return data;
       })
-    });
+      .then((data) => {
+        data.teamProjects.map(async (projectId) => {
+          await getProjectFirestoreInformation(
+            projectId,
+            props.userData.user.stsTokenManager["accessToken"]
+          ).then((data) => {
+            data["projectId"] = projectId;
+            setProjectsData((projectsData) => [...projectsData, data]);
+          });
+        });
+      });
   }, []);
 
   return (
@@ -36,7 +41,7 @@ function Team(props) {
       <TextLarge>{teamData.teamName}</TextLarge>
       {/* TODO <TeamDetails teamData={props.teamData} /> */}
       <br />
-      <TeamProjectsData projectsData={projectsData}/>
+      <TeamProjectsData projectsData={projectsData} />
       <br />
       {/* TODO <TeamMembers teamData={props.teamData} /> */}
       <br />

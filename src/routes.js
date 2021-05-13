@@ -19,9 +19,9 @@ export const RenderRoutes = (props) => {
 
         <Route path="/dashboard" render={() => <Dashboard {...props} />} />
 
-        <Route  path="/user" render={() => <User {...props} />} />
+        <Route path="/user" render={() => <User {...props} />} />
 
-        <Route  path="/team/:teamId" render={() => <Team {...props} />} />
+        <Route path="/team/:teamId" render={() => <Team {...props} />} />
       </Switch>
     </BrowserRouter>
   );

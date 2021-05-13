@@ -3,8 +3,10 @@ import TeamProjectCard from "../../../../atoms/ui/teamProjectCard/teamProjectCar
 import { createRowArray } from "../../../../../utils/gridUtil";
 
 function TeamProjectsDisplay(props) {
-  console.log(JSON.stringify(props))
-  const projects = props.projectsData ? props.projectsData : ["No Project Data Available"]; //Handle no projects in props
+  console.log(JSON.stringify(props));
+  const projects = props.projectsData
+    ? props.projectsData
+    : ["No Project Data Available"]; //Handle no projects in props
 
   const grid = createRowArray(4, projects);
 
@@ -18,18 +20,18 @@ function TeamProjectsDisplay(props) {
           <div>
             <Row className="justify-content-md-center">
               {grid[row].map((index) => {
-
                 // Handle no project type (maybe hasn't loaded yet)
-                const pt = projects[index].projectType ?
-                  Object.keys(projects[index].projectType)[0]
-                  : "Unknown"
+                const pt = projects[index].projectType
+                  ? Object.keys(projects[index].projectType)[0]
+                  : "Unknown";
 
                 return (
                   <Col md={3}>
-                    <TeamProjectCard 
-                      name={projects[index].projectName} 
-                      projectType={pt} 
-                      id={projects[index].projectId} />
+                    <TeamProjectCard
+                      name={projects[index].projectName}
+                      projectType={pt}
+                      id={projects[index].projectId}
+                    />
                   </Col>
                 );
               })}
