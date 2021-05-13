@@ -18,3 +18,7 @@ export const asyncGetRequest = async (url, token) => {
 export const getUserFirestoreInformation = async (uid, token) => {
   return await asyncGetRequest(`/api/user/${uid}`, token);
 };
+
+export const getTeamFirestoreInformation = async (teamId, token) => {
+  return await asyncGetRequest(`/api/team/${teamId}`, token);
+};
