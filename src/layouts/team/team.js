@@ -1,32 +1,46 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import TextLarge from "../../components/atoms/text/large/textLarge";
+import TeamProjectsData from "../../components/organisms/ui/team/teamProjectsData/teamProjectsData"
 import TeamOptionsForm from "../../components/molecules/ui/team/teamOptionsForm/teamOptionsForm";
-import { getTeamFirestoreInformation } from "../../utils/apiUtil";
+import { getTeamFirestoreInformation, getProjectFirestoreInformation } from "../../utils/apiUtil";
 function Team(props) {
-  const [teamFirestoreData, setTeamFirestoreData] = useState("");
+  const [teamData, setTeamData] = useState("");
+  const [projectsData, setProjectsData] = useState("");
   const { teamId } = useParams(); // Gets team ID from URL
 
+  // Get team data, then get project data for projects owned by team
   useEffect(async () => {
     await getTeamFirestoreInformation(
       teamId,
       props.userData.user.stsTokenManager["accessToken"]
-    ).then((data) => {
+    ).then(async (data) => {
       console.log(data);
-      setTeamFirestoreData(data);
+      setTeamData(data);
+      return data
+    }).then((data) => {
+      data.teamProjects.map(async (projectId) => {
+        await getProjectFirestoreInformation(
+          projectId,
+          props.userData.user.stsTokenManager["accessToken"]
+        ).then((data) => {
+          data["projectId"] = projectId
+          setProjectsData((projectsData) => [...projectsData, data])
+        })
+      })
     });
   }, []);
 
   return (
     <div>
-      <TextLarge>{teamFirestoreData.teamName}</TextLarge>
+      <TextLarge>{teamData.teamName}</TextLarge>
       {/* TODO <TeamDetails teamData={props.teamData} /> */}
       <br />
-      {/* TODO <TeamProjects teamData={props.teamData} /> */}
+      <TeamProjectsData projectsData={projectsData}/>
       <br />
       {/* TODO <TeamMembers teamData={props.teamData} /> */}
       <br />
-      <TeamOptionsForm teamData={teamFirestoreData} />
+      <TeamOptionsForm teamData={teamData} />
     </div>
   );
 }
