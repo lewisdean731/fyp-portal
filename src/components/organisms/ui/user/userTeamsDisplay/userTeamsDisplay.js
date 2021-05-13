@@ -1,4 +1,5 @@
 import { Button, Card } from "react-bootstrap";
+import UserTeamCard from "../../../../molecules/ui/user/userTeamCard/userTeamCard";
 
 function UserTeamsDisplay(props) { 
 
@@ -6,15 +7,7 @@ function UserTeamsDisplay(props) {
   return(
     <div>
       {teams.map((id) => (
-        <Card style={{ width: '18rem' }}>
-          <Card.Body>
-            <Card.Title>Team Name</Card.Title>
-            <Card.Text>
-              ID: {id}
-            </Card.Text>
-            <Button variant="primary">Go to team's projects</Button>
-          </Card.Body>
-        </Card>
+        <UserTeamCard id={id} />
       ))}
     </div>
   )
