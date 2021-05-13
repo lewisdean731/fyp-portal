@@ -2,7 +2,7 @@ import { Button, Card } from "react-bootstrap";
 
 function UserTeamsDisplay(props) { 
 
-  const teams = props.teams?[props.teams]:["No Team Data Available"] //Handle no teams in props
+  const teams = props.teams?props.teams:["No Team Data Available"] //Handle no teams in props
   return(
     <div>
       {teams.map((id) => (
