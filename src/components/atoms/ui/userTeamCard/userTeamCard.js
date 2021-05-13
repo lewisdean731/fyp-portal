@@ -6,7 +6,9 @@ function UserTeamCard(props) {
       <Card.Body>
         <Card.Title>Team Name</Card.Title>
         <Card.Text>ID: {props.id}</Card.Text>
-        <Button variant="primary">Go to Team Page</Button>
+        <Button variant="primary" href={`/team/${props.id}`}>
+          Go to Team Page
+        </Button>
       </Card.Body>
     </Card>
   );

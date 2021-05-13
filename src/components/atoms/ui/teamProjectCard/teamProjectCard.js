@@ -7,7 +7,9 @@ function TeamProjectCard(props) {
         <Card.Title>{props.name}</Card.Title>
         <Card.Text>Type: {props.projectType}</Card.Text>
         <Card.Text>ID: {props.id}</Card.Text>
-        <Button variant="primary">Go to Project Page</Button>
+        <Button variant="primary" href={`/project/${props.id}`}>
+          Go to Project Page
+        </Button>
       </Card.Body>
     </Card>
   );
