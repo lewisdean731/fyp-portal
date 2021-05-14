@@ -1,9 +1,11 @@
 import { Row, Col } from "react-bootstrap";
-import UserTeamCard from "../../../../molecules/ui/user/userTeamCard/userTeamCard";
+import UserTeamCard from "../../../../atoms/ui/userTeamCard/userTeamCard";
 import { createRowArray } from "../../../../../utils/gridUtil";
 
 function UserTeamsDisplay(props) {
-  const teams = props.teams ? props.teams : ["No Team Data Available"]; //Handle no teams in props
+  const teams = props.teamsData
+    ? props.teamsData
+    : ["No Team Data Available"]; //Handle no projects in props
 
   const grid = createRowArray(4, teams);
 
@@ -19,7 +21,7 @@ function UserTeamsDisplay(props) {
               {grid[row].map((index) => {
                 return (
                   <Col md={3}>
-                    <UserTeamCard id={teams[index]} />
+                    <UserTeamCard id={teams[index].teamId} name={teams[index].teamName} />
                   </Col>
                 );
               })}

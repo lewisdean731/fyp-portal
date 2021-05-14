@@ -13,7 +13,6 @@ export const createRowArray = (cols, children) => {
       count += 1;
       row.push(child);
     }
-    console.log(child);
   }
   rows.push(row);
 
