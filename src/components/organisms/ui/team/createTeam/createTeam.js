@@ -11,7 +11,7 @@ function CreateTeam(props) {
       <TextMedium colour={"grey"}>Create Team</TextMedium>
       <Row className="justify-content-md-center">
         <Col>
-          <CreateTeamForm uid={props.uid} />
+          <CreateTeamForm uid={props.uid} token={props.token} />
         </Col>
       </Row>
     </Container>

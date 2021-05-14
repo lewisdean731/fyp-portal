@@ -23,8 +23,10 @@ function CreateTeamForm(props) {
           <Col sm={2}>
             <Button 
               variant="primary"
-              type="submit"
-              onClick={async () => await submitFormHandler(teamName)}>
+              onClick={async () => 
+                await submitFormHandler(teamName)
+                .then(() => window.location.reload(false))
+                .catch(error => console.log(error))}>
               Create New Team
             </Button>
           </Col>
