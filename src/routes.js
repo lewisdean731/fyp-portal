@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Dashboard from "./layouts/dashboard/dashboard";
 import User from "./layouts/user/user";
 import Team from "./layouts/team/team";
+import Teams from "./layouts/team/teams";
 
 export const RenderRoutes = (props) => {
   return (
@@ -22,6 +23,9 @@ export const RenderRoutes = (props) => {
         <Route path="/user" render={() => <User {...props} />} />
 
         <Route path="/team/:teamId" render={() => <Team {...props} />} />
+
+        <Route path="/teams" render={() => <Teams {...props} />} />
+
       </Switch>
     </BrowserRouter>
   );
