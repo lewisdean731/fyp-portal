@@ -5,7 +5,7 @@ export default function SidebarButtons() {
     <div>
       <Row>
         <Col>
-          <SidebarButton link={"fake.link"}>Fake Link</SidebarButton>
+          <SidebarButton link={"/dashboard"}>Dashboard</SidebarButton>
         </Col>
       </Row>
       <Row>
@@ -20,12 +20,12 @@ export default function SidebarButtons() {
       </Row>
       <Row>
         <Col>
-          <SidebarButton link={"fake.link"}>Fake Link</SidebarButton>
+          <SidebarButton link={"/teams"}>My Teams</SidebarButton>
         </Col>
       </Row>
       <Row>
         <Col>
-          <SidebarButton link={"fake.link"}>Fake Link</SidebarButton>
+          <SidebarButton link={"/user"}>Account Settings</SidebarButton>
         </Col>
       </Row>
     </div>
