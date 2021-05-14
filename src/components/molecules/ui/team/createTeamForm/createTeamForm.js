@@ -22,7 +22,8 @@ function CreateTeamForm(props) {
           </Col>
           <Col sm={2}>
             <Button 
-              variant="primary" 
+              variant="primary"
+              type="submit"
               onClick={async () => await submitFormHandler(teamName)}>
               Create New Team
             </Button>
