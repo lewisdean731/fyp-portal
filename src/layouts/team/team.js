@@ -24,7 +24,7 @@ function Team(props) {
         return data;
       })
       .then((data) => {
-        data.teamProjects.map(async (projectId) => {
+        data.teamProjects?.map(async (projectId) => {
           await getProjectFirestoreInformation(
             projectId,
             props.userData.user.stsTokenManager["accessToken"]
