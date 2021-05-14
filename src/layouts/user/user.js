@@ -23,7 +23,7 @@ function User(props) {
       <TextLarge>My Account</TextLarge>
       <UserDetails userData={props.userData} />
       <br />
-      <UserTeamData userFirestoreData={userFirestoreData} />
+      <UserTeamData uid={props.userData.user["uid"]} token={props.userData.user.stsTokenManager["accessToken"]} />
     </div>
   );
 }
