@@ -5,7 +5,7 @@ import ProjectInformation from "../../components/organisms/ui/project/projectInf
 import { getProjectFirestoreInformation } from "../../utils/apiUtil";
 
 function Team(props) {
-  const [projectData, setProjectData] = useState("");
+  const [projectData, setProjectData] = useState(undefined);
   const { projectId } = useParams(); // Gets team ID from URL
 
   useEffect(async () => {
@@ -18,18 +18,23 @@ function Team(props) {
       setProjectData(data)
     })
   }, []);
+  
+  if(projectData) {
+    return (
+      <div>
+        <TextLarge>{projectData.projectName}</TextLarge>
+        <br />
+        <ProjectInformation projectData={projectData} />
+        <br />
+        {/* TODO <ProjectDependencies /> */}
+        <br />
+        {/* TODO <ProjectOptions /> */}
+      </div>
+    );
+  }
 
-  return (
-    <div>
-      <TextLarge>{projectData.projectName}</TextLarge>
-      <br />
-      <ProjectInformation />
-      <br />
-      {/* TODO <ProjectDependencies /> */}
-      <br />
-      {/* TODO <ProjectOptions /> */}
-    </div>
-  );
+  return <p>Loading...</p>
+
 }
 
 export default Team;
