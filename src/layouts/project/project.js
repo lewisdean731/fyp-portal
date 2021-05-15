@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import TextLarge from "../../components/atoms/text/large/textLarge";
+import ProjectInformation from "../../components/organisms/ui/project/projectInformation/projectInformation";
 import { getProjectFirestoreInformation } from "../../utils/apiUtil";
 
 function Team(props) {
@@ -22,7 +23,7 @@ function Team(props) {
     <div>
       <TextLarge>{projectData.projectName}</TextLarge>
       <br />
-      {/* TODO <ProjectInformation /> */}
+      <ProjectInformation />
       <br />
       {/* TODO <ProjectDependencies /> */}
       <br />
