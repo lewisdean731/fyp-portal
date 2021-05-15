@@ -4,7 +4,7 @@ import TextLarge from "../../components/atoms/text/large/textLarge";
 import ProjectInformation from "../../components/organisms/ui/project/projectInformation/projectInformation";
 import { getProjectFirestoreInformation } from "../../utils/apiUtil";
 
-function Team(props) {
+function Project(props) {
   const [projectData, setProjectData] = useState(undefined);
   const { projectId } = useParams(); // Gets team ID from URL
 
@@ -37,4 +37,4 @@ function Team(props) {
 
 }
 
-export default Team;
+export default Project;
