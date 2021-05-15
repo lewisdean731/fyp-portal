@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import TextLarge from "../../components/atoms/text/large/textLarge";
 import ProjectInformation from "../../components/organisms/ui/project/projectInformation/projectInformation";
 import ProjectDependencies from "../../components/organisms/ui/project/projectDependencies/projectDependencies";
+import ProjectOptions from "../../components/organisms/ui/project/projectOptions/projectOptions";
 import { getProjectFirestoreInformation } from "../../utils/apiUtil";
 
 function Project(props) {
@@ -29,7 +30,7 @@ function Project(props) {
         <br />
         <ProjectDependencies projectData={projectData}/>
         <br />
-        {/* TODO <ProjectOptions /> */}
+        <ProjectOptions />
       </div>
     );
   }
