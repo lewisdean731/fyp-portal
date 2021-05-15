@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import TextLarge from "../../components/atoms/text/large/textLarge";
 import ProjectInformation from "../../components/organisms/ui/project/projectInformation/projectInformation";
+import ProjectDependencies from "../../components/organisms/ui/project/projectDependencies/projectDependencies";
 import { getProjectFirestoreInformation } from "../../utils/apiUtil";
 
 function Project(props) {
@@ -26,7 +27,7 @@ function Project(props) {
         <br />
         <ProjectInformation projectData={projectData} />
         <br />
-        {/* TODO <ProjectDependencies /> */}
+        <ProjectDependencies projectData={projectData}/>
         <br />
         {/* TODO <ProjectOptions /> */}
       </div>
