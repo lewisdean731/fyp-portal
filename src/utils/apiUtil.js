@@ -42,6 +42,10 @@ export const getProjectFirestoreInformation = async (projectId, token) => {
   return await asyncGetRequest(`/api/project/${projectId}`, token);
 };
 
+export const getAllProjectsForUser = async (uid, token) => {
+  return await asyncGetRequest(`/api/getAllProjectsForUser?uid=${uid}`, token);
+}
+
 export const createTeamInFirestore = async (teamData, token) => {
   return await asyncPutRequest(`/api/team/create`, {
     teamName: teamData.name,
