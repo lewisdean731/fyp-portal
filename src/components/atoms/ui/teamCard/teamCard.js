@@ -1,8 +1,8 @@
 import { Card, Button } from "react-bootstrap";
 
-function UserTeamCard(props) {
+function TeamCard(props) {
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card style={{ width: "16rem" }}>
       <Card.Body>
         <Card.Title>{props.name}</Card.Title>
         <Card.Text>ID: {props.id}</Card.Text>
@@ -14,4 +14,4 @@ function UserTeamCard(props) {
   );
 }
 
-export default UserTeamCard;
+export default TeamCard;

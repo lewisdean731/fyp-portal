@@ -1,3 +1,4 @@
+import { Container } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import TextLarge from "../../components/atoms/text/large/textLarge";
@@ -37,7 +38,7 @@ function Team(props) {
   }, []);
 
   return (
-    <div>
+    <Container>
       <TextLarge>{teamData.teamName}</TextLarge>
       {/* TODO <TeamDetails teamData={props.teamData} /> */}
       <br />
@@ -46,7 +47,7 @@ function Team(props) {
       {/* TODO <TeamMembers teamData={props.teamData} /> */}
       <br />
       <TeamOptionsForm teamData={teamData} />
-    </div>
+    </Container>
   );
 }
 

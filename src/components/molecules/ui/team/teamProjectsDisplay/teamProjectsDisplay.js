@@ -1,5 +1,5 @@
 import { Row, Col } from "react-bootstrap";
-import TeamProjectCard from "../../../../atoms/ui/teamProjectCard/teamProjectCard";
+import ProjectCard from "../../../../atoms/ui/projectCard/projectCard";
 import { createRowArray } from "../../../../../utils/gridUtil";
 
 function TeamProjectsDisplay(props) {
@@ -27,7 +27,7 @@ function TeamProjectsDisplay(props) {
 
                 return (
                   <Col md={3}>
-                    <TeamProjectCard
+                    <ProjectCard
                       name={projects[index].projectName}
                       projectType={pt}
                       id={projects[index].projectId}
