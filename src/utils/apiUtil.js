@@ -54,3 +54,22 @@ export const createTeamInFirestore = async (teamData, token) => {
   },
   token);
 };
+
+export const createProjectInFirestore = async (projectData, token) => {
+  let data = {
+    projectName: projectData.name,
+    teamId: projectData.teamId,
+    projectDependencies: {
+      directDependencies: []
+    },
+    projectType: {}
+  }
+  if(projectData.type === "npm"){
+    data.projectType["npm"] = {
+      packageJsonUrl: projectData.packageJsonUrl,
+      packageLockUrl: projectData.packageLockUrl
+    }
+  }
+  return await asyncPutRequest(`/api/project/create`, data,
+  token);
+};
