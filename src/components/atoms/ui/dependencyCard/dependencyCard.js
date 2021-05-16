@@ -2,7 +2,7 @@ import { Accordion, Card, Table, Button } from "react-bootstrap";
 import Classes from "./dependencyCard.module.scss";
 function DependencyCard(props) {
   return(
-    <Card bg={props.variant} className={Classes.dependencyCard}>
+    <Card bg={"light"} className={Classes.dependencyCard}>
       <Accordion.Toggle as={Button} variant={props.variant} eventKey={props.eventKey} className={Classes.header}>
         <p className={Classes.name}>{props.name}</p>
         <p className={Classes.version}>{props.version}</p>
