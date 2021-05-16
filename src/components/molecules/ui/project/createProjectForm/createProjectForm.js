@@ -9,6 +9,7 @@ function CreateProjectForm(props) {
   const [projectTeam, setProjectTeam] = useState(props.teamsData[0].teamId);
   const [npmPackageJsonUrl, setNpmPackageJsonUrl] = useState();
   const [npmPackageLockUrl, setNpmPackageLockUrl] = useState();
+  const [validated, setValidated] = useState(false)
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -16,6 +17,7 @@ function CreateProjectForm(props) {
       event.preventDefault();
       event.stopPropagation();
     }
+    setValidated(true);
     const projectData = {
       name: projectName,
       type: projectType,
@@ -99,7 +101,7 @@ function CreateProjectForm(props) {
         className={Classes.createProject}
         onSubmit={handleSubmit}
         noValidate
-        validated
+        validated={validated}
       >
         <Form.Row>
           <Form.Group as={Col}>
