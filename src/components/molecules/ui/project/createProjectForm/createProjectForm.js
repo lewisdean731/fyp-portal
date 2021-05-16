@@ -21,7 +21,7 @@ function CreateProjectForm(props) {
       type: projectType,
       teamId: projectTeam,
       packageJsonUrl: npmPackageJsonUrl,
-      npmPackageLockUrl: npmPackageLockUrl
+      packageLockUrl: npmPackageLockUrl
     }
     createProjectInFirestore(
       projectData,
