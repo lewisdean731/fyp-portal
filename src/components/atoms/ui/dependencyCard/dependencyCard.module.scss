@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 10px;
+}
+.name {
+  font-size: 2em;
+  text-align: left;
+  margin: 0;
+  width: 30%;
+}
+.version {
+  font-size: 1.3em;
+  text-align: right;
+  margin: 0;
+}
