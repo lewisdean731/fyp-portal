@@ -15,7 +15,7 @@ export default function SidebarButtons() {
       </Row>
       <Row>
         <Col>
-          <SidebarButton link={"fake.link"}>Fake Link</SidebarButton>
+          <SidebarButton link={"/projects"}>My Projects</SidebarButton>
         </Col>
       </Row>
       <Row>
