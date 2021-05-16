@@ -1,5 +1,5 @@
 import { Row, Col } from "react-bootstrap";
-import UserTeamCard from "../../../../atoms/ui/userTeamCard/userTeamCard";
+import TeamCard from "../../../../atoms/ui/teamCard/teamCard";
 import { createRowArray } from "../../../../../utils/gridUtil";
 
 function UserTeamsDisplay(props) {
@@ -21,7 +21,7 @@ function UserTeamsDisplay(props) {
               {grid[row].map((index) => {
                 return (
                   <Col md={3}>
-                    <UserTeamCard id={teams[index].teamId} name={teams[index].teamName} />
+                    <TeamCard id={teams[index].teamId} name={teams[index].teamName} />
                   </Col>
                 );
               })}
