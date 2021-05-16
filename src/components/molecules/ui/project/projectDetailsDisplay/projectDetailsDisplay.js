@@ -12,7 +12,7 @@ function ProjectDetailsDisplay(props) {
             <Form.Label>Parent Team ID</Form.Label>
             <Form.Control
               readOnly
-              defaultValue={props.projectData.teamid}
+              defaultValue={props.projectData.teamId}
             />
           </Form.Group>
           <Form.Group as={Col} md={3}>
