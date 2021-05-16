@@ -1,3 +1,4 @@
+import { Container } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import TextLarge from "../../components/atoms/text/large/textLarge";
@@ -23,7 +24,7 @@ function Project(props) {
   
   if(projectData) {
     return (
-      <div>
+      <Container>
         <TextLarge>{projectData.projectName}</TextLarge>
         <br />
         <ProjectInformation projectData={projectData} />
@@ -31,7 +32,7 @@ function Project(props) {
         <ProjectDependencies projectData={projectData}/>
         <br />
         <ProjectOptions />
-      </div>
+      </Container>
     );
   }
 
