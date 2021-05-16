@@ -10,6 +10,7 @@ import User from "./layouts/user/user";
 import Team from "./layouts/team/team";
 import Teams from "./layouts/team/teams";
 import Project from "./layouts/project/project";
+import Projects from "./layouts/project/projects";
 
 export const RenderRoutes = (props) => {
   return (
@@ -28,6 +29,8 @@ export const RenderRoutes = (props) => {
         <Route path="/teams" render={() => <Teams {...props} />} />
 
         <Route path="/project/:projectId" render={() => <Project {...props} />} />
+
+        <Route path="/projects" render={() => <Projects {...props} />} />
 
       </Switch>
     </BrowserRouter>
