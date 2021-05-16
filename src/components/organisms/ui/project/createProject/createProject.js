@@ -7,7 +7,7 @@ import CreateProjectForm from "../../../../molecules/ui/project/createProjectFor
 import Classes from "./createProject.module.scss";
 
 function CreateProject(props) {
-  const [teamsData, setTeamsData] = useState([])
+  const [teamsData, setTeamsData] = useState("")
 
   useEffect(async () => {
     props.userTeams.map(async (teamId) => {
@@ -24,16 +24,22 @@ function CreateProject(props) {
     })
   }, []);
 
+  if(teamsData){
+    return (
+      <Container fluid className={Classes.createProject}>
+        <TextMedium colour={"grey"}>Create Project</TextMedium>
+        <Row className="justify-content-md-center">
+          <Col>
+            <CreateProjectForm uid={props.uid} token={props.token} teamsData={teamsData} />
+          </Col>
+        </Row>
+      </Container>
+    );
+  }
+
   return (
-    <Container fluid className={Classes.createProject}>
-      <TextMedium colour={"grey"}>Create Project</TextMedium>
-      <Row className="justify-content-md-center">
-        <Col>
-          {/* <CreateProjectForm uid={props.uid} token={props.token} teamsData={teamsData} /> */}
-        </Col>
-      </Row>
-    </Container>
-  );
+    <p>Loading...</p>
+  )
 }
 
 export default CreateProject;
