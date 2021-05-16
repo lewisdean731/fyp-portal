@@ -1,6 +1,6 @@
 import { Row, Col, Container } from "react-bootstrap";
 import TextMedium from "../../../../atoms/text/medium/textMedium";
-
+import ProjectDependenciesDisplay from "../../../../molecules/ui/project/projectDependenciesDisplay/projectDependenciesDisplay";
 import Classes from "./projectDependencies.module.scss";
 
 function ProjectDependencies(props) {
@@ -9,7 +9,7 @@ function ProjectDependencies(props) {
       <TextMedium colour={"grey"}>Dependencies</TextMedium>
       <Row className="justify-content-md-center">
         <Col>
-          {/* <ProjectDependenciesDisplay projectData={props.projectData} /> */}
+          <ProjectDependenciesDisplay projectData={props.projectData} />
         </Col>
       </Row>
     </Container>
