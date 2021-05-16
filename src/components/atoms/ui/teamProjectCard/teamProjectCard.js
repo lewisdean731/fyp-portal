@@ -2,7 +2,7 @@ import { Card, Button } from "react-bootstrap";
 
 function TeamProjectCard(props) {
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card style={{ width: "16rem" }}>
       <Card.Body>
         <Card.Title>{props.name}</Card.Title>
         <Card.Text>Type: {props.projectType}</Card.Text>
