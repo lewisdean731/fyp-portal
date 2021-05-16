@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
+import { createProjectInFirestore } from "../../../../../utils/apiUtil";
 import Classes from "./createProjectForm.module.scss";
 
 function CreateProjectForm(props) {
@@ -8,7 +9,6 @@ function CreateProjectForm(props) {
   const [projectTeam, setProjectTeam] = useState(props.teamsData[0].teamId);
   const [npmPackageJsonUrl, setNpmPackageJsonUrl] = useState();
   const [npmPackageLockUrl, setNpmPackageLockUrl] = useState();
-  const [validated, setValidated] = useState(false);
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -16,10 +16,18 @@ function CreateProjectForm(props) {
       event.preventDefault();
       event.stopPropagation();
     }
-
-    setValidated(true);
+    const projectData = {
+      name: projectName,
+      type: projectType,
+      teamId: projectTeam,
+      packageJsonUrl: npmPackageJsonUrl,
+      npmPackageLockUrl: npmPackageLockUrl
+    }
+    createProjectInFirestore(
+      projectData,
+      props.token
+    )
   };
-
 
   const projectTypeHandler = (value) => { 
     if(value === "npm") {
@@ -78,7 +86,7 @@ function CreateProjectForm(props) {
 
   return (
     <div>
-      <Form className={Classes.createProject} onSubmit={handleSubmit} noValidate validated={validated}>
+      <Form className={Classes.createProject} onSubmit={handleSubmit} noValidate validated>
         <Form.Row>
           <Form.Group as={Col}>
             <Form.Label>Name</Form.Label>
