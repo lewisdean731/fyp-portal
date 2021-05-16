@@ -1,17 +1,36 @@
+import { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import TextLarge from "../../components/atoms/text/large/textLarge";
 import CreateProject from "../../components/organisms/ui/project/createProject/createProject";
 import UserProjects from "../../components/organisms/ui/project/userProjects/userProjects";
+import { getAllProjectsForUser } from "../../utils/apiUtil";
 function Teams(props) {
+  const [projectsData, setProjectsData] = useState();
 
-  return (
-    <Container>
-      <TextLarge>My Projects</TextLarge>
-      {/* <CreateProject uid={props.userData.user["uid"]} token={props.userData.user.stsTokenManager["accessToken"]} /> */}
-      <br />
-      {/* <UserProjects uid={props.userData.user["uid"]}  token={props.userData.user.stsTokenManager["accessToken"]} /> */}
-    </Container>
-  );
+  useEffect(async () => {
+    await getAllProjectsForUser(
+      props.userData.user["uid"],
+      props.userData.user.stsTokenManager["accessToken"]
+    )
+    .then((data) => {
+      console.log(data)
+      setProjectsData(data.projectsData)
+    })
+  }, []);
+
+  if(projectsData) {
+    return (
+      <Container>
+        <TextLarge>My Projects</TextLarge>
+        {/* <CreateProject uid={props.userData.user["uid"]} token={props.userData.user.stsTokenManager["accessToken"]} /> */}
+        <br />
+        <UserProjects projectsData={projectsData} />
+      </Container>
+    );
+  }
+
+  return <p>Loading...</p>
+
 }
 
 export default Teams;
