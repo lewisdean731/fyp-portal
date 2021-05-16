@@ -44,15 +44,18 @@ export const getProjectFirestoreInformation = async (projectId, token) => {
 
 export const getAllProjectsForUser = async (uid, token) => {
   return await asyncGetRequest(`/api/getAllProjectsForUser?uid=${uid}`, token);
-}
+};
 
 export const createTeamInFirestore = async (teamData, token) => {
-  return await asyncPutRequest(`/api/team/create`, {
-    teamName: teamData.name,
-    teamMembers: [teamData.uid],
-    teamAdmins: [teamData.uid]
-  },
-  token);
+  return await asyncPutRequest(
+    `/api/team/create`,
+    {
+      teamName: teamData.name,
+      teamMembers: [teamData.uid],
+      teamAdmins: [teamData.uid],
+    },
+    token
+  );
 };
 
 export const createProjectInFirestore = async (projectData, token) => {
@@ -60,16 +63,15 @@ export const createProjectInFirestore = async (projectData, token) => {
     projectName: projectData.name,
     teamId: projectData.teamId,
     projectDependencies: {
-      directDependencies: []
+      directDependencies: [],
     },
-    projectType: {}
-  }
-  if(projectData.type === "npm"){
+    projectType: {},
+  };
+  if (projectData.type === "npm") {
     data.projectType["npm"] = {
       packageJsonUrl: projectData.packageJsonUrl,
-      packageLockUrl: projectData.packageLockUrl
-    }
+      packageLockUrl: projectData.packageLockUrl,
+    };
   }
-  return await asyncPutRequest(`/api/project/create`, data,
-  token);
+  return await asyncPutRequest(`/api/project/create`, data, token);
 };

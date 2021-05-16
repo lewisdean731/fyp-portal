@@ -21,80 +21,94 @@ function CreateProjectForm(props) {
       type: projectType,
       teamId: projectTeam,
       packageJsonUrl: npmPackageJsonUrl,
-      packageLockUrl: npmPackageLockUrl
-    }
-    createProjectInFirestore(
-      projectData,
-      props.token
-    )
+      packageLockUrl: npmPackageLockUrl,
+    };
+    createProjectInFirestore(projectData, props.token);
   };
 
-  const projectTypeHandler = (value) => { 
-    if(value === "npm") {
+  const projectTypeHandler = (value) => {
+    if (value === "npm") {
       return (
         <div>
-            <Form.Group as={Row}>
-              <Form.Label column md={"3"}>Package.json URL</Form.Label>
-              <Col>
-                <Form.Control
-                  required
-                  type={"url"}
-                  pattern={"https://.*" }
-                  placeholder={"https://example.com/repository/package.json"} 
-                  onChange={(event) => {
-                    setNpmPackageJsonUrl(event.target.value)
-                  }}
-                />
-                <Form.Control.Feedback type="invalid">
-                  Please enter a valid URL.
-                </Form.Control.Feedback>
-              </Col>
-            </Form.Group>
-            <Form.Group as={Row}>
-              <Form.Label column md={"3"}>Package-lock.json URL</Form.Label>
-              <Col>
-                <Form.Control
-                  type={"url"}
-                  pattern={"https://.*" }
-                  required 
-                  placeholder={"https://example.com/repository/package-lock.json"} 
-                  onChange={(event) => {
-                    setNpmPackageLockUrl(event.target.value)
-                  }}
-                />
-                <Form.Control.Feedback type="invalid">
+          <Form.Group as={Row}>
+            <Form.Label column md={"3"}>
+              Package.json URL
+            </Form.Label>
+            <Col>
+              <Form.Control
+                required
+                type={"url"}
+                pattern={"https://.*"}
+                placeholder={"https://example.com/repository/package.json"}
+                onChange={(event) => {
+                  setNpmPackageJsonUrl(event.target.value);
+                }}
+              />
+              <Form.Control.Feedback type="invalid">
                 Please enter a valid URL.
-                </Form.Control.Feedback>
-              </Col>
-            </Form.Group>
+              </Form.Control.Feedback>
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row}>
+            <Form.Label column md={"3"}>
+              Package-lock.json URL
+            </Form.Label>
+            <Col>
+              <Form.Control
+                type={"url"}
+                pattern={"https://.*"}
+                required
+                placeholder={"https://example.com/repository/package-lock.json"}
+                onChange={(event) => {
+                  setNpmPackageLockUrl(event.target.value);
+                }}
+              />
+              <Form.Control.Feedback type="invalid">
+                Please enter a valid URL.
+              </Form.Control.Feedback>
+            </Col>
+          </Form.Group>
         </div>
-      )
+      );
     }
     return (
       <div>
-          <Form.Group as={Row}>
-            <Form.Label column md={"3"}>Dependency File URL</Form.Label>
-            <Form.Label column md={"4"}>Not yet implemented</Form.Label>
-          </Form.Group>
-          <Form.Group as={Row}>
-            <Form.Label column md={"3"}>Lockfile URL</Form.Label>
-            <Form.Label column md={"4"}>Not yet implemented</Form.Label>
-          </Form.Group>
+        <Form.Group as={Row}>
+          <Form.Label column md={"3"}>
+            Dependency File URL
+          </Form.Label>
+          <Form.Label column md={"4"}>
+            Not yet implemented
+          </Form.Label>
+        </Form.Group>
+        <Form.Group as={Row}>
+          <Form.Label column md={"3"}>
+            Lockfile URL
+          </Form.Label>
+          <Form.Label column md={"4"}>
+            Not yet implemented
+          </Form.Label>
+        </Form.Group>
       </div>
-    )
-  }
+    );
+  };
 
   return (
     <div>
-      <Form className={Classes.createProject} onSubmit={handleSubmit} noValidate validated>
+      <Form
+        className={Classes.createProject}
+        onSubmit={handleSubmit}
+        noValidate
+        validated
+      >
         <Form.Row>
           <Form.Group as={Col}>
             <Form.Label>Name</Form.Label>
             <Form.Control
-              required 
+              required
               placeholder={"Project Name"}
               onChange={(event) => {
-                setProjectName(event.target.value)
+                setProjectName(event.target.value);
               }}
             />
             <Form.Control.Feedback type="invalid">
@@ -103,10 +117,14 @@ function CreateProjectForm(props) {
           </Form.Group>
           <Form.Group as={Col}>
             <Form.Label>Project Type</Form.Label>
-            <Form.Control as="select" defaultValue={"npm"} onChange={(event) => {
-              projectTypeHandler(event.target.value)
-              setProjectType(event.target.value)
-              }}>
+            <Form.Control
+              as="select"
+              defaultValue={"npm"}
+              onChange={(event) => {
+                projectTypeHandler(event.target.value);
+                setProjectType(event.target.value);
+              }}
+            >
               <option>npm</option>
               <option>Other Package Manager</option>
             </Form.Control>
@@ -116,16 +134,20 @@ function CreateProjectForm(props) {
         {projectTypeHandler(projectType)}
         <br />
         <Form.Group as={Row}>
-          <Form.Label column sm={2}>Team</Form.Label>
+          <Form.Label column sm={2}>
+            Team
+          </Form.Label>
           <Col>
             {/* Split the team name and ID when setting the value, and only use the ID part */}
-            <Form.Control as="select" onChange={(event) => {setProjectTeam(event.target.value.split(" - ")[1])}}>
+            <Form.Control
+              as="select"
+              onChange={(event) => {
+                setProjectTeam(event.target.value.split(" - ")[1]);
+              }}
+            >
               {props.teamsData.map((team) => {
-                  return(
-                    <option>{`${team.teamName} - ${team.teamId}`}</option>
-                  )
-                })
-              }
+                return <option>{`${team.teamName} - ${team.teamId}`}</option>;
+              })}
             </Form.Control>
           </Col>
           <Col />

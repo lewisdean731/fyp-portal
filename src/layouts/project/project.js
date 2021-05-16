@@ -15,29 +15,27 @@ function Project(props) {
     await getProjectFirestoreInformation(
       projectId,
       props.userData.user.stsTokenManager["accessToken"]
-    )
-    .then((data) => {
-      console.log(data)
-      setProjectData(data)
-    })
+    ).then((data) => {
+      console.log(data);
+      setProjectData(data);
+    });
   }, []);
-  
-  if(projectData) {
+
+  if (projectData) {
     return (
       <Container>
         <TextLarge>{projectData.projectName}</TextLarge>
         <br />
         <ProjectInformation projectData={projectData} />
         <br />
-        <ProjectDependencies projectData={projectData}/>
+        <ProjectDependencies projectData={projectData} />
         <br />
         <ProjectOptions />
       </Container>
     );
   }
 
-  return <p>Loading...</p>
-
+  return <p>Loading...</p>;
 }
 
 export default Project;
