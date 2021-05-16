@@ -8,7 +8,18 @@ function CreateProjectForm(props) {
   const [projectTeam, setProjectTeam] = useState(props.teamsData[0].teamId);
   const [npmPackageJsonUrl, setNpmPackageJsonUrl] = useState();
   const [npmPackageLockUrl, setNpmPackageLockUrl] = useState();
-  
+  const [validated, setValidated] = useState(false);
+
+  const handleSubmit = (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    setValidated(true);
+  };
+
 
   const projectTypeHandler = (value) => { 
     if(value === "npm") {
@@ -18,24 +29,34 @@ function CreateProjectForm(props) {
               <Form.Label column md={"3"}>Package.json URL</Form.Label>
               <Col>
                 <Form.Control
-                  required 
+                  required
+                  type={"url"}
+                  pattern={"https://.*" }
                   placeholder={"https://example.com/repository/package.json"} 
                   onChange={(event) => {
                     setNpmPackageJsonUrl(event.target.value)
                   }}
                 />
+                <Form.Control.Feedback type="invalid">
+                  Please enter a valid URL.
+                </Form.Control.Feedback>
               </Col>
             </Form.Group>
             <Form.Group as={Row}>
               <Form.Label column md={"3"}>Package-lock.json URL</Form.Label>
               <Col>
                 <Form.Control
+                  type={"url"}
+                  pattern={"https://.*" }
                   required 
                   placeholder={"https://example.com/repository/package-lock.json"} 
                   onChange={(event) => {
                     setNpmPackageLockUrl(event.target.value)
                   }}
                 />
+                <Form.Control.Feedback type="invalid">
+                Please enter a valid URL.
+                </Form.Control.Feedback>
               </Col>
             </Form.Group>
         </div>
@@ -57,7 +78,7 @@ function CreateProjectForm(props) {
 
   return (
     <div>
-      <Form className={Classes.createProject}>
+      <Form className={Classes.createProject} onSubmit={handleSubmit} noValidate validated={validated}>
         <Form.Row>
           <Form.Group as={Col}>
             <Form.Label>Name</Form.Label>
@@ -68,6 +89,9 @@ function CreateProjectForm(props) {
                 setProjectName(event.target.value)
               }}
             />
+            <Form.Control.Feedback type="invalid">
+              Please enter a name for the project.
+            </Form.Control.Feedback>
           </Form.Group>
           <Form.Group as={Col}>
             <Form.Label>Project Type</Form.Label>
