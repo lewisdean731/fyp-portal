@@ -1,6 +1,6 @@
 import { Card, Button } from "react-bootstrap";
 
-function TeamProjectCard(props) {
+function ProjectCard(props) {
   return (
     <Card style={{ width: "16rem" }}>
       <Card.Body>
@@ -15,4 +15,4 @@ function TeamProjectCard(props) {
   );
 }
 
-export default TeamProjectCard;
+export default ProjectCard;
