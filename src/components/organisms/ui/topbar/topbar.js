@@ -3,7 +3,6 @@ import {
   Nav,
   NavDropdown,
   Form,
-  Button,
   FormControl,
 } from "react-bootstrap";
 import Classes from "./topbar.module.scss";
