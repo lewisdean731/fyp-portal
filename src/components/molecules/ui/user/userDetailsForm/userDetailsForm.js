@@ -5,11 +5,11 @@ import firebase from "firebase/app";
 import TextSmall from "../../../../atoms/text/small/textSmall";
 
 function UserDetailsForm(props) {
-  const [validated, setValidated] = useState(false)
+  const [validated, setValidated] = useState(false);
   const [name, setName] = useState(props.userData.user["displayName"]);
   const [email, setEmail] = useState(props.userData.user["email"]);
-  const [formSubmitMsg, setFormSubmitMsg] = useState("")
-  const [formSubmitMsgColour, setFormSubmitMsgColour] = useState("")
+  const [formSubmitMsg, setFormSubmitMsg] = useState("");
+  const [formSubmitMsgColour, setFormSubmitMsgColour] = useState("");
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -27,19 +27,24 @@ function UserDetailsForm(props) {
     setFormSubmitMsg("");
 
     let user = firebase.auth().currentUser;
-    user.updateProfile({
-      displayName: name
-    })
-    .then(() => {
-      user.updateEmail(email)
-      .then(() => {
-        setFormSubmitMsgColour("green");
-        setFormSubmitMsg("Details updated successfully");
+    user
+      .updateProfile({
+        displayName: name,
       })
-      .catch((error) => {setFormSubmitMsg(error.message)})
-    })
-    .catch((error) => {setFormSubmitMsg(error.message)})
-
+      .then(() => {
+        user
+          .updateEmail(email)
+          .then(() => {
+            setFormSubmitMsgColour("green");
+            setFormSubmitMsg("Details updated successfully");
+          })
+          .catch((error) => {
+            setFormSubmitMsg(error.message);
+          });
+      })
+      .catch((error) => {
+        setFormSubmitMsg(error.message);
+      });
   };
 
   return (
@@ -56,7 +61,7 @@ function UserDetailsForm(props) {
             <Form.Control
               required
               onChange={(event) => {
-                setName(event.target.value)
+                setName(event.target.value);
               }}
               defaultValue={props.userData.user["displayName"]}
             />
@@ -71,7 +76,7 @@ function UserDetailsForm(props) {
               type={"email"}
               pattern={".+@+.+."}
               onChange={(event) => {
-                setEmail(event.target.value)
+                setEmail(event.target.value);
               }}
               defaultValue={props.userData.user["email"]}
             />

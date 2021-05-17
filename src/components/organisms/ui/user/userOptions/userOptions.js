@@ -8,9 +8,7 @@ function UserOptions(props) {
     <Container fluid className={Classes.userOptions}>
       <TextMedium colour={"grey"}>Options</TextMedium>
       <Row className="justify-content-md-center">
-        <Col>
-          {/* <UserOptionsForm projectData={props.projectData} /> */}
-        </Col>
+        <Col>{/* <UserOptionsForm projectData={props.projectData} /> */}</Col>
       </Row>
     </Container>
   );

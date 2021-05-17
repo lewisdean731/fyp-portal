@@ -12,7 +12,6 @@ function CreateProject(props) {
   useEffect(() => {
     async function fetchData() {
       props.userTeams.map(async (teamId) => {
-        
         await getTeamFirestoreInformation(teamId, props.token).then(
           async (data) => {
             console.log(data);
