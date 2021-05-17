@@ -24,7 +24,7 @@ function CreateProject(props) {
       });
     }
     fetchData();
-  }, []);
+  }, [props]);
 
   if (teamsData) {
     return (

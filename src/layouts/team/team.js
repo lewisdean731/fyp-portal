@@ -38,7 +38,7 @@ function Team(props) {
         });
     }
     fetchData();
-  }, []);
+  }, [props, teamId]);
   if(teamData && projectsData) {
     return (
       <Container>

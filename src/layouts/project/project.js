@@ -22,7 +22,7 @@ function Project(props) {
       });
     }
     fetchData();
-  }, []);
+  }, [props, projectId]);
 
   if (projectData) {
     return (

@@ -30,7 +30,7 @@ function Teams(props) {
       });
     }
     fetchData();
-  }, []);
+  }, [props]);
 
   if (projectsData) {
     return (

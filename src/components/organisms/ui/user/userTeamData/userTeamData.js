@@ -32,7 +32,7 @@ function UserTeamData(props) {
         });
     }
     fetchData();
-  }, []);
+  }, [props]);
 
   return (
     <Container fluid className={Classes.userTeamData}>
