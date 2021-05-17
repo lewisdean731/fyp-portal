@@ -6,16 +6,12 @@ function ProjectDetailsForm(props) {
   const [projectType, setProjectType] = useState(
     Object.keys(props.projectData.projectType)[0]
   );
-  const [npmPackageJsonUrl, setNpmPackageJsonUrl] = useState(
+  const [npmPackageJsonUrl, /* setNpmPackageJsonUrl */] = useState(
     props.projectData.projectType["npm"].packageJsonUrl
   );
-  const [npmPackageLockUrl, setNpmPackageLockUrl] = useState(
+  const [npmPackageLockUrl, /* setNpmPackageLockUrl */] = useState(
     props.projectData.projectType["npm"].packageLockUrl
   );
-
-  //Stop warnings until used properly
-  setNpmPackageJsonUrl("")
-  setNpmPackageLockUrl("")
 
   const projectTypeHandler = (value) => {
     if (value === "npm") {
