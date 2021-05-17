@@ -26,6 +26,7 @@ function ProjectDependenciesDisplay(props) {
 
             return (
               <DependencyCard
+                key={dependency.name}
                 eventKey={count.toString()}
                 name={dependency.name}
                 version={dependency.version}
