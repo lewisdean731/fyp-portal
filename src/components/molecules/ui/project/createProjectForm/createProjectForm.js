@@ -127,8 +127,8 @@ function CreateProjectForm(props) {
                 setProjectType(event.target.value);
               }}
             >
-              <option>npm</option>
-              <option>Other Package Manager</option>
+              <option key={"npm"}>npm</option>
+              <option key={"other"}>Other Package Manager</option>
             </Form.Control>
           </Form.Group>
         </Form.Row>
@@ -148,7 +148,7 @@ function CreateProjectForm(props) {
               }}
             >
               {props.teamsData.map((team) => {
-                return <option>{`${team.teamName} - ${team.teamId}`}</option>;
+                return <option key={team.teamId}>{`${team.teamName} - ${team.teamId}`}</option>;
               })}
             </Form.Control>
           </Col>
