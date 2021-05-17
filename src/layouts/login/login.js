@@ -8,7 +8,7 @@ export default function Login(props) {
     <Container className={Classes.container}>
       <Row className={Classes.logoBlurb}>
         <Col>
-          <img src="logo200.png" />
+          <img src="/logo200.png" alt="logo"/>
         </Col>
       </Row>
       <Row>
