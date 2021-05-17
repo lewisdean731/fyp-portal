@@ -13,6 +13,10 @@ function ProjectDetailsForm(props) {
     props.projectData.projectType["npm"].packageLockUrl
   );
 
+  //Stop warnings until used properly
+  setNpmPackageJsonUrl("")
+  setNpmPackageLockUrl("")
+
   const projectTypeHandler = (value) => {
     if (value === "npm") {
       return (

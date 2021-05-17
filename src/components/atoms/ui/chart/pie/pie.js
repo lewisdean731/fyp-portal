@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, /* useState */ } from "react";
 import Pie from "react-chartjs-2";
 
 const fakeData = {
@@ -20,7 +20,7 @@ const fakeData = {
 };
 
 export function PieChart(props) {
-  const [data, setData] = useState();
+  //const [data, setData] = useState();
   return (
     <Pie
       data={fakeData}
