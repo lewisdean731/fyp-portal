@@ -14,27 +14,30 @@ function Team(props) {
   const { teamId } = useParams(); // Gets team ID from URL
 
   // Get team data, then get project data for projects owned by team
-  useEffect(async () => {
-    await getTeamFirestoreInformation(
-      teamId,
-      props.userData.user.stsTokenManager["accessToken"]
-    )
-      .then(async (data) => {
-        console.log(data);
-        setTeamData(data);
-        return data;
-      })
-      .then((data) => {
-        data.teamProjects?.map(async (projectId) => {
-          await getProjectFirestoreInformation(
-            projectId,
-            props.userData.user.stsTokenManager["accessToken"]
-          ).then((data) => {
-            data["projectId"] = projectId;
-            setProjectsData((projectsData) => [...projectsData, data]);
+  useEffect(() => {
+    async function fetchData() {
+      await getTeamFirestoreInformation(
+        teamId,
+        props.userData.user.stsTokenManager["accessToken"]
+      )
+        .then(async (data) => {
+          console.log(data);
+          setTeamData(data);
+          return data;
+        })
+        .then((data) => {
+          data.teamProjects?.map(async (projectId) => {
+            await getProjectFirestoreInformation(
+              projectId,
+              props.userData.user.stsTokenManager["accessToken"]
+            ).then((data) => {
+              data["projectId"] = projectId;
+              setProjectsData((projectsData) => [...projectsData, data]);
+            });
           });
         });
-      });
+    }
+    fetchData();
   }, []);
   if(teamData && projectsData) {
     return (
