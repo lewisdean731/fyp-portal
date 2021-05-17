@@ -27,7 +27,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "deploy": "yarn build && gcloud app deploy client.yaml",
+    "deploy": "npm run build && gcloud app deploy client.yaml",
     "eject": "react-scripts eject",
     "prettier:base": "prettier 'src/**'",
     "prettier:check": "npm run prettier:base -- --list-different",
