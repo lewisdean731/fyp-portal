@@ -12,24 +12,27 @@ function UserTeamData(props) {
   const [teamsData, setTeamsData] = useState([]);
 
   // Get user data, then get team data for all user's teams
-  useEffect(async () => {
-    await getUserFirestoreInformation(props.uid, props.token)
-      .then(async (data) => {
-        console.log(data);
-        return data;
-      })
-      .then((data) => {
-        data.teams.map(async (teamId) => {
-          await getTeamFirestoreInformation(teamId, props.token).then(
-            (data) => {
-              data["teamId"] = teamId;
-              console.log(data);
-              setTeamsData((teamsData) => [...teamsData, data]);
-            }
-          );
+  useEffect(() => {
+    async function fetchData() {
+      await getUserFirestoreInformation(props.uid, props.token)
+        .then(async (data) => {
+          console.log(data);
+          return data;
+        })
+        .then((data) => {
+          data.teams.map(async (teamId) => {
+            await getTeamFirestoreInformation(teamId, props.token).then(
+              (data) => {
+                data["teamId"] = teamId;
+                console.log(data);
+                setTeamsData((teamsData) => [...teamsData, data]);
+              }
+            );
+          });
         });
-      });
-  }, []);
+    }
+    fetchData();
+  }, [props]);
 
   return (
     <Container fluid className={Classes.userTeamData}>

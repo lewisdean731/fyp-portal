@@ -9,18 +9,22 @@ import Classes from "./createProject.module.scss";
 function CreateProject(props) {
   const [teamsData, setTeamsData] = useState("");
 
-  useEffect(async () => {
-    props.userTeams.map(async (teamId) => {
-      await getTeamFirestoreInformation(teamId, props.token).then(
-        async (data) => {
-          console.log(data);
-          data["teamId"] = teamId;
-          setTeamsData((teamsData) => [...teamsData, data]);
-          return data;
-        }
-      );
-    });
-  }, []);
+  useEffect(() => {
+    async function fetchData() {
+      props.userTeams.map(async (teamId) => {
+        
+        await getTeamFirestoreInformation(teamId, props.token).then(
+          async (data) => {
+            console.log(data);
+            data["teamId"] = teamId;
+            setTeamsData((teamsData) => [...teamsData, data]);
+            return data;
+          }
+        );
+      });
+    }
+    fetchData();
+  }, [props]);
 
   if (teamsData) {
     return (

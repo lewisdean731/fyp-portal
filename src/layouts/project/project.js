@@ -11,15 +11,18 @@ function Project(props) {
   const [projectData, setProjectData] = useState(undefined);
   const { projectId } = useParams(); // Gets team ID from URL
 
-  useEffect(async () => {
-    await getProjectFirestoreInformation(
-      projectId,
-      props.userData.user.stsTokenManager["accessToken"]
-    ).then((data) => {
-      console.log(data);
-      setProjectData(data);
-    });
-  }, []);
+  useEffect(() => {
+    async function fetchData() {
+      await getProjectFirestoreInformation(
+        projectId,
+        props.userData.user.stsTokenManager["accessToken"]
+      ).then((data) => {
+        console.log(data);
+        setProjectData(data);
+      });
+    }
+    fetchData();
+  }, [props, projectId]);
 
   if (projectData) {
     return (

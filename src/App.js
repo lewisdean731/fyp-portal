@@ -35,7 +35,7 @@ function App() {
             );
             console.log(userJson);
             return (
-              <div fluid className={Classes.app}>
+              <div className={Classes.app}>
                 <Topbar userData={userJson} />
                 <Container fluid>
                   <Row>

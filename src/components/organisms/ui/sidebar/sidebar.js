@@ -1,4 +1,3 @@
-import { Row, Col } from "react-bootstrap";
 import SidebarButtons from "../../../molecules/ui/sidebarButtons/sidebarButtons";
 import Classes from "./sidebar.module.scss";
 export default function Sidebar(props) {
