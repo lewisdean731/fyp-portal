@@ -36,19 +36,24 @@ function Team(props) {
         });
       });
   }, []);
+  if(teamData && projectsData) {
+    return (
+      <Container>
+        <TextLarge>{teamData.teamName}</TextLarge>
+        {/* TODO <TeamDetails teamData={props.teamData} /> */}
+        <br />
+        <TeamProjectsData projectsData={projectsData} />
+        <br />
+        {/* TODO <TeamMembers teamData={props.teamData} /> */}
+        <br />
+        <TeamOptionsForm teamData={teamData} />
+      </Container>
+    );
+  }
 
   return (
-    <Container>
-      <TextLarge>{teamData.teamName}</TextLarge>
-      {/* TODO <TeamDetails teamData={props.teamData} /> */}
-      <br />
-      <TeamProjectsData projectsData={projectsData} />
-      <br />
-      {/* TODO <TeamMembers teamData={props.teamData} /> */}
-      <br />
-      <TeamOptionsForm teamData={teamData} />
-    </Container>
-  );
+    <p>Loading...</p>
+  )
 }
 
 export default Team;
