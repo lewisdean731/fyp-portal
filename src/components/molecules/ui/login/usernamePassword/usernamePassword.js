@@ -17,7 +17,7 @@ export default function LoginUsernamePassword(props) {
             <Form.Label srOnly>Email address</Form.Label>
             <Form.Control
               type="email"
-              placeholder="Enter email"
+              placeholder="Email Address"
               onChange={(event) => setSignInEmail(event.target.value)}
             />
           </Form.Group>
