@@ -1,5 +1,5 @@
 import { useState } from "react";
-import firebase from "firebase";
+import firebase from "firebase/app";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import TextSmall from "../../../../atoms/text/small/textSmall";
 import Classes from "./userOptionsForm.module.scss";

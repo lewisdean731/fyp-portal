@@ -17,7 +17,7 @@ export default function LoginUsernamePassword(props) {
             <Form.Label srOnly>Email address</Form.Label>
             <Form.Control
               type="email"
-              placeholder="Enter email"
+              placeholder="Email Address"
               onChange={(event) => setSignInEmail(event.target.value)}
             />
           </Form.Group>
@@ -50,7 +50,12 @@ export default function LoginUsernamePassword(props) {
           <Button variant="link" href={"fake.link"} className={Classes.wide}>
             Forgotten Password?
           </Button>
-          <Button variant="primary" href={"fake.link"} className={Classes.wide}>
+          <Button 
+            variant="primary" 
+            href={"fake.link"} 
+            className={Classes.wide}
+            onClick={(event) => props.clicked(event)}
+          >
             Create Account
           </Button>
         </Form>

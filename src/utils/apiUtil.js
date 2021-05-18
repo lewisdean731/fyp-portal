@@ -75,3 +75,7 @@ export const createProjectInFirestore = async (projectData, token) => {
   }
   return await asyncPutRequest(`/api/project/create`, data, token);
 };
+
+export const createUserInFirestore = async (uid, token) => {
+  return await asyncPutRequest(`/api/user/create`, {uid: uid}, token);
+}
