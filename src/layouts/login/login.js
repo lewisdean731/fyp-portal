@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import TextMedium from "../../components/atoms/text/medium/textMedium";
 import CreateAccountForm from "../../components/molecules/ui/createAccount/createAccountForm";
+import GoogleLogin from "../../components/molecules/ui/login/googleLogin/googleLogin";
 import LoginUsernamePassword from "../../components/molecules/ui/login/usernamePassword/usernamePassword";
 import Classes from "./login.module.scss";
 
@@ -21,14 +22,19 @@ export default function Login(props) {
           <img src="/logo200.png" alt="logo" />
         </Col>
       </Row>
-      <Row className={`${Classes.login} ${"justify-content-md-center"}`}>
+      <Row>
         <Col>
           <TextMedium colour={"grey"} className={Classes.loginMessage}>
             Please Login to Continue
           </TextMedium>
         </Col>
+      </Row>
+      <Row className={`${Classes.login} ${"justify-content-md-center"}`}>
         <Col>
           <LoginUsernamePassword className={Classes.usernamePassword} clicked={createAccountButtonHandler}/>
+        </Col>
+        <Col>
+          <GoogleLogin/>
         </Col>
       </Row>
       {showCreateAccount ? 
