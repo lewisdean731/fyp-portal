@@ -4,6 +4,7 @@ import firebase from "firebase/app";
 import Classes from "./createAccountForm.module.scss";
 import TextMedium from "../../../atoms/text/medium/textMedium";
 import LoginErrors from "../../login/loginErrors/loginErrors";
+import { createUserInFirestore } from "../../../../utils/apiUtil";
 
 export default function CreateAccountForm(props) {
   const [validated, setValidated] = useState(false)
@@ -23,18 +24,18 @@ export default function CreateAccountForm(props) {
       if (userPassword !== userConfirmPassword) {
         setErrMessage("New password and confirmation must match");
       } else {
-        console.log('Creating account')
         firebase.auth().createUserWithEmailAndPassword(
           userEmail,
           userPassword
         ).then(() => {
           const user = firebase.auth().currentUser;
-          console.log('updating account name')
           user.updateProfile({
               displayName: userName
           }).then(() =>{
-            console.log('user name updated')
-            window.location.replace("")
+            createUserInFirestore(user.uid, user.getIdToken())
+            .then(() => {
+              window.location.replace("")
+            })
           })
         })
         .catch((error) => {
