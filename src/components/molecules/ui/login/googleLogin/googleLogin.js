@@ -15,12 +15,17 @@ export default function GoogleLogin(props) {
   function handleGoogleSignIn() {
     firebase.auth()
       .signInWithPopup(provider)
-      .then(() => {
-        const user = firebase.auth().currentUser;
-        createUserInFirestore(user.uid, user.getIdToken())
-        .then(() => {
-          window.location.replace("")
-        })
+      .then((result) => {
+        if(result.additionalUserInfo.isNewUser)
+        {
+          console.log('New user, creating firestore doc')
+          const user = firebase.auth().currentUser;
+          createUserInFirestore(user.uid, user.getIdToken())
+          .then(() => {
+            window.location.replace("")
+          })
+        }
+        window.location.replace("")
       }).catch((error) => {
         console.log(error.message)
         setErrCode(error.code);
