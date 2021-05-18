@@ -11,14 +11,12 @@ export default function Login(props) {
           <img src="/logo200.png" alt="logo" />
         </Col>
       </Row>
-      <Row>
+      <Row className={`${Classes.login} ${"justify-content-md-center"}`}>
         <Col>
           <TextMedium colour={"grey"} className={Classes.loginMessage}>
             Please Login to Continue
           </TextMedium>
         </Col>
-      </Row>
-      <Row className={`${Classes.login} ${"justify-content-md-center"}`}>
         <Col>
           <LoginUsernamePassword className={Classes.usernamePassword} />
         </Col>
