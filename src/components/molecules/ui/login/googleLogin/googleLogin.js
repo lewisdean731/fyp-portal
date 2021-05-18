@@ -4,6 +4,7 @@ import firebase from "firebase/app";
 import Classes from "./googleLogin.module.scss";
 import LoginErrors from "../../../login/loginErrors/loginErrors";
 import TextSmall from "../../../../atoms/text/small/textSmall";
+import { createUserInFirestore } from "../../../../../utils/apiUtil";
 
 export default function GoogleLogin(props) {
   const [errMessage, setErrMessage] = useState("");
@@ -14,10 +15,14 @@ export default function GoogleLogin(props) {
   function handleGoogleSignIn() {
     firebase.auth()
       .signInWithPopup(provider)
-      .then((result) => {
-        window.location.replace("")
+      .then(() => {
+        const user = firebase.auth().currentUser;
+        createUserInFirestore(user.uid, user.getIdToken())
+        .then(() => {
+          window.location.replace("")
+        })
       }).catch((error) => {
-        // Handle Errors here.
+        console.log(error.message)
         setErrCode(error.code);
         setErrMessage(error.message);
       });
