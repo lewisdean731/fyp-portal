@@ -39,7 +39,7 @@ function Team(props) {
     }
     fetchData();
   }, [props, teamId]);
-  if(teamData && projectsData) {
+  if (teamData && projectsData) {
     return (
       <Container>
         <TextLarge>{teamData.teamName}</TextLarge>
@@ -54,9 +54,7 @@ function Team(props) {
     );
   }
 
-  return (
-    <p>Loading...</p>
-  )
+  return <p>Loading...</p>;
 }
 
 export default Team;

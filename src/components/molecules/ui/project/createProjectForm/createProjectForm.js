@@ -9,7 +9,7 @@ function CreateProjectForm(props) {
   const [projectTeam, setProjectTeam] = useState(props.teamsData[0].teamId);
   const [npmPackageJsonUrl, setNpmPackageJsonUrl] = useState();
   const [npmPackageLockUrl, setNpmPackageLockUrl] = useState();
-  const [validated, setValidated] = useState(false)
+  const [validated, setValidated] = useState(false);
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -148,7 +148,11 @@ function CreateProjectForm(props) {
               }}
             >
               {props.teamsData.map((team) => {
-                return <option key={team.teamId}>{`${team.teamName} - ${team.teamId}`}</option>;
+                return (
+                  <option
+                    key={team.teamId}
+                  >{`${team.teamName} - ${team.teamId}`}</option>
+                );
               })}
             </Form.Control>
           </Col>

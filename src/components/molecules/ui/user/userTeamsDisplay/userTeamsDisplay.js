@@ -8,11 +8,7 @@ function UserTeamsDisplay(props) {
     <CardColumns>
       {teams.map((team) => {
         return (
-          <TeamCard
-            key={team.teamId}
-            id={team.teamId}
-            name={team.teamName}
-          />
+          <TeamCard key={team.teamId} id={team.teamId} name={team.teamName} />
         );
       })}
     </CardColumns>
