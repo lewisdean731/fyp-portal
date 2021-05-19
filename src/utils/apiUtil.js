@@ -96,25 +96,29 @@ export const createProjectInFirestore = async (projectData, token) => {
 };
 
 export const createUserInFirestore = async (uid, token) => {
-  return await asyncPutRequest(`/api/user/create`, {uid: uid}, token);
-}
+  return await asyncPutRequest(`/api/user/create`, { uid: uid }, token);
+};
 
 // UPDATE
 
-export const updateProjectInFirestore = async (projectId, projectData, token) => {
+export const updateProjectInFirestore = async (
+  projectId,
+  projectData,
+  token
+) => {
   let data = {
     projectName: projectData.projectName,
     projectType: {},
   };
   if (projectData.projectType === "npm") {
-    console.log('NPM')
+    console.log("NPM");
     data.projectType = {
       npm: {
         packageJsonUrl: projectData.packageJsonUrl,
         packageLockUrl: projectData.packageLockUrl,
-      }
+      },
     };
   }
-  console.log(data)
+  console.log(data);
   return await asyncPostRequest(`/api/project/${projectId}`, data, token);
-}
+};

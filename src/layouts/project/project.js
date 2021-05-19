@@ -29,7 +29,10 @@ function Project(props) {
       <Container>
         <TextLarge>{projectData.projectName}</TextLarge>
         <br />
-        <ProjectInformation projectData={projectData} token={props.userData.user.stsTokenManager["accessToken"]}/>
+        <ProjectInformation
+          projectData={projectData}
+          token={props.userData.user.stsTokenManager["accessToken"]}
+        />
         <br />
         <ProjectDependencies projectData={projectData} />
         <br />

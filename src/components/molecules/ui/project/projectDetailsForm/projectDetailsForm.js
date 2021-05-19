@@ -6,7 +6,7 @@ import TextSmall from "../../../../atoms/text/small/textSmall";
 import Classes from "./projectDetailsForm.module.scss";
 
 function ProjectDetailsForm(props) {
-  const [projectName, setProjectName] = useState(props.projectData.projectName)
+  const [projectName, setProjectName] = useState(props.projectData.projectName);
   const [projectType, setProjectType] = useState(
     Object.keys(props.projectData.projectType)[0]
   );
@@ -33,14 +33,14 @@ function ProjectDetailsForm(props) {
         packageLockUrl: npmPackageLockUrl,
       };
       updateProjectInFirestore(projectId, projectData, props.token)
-      .then(() => {
-        setFormSubmitMsgColour("green");
-        setFormSubmitMsg("Details updated successfully");
-      })
-      .catch((error) => {
-        setFormSubmitMsgColour("red");
-        setFormSubmitMsg(error.message);
-      });
+        .then(() => {
+          setFormSubmitMsgColour("green");
+          setFormSubmitMsg("Details updated successfully");
+        })
+        .catch((error) => {
+          setFormSubmitMsgColour("red");
+          setFormSubmitMsg(error.message);
+        });
     } else {
       event.preventDefault();
       event.stopPropagation();
@@ -56,12 +56,14 @@ function ProjectDetailsForm(props) {
               Package.json URL
             </Form.Label>
             <Col>
-              <Form.Control 
+              <Form.Control
                 type={"url"}
                 pattern={"https://.*"}
                 required
                 defaultValue={npmPackageJsonUrl}
-                onChange={(event) => {setNpmPackageJsonUrl(event.target.value)}}
+                onChange={(event) => {
+                  setNpmPackageJsonUrl(event.target.value);
+                }}
               />
               <Form.Control.Feedback type="invalid">
                 Please enter a valid URL.
@@ -73,12 +75,14 @@ function ProjectDetailsForm(props) {
               Package-lock.json URL
             </Form.Label>
             <Col>
-              <Form.Control 
+              <Form.Control
                 type={"url"}
                 pattern={"https://.*"}
                 required
-                defaultValue={npmPackageLockUrl} 
-                onChange={(event) => {setNpmPackageLockUrl(event.target.value)}}
+                defaultValue={npmPackageLockUrl}
+                onChange={(event) => {
+                  setNpmPackageLockUrl(event.target.value);
+                }}
               />
               <Form.Control.Feedback type="invalid">
                 Please enter a valid URL.
@@ -117,18 +121,20 @@ function ProjectDetailsForm(props) {
         onSubmit={handleSubmit}
         noValidate
         validated={validated}
-      >        
+      >
         <Form.Row>
           <Form.Group as={Col}>
             <Form.Label>Name</Form.Label>
             <Form.Control
               required
               defaultValue={projectName}
-              onChange={(event) => {setProjectName(event.target.value)}}
+              onChange={(event) => {
+                setProjectName(event.target.value);
+              }}
             />
             <Form.Control.Feedback type="invalid">
               Please enter a name.
-            </Form.Control.Feedback>            
+            </Form.Control.Feedback>
           </Form.Group>
           <Form.Group as={Col}>
             <Form.Label>Project Type</Form.Label>
