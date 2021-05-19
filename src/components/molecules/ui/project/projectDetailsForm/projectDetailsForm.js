@@ -39,7 +39,7 @@ function ProjectDetailsForm(props) {
           setFormSubmitMsgColour("green");
           setFormSubmitMsg("Details updated successfully");
           // Reload page
-          window.location.replace("")
+          window.location.replace("");
         })
         .catch((error) => {
           setFormSubmitMsgColour("red");
