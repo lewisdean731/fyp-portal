@@ -100,6 +100,8 @@ export const createProjectInFirestore = async (projectData, token) => {
       directDependencies: [],
     },
     projectType: {},
+    yellowWarningPeriod: (projectData.yellowWarningPeriod * 8.64e+7), // Days to milliseconds
+    redWarningPeriod: (projectData.redWarningPeriod * 8.64e+7),
   };
   if (projectData.type === "npm") {
     data.projectType["npm"] = {
