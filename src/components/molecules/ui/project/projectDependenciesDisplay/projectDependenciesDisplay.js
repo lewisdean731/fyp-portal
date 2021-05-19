@@ -7,8 +7,6 @@ function howOutOfDate(releaseDate) {
   return currentDate - new Date(releaseDate).getTime();
 }
 
-const epochToDays = 8.64e7;
-
 function ProjectDependenciesDisplay(props) {
   return (
     <div>
@@ -16,12 +14,18 @@ function ProjectDependenciesDisplay(props) {
         {props.projectData.projectDependencies.directDependencies.map(
           (dependency, count) => {
             // Check dependency for out of date, etc.
-            let variant = "light";
+            let variant = "success";
             if (dependency.version !== dependency.latest_version) {
               const dateDiff = howOutOfDate(dependency.next_release_date);
-              dateDiff / epochToDays < 12
-                ? (variant = "warning")
-                : (variant = "danger");
+              if(dateDiff > props.projectData.redWarningPeriod) {
+                variant = "danger"
+              } else {
+                if(dateDiff > props.projectData.yellowWarningPeriod) {
+                  variant = "warning"
+                } else {
+                  variant = "light"
+                }
+              }
             }
 
             return (
