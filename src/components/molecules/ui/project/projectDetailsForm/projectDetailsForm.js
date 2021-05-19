@@ -63,6 +63,9 @@ function ProjectDetailsForm(props) {
                 defaultValue={npmPackageJsonUrl}
                 onChange={(event) => {setNpmPackageJsonUrl(event.target.value)}}
               />
+              <Form.Control.Feedback type="invalid">
+                Please enter a valid URL.
+              </Form.Control.Feedback>
             </Col>
           </Form.Group>
           <Form.Group as={Row}>
@@ -77,6 +80,9 @@ function ProjectDetailsForm(props) {
                 defaultValue={npmPackageLockUrl} 
                 onChange={(event) => {setNpmPackageLockUrl(event.target.value)}}
               />
+              <Form.Control.Feedback type="invalid">
+                Please enter a valid URL.
+              </Form.Control.Feedback>
             </Col>
           </Form.Group>
         </div>
@@ -120,6 +126,9 @@ function ProjectDetailsForm(props) {
               defaultValue={projectName}
               onChange={(event) => {setProjectName(event.target.value)}}
             />
+            <Form.Control.Feedback type="invalid">
+              Please enter a name.
+            </Form.Control.Feedback>            
           </Form.Group>
           <Form.Group as={Col}>
             <Form.Label>Project Type</Form.Label>
