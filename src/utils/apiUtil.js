@@ -45,6 +45,21 @@ export const asyncPostRequest = async (url, data, token) => {
   }
 };
 
+export const asyncDeleteRequest = async (url, token) => {
+  try {
+    console.log(`DELETE ${url}`);
+    const response = await axios.delete(url, {
+      headers: {
+        Authorization: token,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
 // GET
 
 export const getUserFirestoreInformation = async (uid, token) => {
@@ -121,4 +136,10 @@ export const updateProjectInFirestore = async (
   }
   console.log(data);
   return await asyncPostRequest(`/api/project/${projectId}`, data, token);
+};
+
+// DELETE
+
+export const deleteProjectInFirestore = async (projectId, token) => {
+  return await asyncDeleteRequest(`/api/project/${projectId}`, token);
 };
