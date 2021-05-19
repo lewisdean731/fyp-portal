@@ -9,6 +9,8 @@ function CreateProjectForm(props) {
   const [projectTeam, setProjectTeam] = useState(props.teamsData[0].teamId);
   const [npmPackageJsonUrl, setNpmPackageJsonUrl] = useState();
   const [npmPackageLockUrl, setNpmPackageLockUrl] = useState();
+  const [yellowWarningPeriod, setYellowWarningPeriod] = useState(10);
+  const [redWarningPeriod, setRedWarningPeriod] = useState(15);
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = (event) => {
@@ -24,6 +26,8 @@ function CreateProjectForm(props) {
       teamId: projectTeam,
       packageJsonUrl: npmPackageJsonUrl,
       packageLockUrl: npmPackageLockUrl,
+      yellowWarningPeriod: yellowWarningPeriod,
+      redWarningPeriod: redWarningPeriod,
     };
     createProjectInFirestore(projectData, props.token);
   };
@@ -136,7 +140,7 @@ function CreateProjectForm(props) {
         {projectTypeHandler(projectType)}
         <br />
         <Form.Group as={Row}>
-          <Form.Label column sm={2}>
+          <Form.Label column sm={1}>
             Team
           </Form.Label>
           <Col>
@@ -156,6 +160,51 @@ function CreateProjectForm(props) {
               })}
             </Form.Control>
           </Col>
+          <Col />
+        </Form.Group>
+        <br />
+        <Form.Group as={Row}>
+          <Form.Label column sm={3}>
+            Flag dependencies as yellow
+          </Form.Label>
+          <Col md={2}>
+            <Form.Control
+              required
+              pattern={"[0-9]*"}
+              defaultValue={10}
+              onChange={(event) => {
+                setYellowWarningPeriod(event.target.value);
+              }}
+            />
+            <Form.Control.Feedback type="invalid">
+              Please enter a number.
+            </Form.Control.Feedback>
+          </Col>
+          <Form.Label column sm={1.5}>
+            days out of date
+          </Form.Label>
+          <Col />
+        </Form.Group>
+        <Form.Group as={Row}>
+          <Form.Label column sm={3}>
+            Flag dependencies as red
+          </Form.Label>
+          <Col md={2}>
+            <Form.Control
+              required
+              pattern={"[0-9]*"}
+              defaultValue={15}
+              onChange={(event) => {
+                setRedWarningPeriod(event.target.value);
+              }}
+            />
+            <Form.Control.Feedback type="invalid">
+              Please enter a number.
+            </Form.Control.Feedback>
+          </Col>
+          <Form.Label column sm={1.5}>
+            days out of date
+          </Form.Label>
           <Col />
         </Form.Group>
         <br />

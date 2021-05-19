@@ -16,6 +16,12 @@ function ProjectDetailsForm(props) {
   const [npmPackageLockUrl, setNpmPackageLockUrl] = useState(
     props.projectData.projectType["npm"].packageLockUrl
   );
+  const [yellowWarningPeriod, setYellowWarningPeriod] = useState(
+    Math.round(props.projectData.yellowWarningPeriod / 8.64e7)
+  );
+  const [redWarningPeriod, setRedWarningPeriod] = useState(
+    Math.round(props.projectData.redWarningPeriod / 8.64e7)
+  );
   const [validated, setValidated] = useState(false);
   const [formSubmitMsg, setFormSubmitMsg] = useState("");
   const [formSubmitMsgColour, setFormSubmitMsgColour] = useState("");
@@ -33,6 +39,8 @@ function ProjectDetailsForm(props) {
         projectType: projectType,
         packageJsonUrl: npmPackageJsonUrl,
         packageLockUrl: npmPackageLockUrl,
+        yellowWarningPeriod: yellowWarningPeriod,
+        redWarningPeriod: redWarningPeriod,
       };
       updateProjectInFirestore(projectId, projectData, props.token)
         .then(() => {
@@ -154,6 +162,51 @@ function ProjectDetailsForm(props) {
         </Form.Row>
         <br />
         {projectTypeHandler(projectType)}
+        <br />
+        <Form.Group as={Row}>
+          <Form.Label column sm={3}>
+            Flag dependencies as yellow
+          </Form.Label>
+          <Col md={2}>
+            <Form.Control
+              required
+              pattern={"[0-9]*"}
+              defaultValue={yellowWarningPeriod}
+              onChange={(event) => {
+                setYellowWarningPeriod(event.target.value);
+              }}
+            />
+            <Form.Control.Feedback type="invalid">
+              Please enter a number.
+            </Form.Control.Feedback>
+          </Col>
+          <Form.Label column sm={1.5}>
+            days out of date
+          </Form.Label>
+          <Col />
+        </Form.Group>
+        <Form.Group as={Row}>
+          <Form.Label column sm={3}>
+            Flag dependencies as red
+          </Form.Label>
+          <Col md={2}>
+            <Form.Control
+              required
+              pattern={"[0-9]*"}
+              defaultValue={redWarningPeriod}
+              onChange={(event) => {
+                setRedWarningPeriod(event.target.value);
+              }}
+            />
+            <Form.Control.Feedback type="invalid">
+              Please enter a number.
+            </Form.Control.Feedback>
+          </Col>
+          <Form.Label column sm={1.5}>
+            days out of date
+          </Form.Label>
+          <Col />
+        </Form.Group>
         <br />
         <TextSmall colour={formSubmitMsgColour}>{formSubmitMsg}</TextSmall>
         <Form.Row>
