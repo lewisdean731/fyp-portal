@@ -17,13 +17,13 @@ function ProjectDependenciesDisplay(props) {
             let variant = "success";
             if (dependency.version !== dependency.latest_version) {
               const dateDiff = howOutOfDate(dependency.next_release_date);
-              if(dateDiff > props.projectData.redWarningPeriod) {
-                variant = "danger"
+              if (dateDiff > props.projectData.redWarningPeriod) {
+                variant = "danger";
               } else {
-                if(dateDiff > props.projectData.yellowWarningPeriod) {
-                  variant = "warning"
+                if (dateDiff > props.projectData.yellowWarningPeriod) {
+                  variant = "warning";
                 } else {
-                  variant = "light"
+                  variant = "light";
                 }
               }
             }
