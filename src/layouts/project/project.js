@@ -9,7 +9,7 @@ import { getProjectFirestoreInformation } from "../../utils/apiUtil";
 
 function Project(props) {
   const [projectData, setProjectData] = useState(undefined);
-  const { projectId } = useParams(); // Gets team ID from URL
+  const { projectId } = useParams(); // Gets project ID from URL
 
   useEffect(() => {
     async function fetchData() {
@@ -29,7 +29,10 @@ function Project(props) {
       <Container>
         <TextLarge>{projectData.projectName}</TextLarge>
         <br />
-        <ProjectInformation projectData={projectData} />
+        <ProjectInformation
+          projectData={projectData}
+          token={props.userData.user.stsTokenManager["accessToken"]}
+        />
         <br />
         <ProjectDependencies projectData={projectData} />
         <br />

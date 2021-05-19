@@ -11,7 +11,7 @@ export const asyncGetRequest = async (url, token) => {
     return response.data;
   } catch (error) {
     console.log(error);
-    return error;
+    throw error;
   }
 };
 
@@ -26,9 +26,41 @@ export const asyncPutRequest = async (url, data, token) => {
     return response.data;
   } catch (error) {
     console.log(error);
-    return error;
+    throw error;
   }
 };
+
+export const asyncPostRequest = async (url, data, token) => {
+  try {
+    console.log(`POST ${url}`);
+    const response = await axios.post(url, data, {
+      headers: {
+        Authorization: token,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+export const asyncDeleteRequest = async (url, token) => {
+  try {
+    console.log(`DELETE ${url}`);
+    const response = await axios.delete(url, {
+      headers: {
+        Authorization: token,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error.response.data);
+    throw error.response.data.error;
+  }
+};
+
+// GET
 
 export const getUserFirestoreInformation = async (uid, token) => {
   return await asyncGetRequest(`/api/user/${uid}`, token);
@@ -45,6 +77,8 @@ export const getProjectFirestoreInformation = async (projectId, token) => {
 export const getAllProjectsForUser = async (uid, token) => {
   return await asyncGetRequest(`/api/getAllProjectsForUser?uid=${uid}`, token);
 };
+
+// CREATE
 
 export const createTeamInFirestore = async (teamData, token) => {
   return await asyncPutRequest(
@@ -77,5 +111,39 @@ export const createProjectInFirestore = async (projectData, token) => {
 };
 
 export const createUserInFirestore = async (uid, token) => {
-  return await asyncPutRequest(`/api/user/create`, {uid: uid}, token);
-}
+  return await asyncPutRequest(`/api/user/create`, { uid: uid }, token);
+};
+
+// UPDATE
+
+export const updateProjectInFirestore = async (
+  projectId,
+  projectData,
+  token
+) => {
+  let data = {
+    projectName: projectData.projectName,
+    projectType: {},
+  };
+  if (projectData.projectType === "npm") {
+    console.log("NPM");
+    data.projectType = {
+      npm: {
+        packageJsonUrl: projectData.packageJsonUrl,
+        packageLockUrl: projectData.packageLockUrl,
+      },
+    };
+  }
+  console.log(data);
+  return await asyncPostRequest(`/api/project/${projectId}`, data, token);
+};
+
+// DELETE
+
+export const deleteProjectInFirestore = async (projectId, token) => {
+  return await asyncDeleteRequest(`/api/project/${projectId}`, token).catch(
+    (error) => {
+      throw error;
+    }
+  );
+};

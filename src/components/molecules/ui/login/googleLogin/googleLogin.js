@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Col, Form, Button } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import firebase from "firebase/app";
 import Classes from "./googleLogin.module.scss";
 import LoginErrors from "../../../login/loginErrors/loginErrors";
@@ -13,21 +13,21 @@ export default function GoogleLogin(props) {
   const provider = new firebase.auth.GoogleAuthProvider();
 
   function handleGoogleSignIn() {
-    firebase.auth()
+    firebase
+      .auth()
       .signInWithPopup(provider)
       .then((result) => {
-        if(result.additionalUserInfo.isNewUser)
-        {
-          console.log('New user, creating firestore doc')
+        if (result.additionalUserInfo.isNewUser) {
+          console.log("New user, creating firestore doc");
           const user = firebase.auth().currentUser;
-          createUserInFirestore(user.uid, user.getIdToken())
-          .then(() => {
-            window.location.replace("")
-          })
+          createUserInFirestore(user.uid, user.getIdToken()).then(() => {
+            window.location.replace("");
+          });
         }
-        window.location.replace("")
-      }).catch((error) => {
-        console.log(error.message)
+        window.location.replace("");
+      })
+      .catch((error) => {
+        console.log(error.message);
         setErrCode(error.code);
         setErrMessage(error.message);
       });
@@ -35,7 +35,7 @@ export default function GoogleLogin(props) {
 
   return (
     <div className={`${Classes.login} ${props.className}`}>
-      <Row >
+      <Row>
         <Col>
           <TextSmall>Third Party Provider Login</TextSmall>
           <hr />
@@ -43,8 +43,8 @@ export default function GoogleLogin(props) {
       </Row>
       <Row>
         <Col>
-          <Button 
-            variant="primary" 
+          <Button
+            variant="primary"
             className={Classes.wide}
             onClick={() => handleGoogleSignIn()}
           >

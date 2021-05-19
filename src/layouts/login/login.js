@@ -7,13 +7,13 @@ import LoginUsernamePassword from "../../components/molecules/ui/login/usernameP
 import Classes from "./login.module.scss";
 
 export default function Login(props) {
-  const [showCreateAccount, setShowCreateAccount] = useState(false)
+  const [showCreateAccount, setShowCreateAccount] = useState(false);
 
   const createAccountButtonHandler = (event) => {
     event.preventDefault();
     event.stopPropagation();
-    setShowCreateAccount(true)
-  }
+    setShowCreateAccount(true);
+  };
 
   return (
     <Container className={Classes.container}>
@@ -31,20 +31,22 @@ export default function Login(props) {
       </Row>
       <Row className={`${Classes.login} ${"justify-content-md-center"}`}>
         <Col>
-          <LoginUsernamePassword className={Classes.usernamePassword} clicked={createAccountButtonHandler}/>
+          <LoginUsernamePassword
+            className={Classes.usernamePassword}
+            clicked={createAccountButtonHandler}
+          />
         </Col>
         <Col>
-          <GoogleLogin/>
+          <GoogleLogin />
         </Col>
       </Row>
-      {showCreateAccount ? 
-      <Row className="justify-content-md-center">
-        <Col>
-          <CreateAccountForm />
-        </Col>
-      </Row>
-      : null
-      }
+      {showCreateAccount ? (
+        <Row className="justify-content-md-center">
+          <Col>
+            <CreateAccountForm />
+          </Col>
+        </Row>
+      ) : null}
     </Container>
   );
 }
