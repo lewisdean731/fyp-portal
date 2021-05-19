@@ -55,8 +55,9 @@ function DeleteProjectForm() {
     .then((token) => {
       deleteProjectInFirestore(projectId, token)
       .then(() => {window.location.replace("/projects")})
+      .catch((error) => setErrorContent(error));
     })
-    .catch((error) => setErrorContent(error.message));
+    .catch((error) => setErrorContent(error));
   };
 
   return (

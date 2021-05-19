@@ -55,8 +55,8 @@ export const asyncDeleteRequest = async (url, token) => {
     });
     return response.data;
   } catch (error) {
-    console.log(error);
-    throw error;
+    console.log(error.response.data);
+    throw error.response.data.error;
   }
 };
 
@@ -141,5 +141,6 @@ export const updateProjectInFirestore = async (
 // DELETE
 
 export const deleteProjectInFirestore = async (projectId, token) => {
-  return await asyncDeleteRequest(`/api/project/${projectId}`, token);
+  return await asyncDeleteRequest(`/api/project/${projectId}`, token)
+  .catch((error) => {throw error})
 };
