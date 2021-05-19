@@ -16,8 +16,12 @@ function ProjectDetailsForm(props) {
   const [npmPackageLockUrl, setNpmPackageLockUrl] = useState(
     props.projectData.projectType["npm"].packageLockUrl
   );
-  const [yellowWarningPeriod, setYellowWarningPeriod] = useState(Math.round(props.projectData.yellowWarningPeriod / 8.64e+7));
-  const [redWarningPeriod, setRedWarningPeriod] = useState(Math.round(props.projectData.redWarningPeriod / 8.64e+7));
+  const [yellowWarningPeriod, setYellowWarningPeriod] = useState(
+    Math.round(props.projectData.yellowWarningPeriod / 8.64e7)
+  );
+  const [redWarningPeriod, setRedWarningPeriod] = useState(
+    Math.round(props.projectData.redWarningPeriod / 8.64e7)
+  );
   const [validated, setValidated] = useState(false);
   const [formSubmitMsg, setFormSubmitMsg] = useState("");
   const [formSubmitMsgColour, setFormSubmitMsgColour] = useState("");
@@ -161,7 +165,7 @@ function ProjectDetailsForm(props) {
         <br />
         <Form.Group as={Row}>
           <Form.Label column sm={3}>
-            Flag dependencies as yellow 
+            Flag dependencies as yellow
           </Form.Label>
           <Col md={2}>
             <Form.Control
@@ -183,7 +187,7 @@ function ProjectDetailsForm(props) {
         </Form.Group>
         <Form.Group as={Row}>
           <Form.Label column sm={3}>
-            Flag dependencies as red 
+            Flag dependencies as red
           </Form.Label>
           <Col md={2}>
             <Form.Control

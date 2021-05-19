@@ -165,7 +165,7 @@ function CreateProjectForm(props) {
         <br />
         <Form.Group as={Row}>
           <Form.Label column sm={3}>
-            Flag dependencies as yellow 
+            Flag dependencies as yellow
           </Form.Label>
           <Col md={2}>
             <Form.Control
@@ -187,7 +187,7 @@ function CreateProjectForm(props) {
         </Form.Group>
         <Form.Group as={Row}>
           <Form.Label column sm={3}>
-            Flag dependencies as red 
+            Flag dependencies as red
           </Form.Label>
           <Col md={2}>
             <Form.Control
