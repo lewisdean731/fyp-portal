@@ -23,6 +23,8 @@ function ProjectDetailsForm(props) {
   const { projectId } = useParams(); // Gets project ID from URL
 
   const handleSubmit = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     const form = event.currentTarget;
     setValidated(true);
     if (form.checkValidity() === true) {
@@ -36,14 +38,13 @@ function ProjectDetailsForm(props) {
         .then(() => {
           setFormSubmitMsgColour("green");
           setFormSubmitMsg("Details updated successfully");
+          // Reload page
+          window.location.replace("")
         })
         .catch((error) => {
           setFormSubmitMsgColour("red");
           setFormSubmitMsg(error.message);
         });
-    } else {
-      event.preventDefault();
-      event.stopPropagation();
     }
   };
 
