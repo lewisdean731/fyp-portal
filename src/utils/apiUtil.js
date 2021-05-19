@@ -141,6 +141,9 @@ export const updateProjectInFirestore = async (
 // DELETE
 
 export const deleteProjectInFirestore = async (projectId, token) => {
-  return await asyncDeleteRequest(`/api/project/${projectId}`, token)
-  .catch((error) => {throw error})
+  return await asyncDeleteRequest(`/api/project/${projectId}`, token).catch(
+    (error) => {
+      throw error;
+    }
+  );
 };

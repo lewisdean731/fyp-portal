@@ -29,21 +29,20 @@ function DeleteProjectForm() {
         password
       );
       user
-      .reauthenticateWithCredential(credential)
-      .then(() => {
-        setButtonContent(
-          <Button
-            variant="danger"
-            onClick={() => {
-              deleteProjectForRealHandler(user);
-            }}
-          >
-            Really?
-          </Button>
-        );
-      })
-      .catch((error) => setErrorContent(error.message));
-      
+        .reauthenticateWithCredential(credential)
+        .then(() => {
+          setButtonContent(
+            <Button
+              variant="danger"
+              onClick={() => {
+                deleteProjectForRealHandler(user);
+              }}
+            >
+              Really?
+            </Button>
+          );
+        })
+        .catch((error) => setErrorContent(error.message));
     }
     setValidated(true);
   };
@@ -51,13 +50,16 @@ function DeleteProjectForm() {
   // Delete and redirect to projects page
   const deleteProjectForRealHandler = (user) => {
     setErrorContent("Deleting...");
-    user.getIdToken()
-    .then((token) => {
-      deleteProjectInFirestore(projectId, token)
-      .then(() => {window.location.replace("/projects")})
+    user
+      .getIdToken()
+      .then((token) => {
+        deleteProjectInFirestore(projectId, token)
+          .then(() => {
+            window.location.replace("/projects");
+          })
+          .catch((error) => setErrorContent(error));
+      })
       .catch((error) => setErrorContent(error));
-    })
-    .catch((error) => setErrorContent(error));
   };
 
   return (
