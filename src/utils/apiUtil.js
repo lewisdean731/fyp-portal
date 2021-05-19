@@ -30,6 +30,23 @@ export const asyncPutRequest = async (url, data, token) => {
   }
 };
 
+export const asyncPostRequest = async (url, data, token) => {
+  try {
+    console.log(`POST ${url}`);
+    const response = await axios.put(url, data, {
+      headers: {
+        Authorization: token,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+};
+
+// GET
+
 export const getUserFirestoreInformation = async (uid, token) => {
   return await asyncGetRequest(`/api/user/${uid}`, token);
 };
@@ -45,6 +62,8 @@ export const getProjectFirestoreInformation = async (projectId, token) => {
 export const getAllProjectsForUser = async (uid, token) => {
   return await asyncGetRequest(`/api/getAllProjectsForUser?uid=${uid}`, token);
 };
+
+// CREATE
 
 export const createTeamInFirestore = async (teamData, token) => {
   return await asyncPutRequest(
@@ -78,4 +97,20 @@ export const createProjectInFirestore = async (projectData, token) => {
 
 export const createUserInFirestore = async (uid, token) => {
   return await asyncPutRequest(`/api/user/create`, {uid: uid}, token);
+}
+
+// UPDATE
+
+export const updateProjectInFirestore = async (projectData, token) => {
+  let data = {
+    projectName: projectData.name,
+    projectType: {},
+  };
+  if (projectData.type === "npm") {
+    data.projectType["npm"] = {
+      packageJsonUrl: projectData.packageJsonUrl,
+      packageLockUrl: projectData.packageLockUrl,
+    };
+  }
+  return await asyncPostRequest(`/api/project/create`, projectData.projectId, token);
 }
