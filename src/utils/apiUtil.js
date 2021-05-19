@@ -11,7 +11,7 @@ export const asyncGetRequest = async (url, token) => {
     return response.data;
   } catch (error) {
     console.log(error);
-    return error;
+    throw error;
   }
 };
 
@@ -26,7 +26,7 @@ export const asyncPutRequest = async (url, data, token) => {
     return response.data;
   } catch (error) {
     console.log(error);
-    return error;
+    throw error;
   }
 };
 
@@ -41,7 +41,7 @@ export const asyncPostRequest = async (url, data, token) => {
     return response.data;
   } catch (error) {
     console.log(error);
-    return error;
+    throw error;
   }
 };
 
