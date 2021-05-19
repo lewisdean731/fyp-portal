@@ -12,7 +12,7 @@ function ProjectInformation(props) {
         <Col>
           <ProjectDetailsDisplay projectData={props.projectData} />
           <hr />
-          <ProjectDetailsForm projectData={props.projectData} />
+          <ProjectDetailsForm projectData={props.projectData} token={props.token} />
         </Col>
       </Row>
     </Container>
