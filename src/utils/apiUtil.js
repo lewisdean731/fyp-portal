@@ -33,7 +33,7 @@ export const asyncPutRequest = async (url, data, token) => {
 export const asyncPostRequest = async (url, data, token) => {
   try {
     console.log(`POST ${url}`);
-    const response = await axios.put(url, data, {
+    const response = await axios.post(url, data, {
       headers: {
         Authorization: token,
       },
@@ -101,16 +101,20 @@ export const createUserInFirestore = async (uid, token) => {
 
 // UPDATE
 
-export const updateProjectInFirestore = async (projectData, token) => {
+export const updateProjectInFirestore = async (projectId, projectData, token) => {
   let data = {
-    projectName: projectData.name,
+    projectName: projectData.projectName,
     projectType: {},
   };
-  if (projectData.type === "npm") {
-    data.projectType["npm"] = {
-      packageJsonUrl: projectData.packageJsonUrl,
-      packageLockUrl: projectData.packageLockUrl,
+  if (projectData.projectType === "npm") {
+    console.log('NPM')
+    data.projectType = {
+      npm: {
+        packageJsonUrl: projectData.packageJsonUrl,
+        packageLockUrl: projectData.packageLockUrl,
+      }
     };
   }
-  return await asyncPostRequest(`/api/project/create`, projectData.projectId, token);
+  console.log(data)
+  return await asyncPostRequest(`/api/project/${projectId}`, data, token);
 }
