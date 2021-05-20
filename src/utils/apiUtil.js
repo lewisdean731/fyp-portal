@@ -78,6 +78,10 @@ export const getAllProjectsForUser = async (uid, token) => {
   return await asyncGetRequest(`/api/getAllProjectsForUser?uid=${uid}`, token);
 };
 
+export const getNotificationsForUser = async (token) => {
+  return await asyncGetRequest(`/api/getNotificationsForUser`, token);
+};
+
 // CREATE
 
 export const createTeamInFirestore = async (teamData, token) => {
