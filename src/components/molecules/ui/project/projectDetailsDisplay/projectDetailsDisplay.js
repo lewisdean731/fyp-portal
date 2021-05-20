@@ -13,7 +13,12 @@ function ProjectDetailsDisplay(props) {
           </Form.Group>
           <Form.Group as={Col} md={3}>
             <Form.Label>Last Scanned</Form.Label>
-            <Form.Control readOnly defaultValue={"Data does not exist yet"} />
+            <Form.Control
+              readOnly
+              defaultValue={new Date(
+                props.projectData.lastScannedAt
+              ).toLocaleString()}
+            />
           </Form.Group>
           <Form.Group as={Col} md={3}>
             <Form.Label>Dependencies</Form.Label>
