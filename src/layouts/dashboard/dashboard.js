@@ -1,15 +1,30 @@
+import { useEffect, useState } from "react";
 import TextLarge from "../../components/atoms/text/large/textLarge";
 import DashboardMetrics from "../../components/organisms/ui/dashboard/dashboardMetrics/dashboardMetrics";
 import DashboardNotifications from "../../components/organisms/ui/dashboard/dashboardNotifications/dashboardNotifications";
 import DashboardSummary from "../../components/organisms/ui/dashboard/dashboardSummary/dashboardSummary";
+import { getNotificationsForUser } from "../../utils/apiUtil"
 
-function Dashboard() {
+function Dashboard(props) {
+  const [notificationsData, setNotificationsData] = useState([])
+
+  useEffect(() => {
+    async function fetchData() {
+      await getNotificationsForUser(
+        props.userData.user.stsTokenManager["accessToken"]
+      )
+      .then((data) => setNotificationsData(data.notificationsData))
+    }
+    fetchData();
+    
+  }, []);
+
   return (
     <div>
-      <TextLarge colour={"grey"}>Dashboard</TextLarge>
+      <TextLarge>Dashboard</TextLarge>
       <DashboardSummary />
       <br />
-      <DashboardNotifications />
+      <DashboardNotifications notificationsData={notificationsData}/>
       <br />
       <DashboardMetrics />
     </div>
