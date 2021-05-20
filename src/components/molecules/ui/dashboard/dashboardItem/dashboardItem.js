@@ -1,6 +1,6 @@
 import React from "react";
-import TextLarge from "../../../atoms/text/large/textLarge";
-import TextMedium from "../../../atoms/text/medium/textMedium";
+import TextLarge from "../../../../atoms/text/large/textLarge";
+import TextMedium from "../../../../atoms/text/medium/textMedium";
 import Classes from "./dashboardItem.module.scss";
 
 function DashboardItem(props) {
