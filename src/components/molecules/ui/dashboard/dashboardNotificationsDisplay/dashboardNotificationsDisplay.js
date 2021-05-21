@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { acknowledgeNotification } from "../../../../../utils/apiUtil";
 import NotificationCard from "../../../../atoms/ui/notificationCard/notificationCard";
 
 function DashboardNotificationsDisplay(props) {
@@ -6,12 +7,12 @@ function DashboardNotificationsDisplay(props) {
   const [notifications, setNotifications] = useState(props.notificationsData); //Handle no notifs in props
   
   useEffect(() => {
-    setNotifications(props.notificationsData ? props.notificationsData : null)
 
     }, [notifications]);
 
   function dismissed(index, notificationId) {
     console.log(`Dismissing ${index} - ${notificationId}`);
+    acknowledgeNotification(notificationId, props.token);
   }
 
   return (
