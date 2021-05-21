@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
-import { createProjectInFirestore } from "../../../../../utils/apiUtil";
+import { createProjectInFirestore, npmProjectCredentialsCheck } from "../../../../../utils/apiUtil";
+import TextSmall from "../../../../atoms/text/small/textSmall";
 import Classes from "./createProjectForm.module.scss";
 
 function CreateProjectForm(props) {
@@ -13,27 +14,36 @@ function CreateProjectForm(props) {
   const [redWarningPeriod, setRedWarningPeriod] = useState(15);
   const [authUsername, setAuthUsername] = useState();
   const [authPassword, setAuthPassword] = useState();
+  const [formSubmitMsg, setFormSubmitMsg] = useState("");
+  const [formSubmitMsgColour, setFormSubmitMsgColour] = useState("");
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
+    setFormSubmitMsgColour("red");
+    setFormSubmitMsg("");
+    setValidated(true);
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
+    } else {
+      if(!npmProjectCredentialsCheck(authUsername, authPassword, npmPackageJsonUrl)){
+        setFormSubmitMsg("package.json could not be retrieved. Please check URL / credentials");
+      } else {
+        const projectData = {
+          name: projectName,
+          type: projectType,
+          teamId: projectTeam,
+          packageJsonUrl: npmPackageJsonUrl,
+          packageLockUrl: npmPackageLockUrl,
+          yellowWarningPeriod: yellowWarningPeriod,
+          redWarningPeriod: redWarningPeriod,
+          authUsername: authUsername,
+          authPassword: authPassword,
+        };
+        createProjectInFirestore(projectData, props.token);
+      }
     }
-    setValidated(true);
-    const projectData = {
-      name: projectName,
-      type: projectType,
-      teamId: projectTeam,
-      packageJsonUrl: npmPackageJsonUrl,
-      packageLockUrl: npmPackageLockUrl,
-      yellowWarningPeriod: yellowWarningPeriod,
-      redWarningPeriod: redWarningPeriod,
-      authUsername: authUsername,
-      authPassword: authPassword,
-    };
-    createProjectInFirestore(projectData, props.token);
   };
 
   const projectTypeHandler = (value) => {
@@ -241,6 +251,7 @@ function CreateProjectForm(props) {
           <Col />
         </Form.Group>
         <br />
+        <TextSmall colour={formSubmitMsgColour}>{formSubmitMsg}</TextSmall>
         <Form.Row>
           <Form.Group as={Col} md={2}>
             <Button variant="primary" type="submit">
