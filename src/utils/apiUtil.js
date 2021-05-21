@@ -107,6 +107,8 @@ export const createProjectInFirestore = async (projectData, token) => {
     projectType: {},
     yellowWarningPeriod: projectData.yellowWarningPeriod * 8.64e7, // Days to milliseconds
     redWarningPeriod: projectData.redWarningPeriod * 8.64e7,
+    authUsername: encrypt(projectData.authUsername),
+    authPassword: encrypt(projectData.authPassword),
   };
   if (projectData.type === "npm") {
     data.projectType["npm"] = {
