@@ -17,7 +17,7 @@ function Dashboard(props) {
     }
     fetchData();
     
-  }, []);
+  }, [props.userData.user.stsTokenManager["accessToken"]]);
 
   if(notificationsData){
     return (
@@ -25,7 +25,10 @@ function Dashboard(props) {
         <TextLarge>Dashboard</TextLarge>
         <DashboardSummary />
         <br />
-        <DashboardNotifications notificationsData={notificationsData}/>
+        <DashboardNotifications 
+          notificationsData={notificationsData}
+          token={props.userData.user.stsTokenManager["accessToken"]}
+          />
         <br />
         <DashboardMetrics />
       </div>
