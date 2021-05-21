@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
-import { createProjectInFirestore } from "../../../../../utils/apiUtil";
+import {
+  createProjectInFirestore,
+  npmProjectCredentialsCheck,
+} from "../../../../../utils/apiUtil";
+import TextSmall from "../../../../atoms/text/small/textSmall";
 import Classes from "./createProjectForm.module.scss";
 
 function CreateProjectForm(props) {
@@ -11,25 +15,47 @@ function CreateProjectForm(props) {
   const [npmPackageLockUrl, setNpmPackageLockUrl] = useState();
   const [yellowWarningPeriod, setYellowWarningPeriod] = useState(10);
   const [redWarningPeriod, setRedWarningPeriod] = useState(15);
+  const [authUsername, setAuthUsername] = useState();
+  const [authPassword, setAuthPassword] = useState();
+  const [formSubmitMsg, setFormSubmitMsg] = useState("");
+  const [formSubmitMsgColour, setFormSubmitMsgColour] = useState("");
   const [validated, setValidated] = useState(false);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
+    setFormSubmitMsgColour("red");
+    setFormSubmitMsg("");
+    event.preventDefault();
+    event.stopPropagation();
     setValidated(true);
-    const projectData = {
-      name: projectName,
-      type: projectType,
-      teamId: projectTeam,
-      packageJsonUrl: npmPackageJsonUrl,
-      packageLockUrl: npmPackageLockUrl,
-      yellowWarningPeriod: yellowWarningPeriod,
-      redWarningPeriod: redWarningPeriod,
-    };
-    createProjectInFirestore(projectData, props.token);
+    if (form.checkValidity() === true) {
+      await npmProjectCredentialsCheck(
+        authUsername,
+        authPassword,
+        npmPackageJsonUrl
+      ).then(async (response) => {
+        console.log(response);
+        if (response) {
+          const projectData = {
+            name: projectName,
+            type: projectType,
+            teamId: projectTeam,
+            packageJsonUrl: npmPackageJsonUrl,
+            packageLockUrl: npmPackageLockUrl,
+            yellowWarningPeriod: yellowWarningPeriod,
+            redWarningPeriod: redWarningPeriod,
+            authUsername: authUsername,
+            authPassword: authPassword,
+          };
+          await createProjectInFirestore(projectData, props.token)
+            .then(() => window.location.replace(""))
+            .catch((error) => setFormSubmitMsg(error));
+        }
+        setFormSubmitMsg(
+          "package.json could not be retrieved. Please check URL / credentials"
+        );
+      });
+    }
   };
 
   const projectTypeHandler = (value) => {
@@ -138,6 +164,37 @@ function CreateProjectForm(props) {
         </Form.Row>
         <br />
         {projectTypeHandler(projectType)}
+        <Form.Row>
+          <Form.Group as={Col}>
+            <Form.Label>Username</Form.Label>
+            <Form.Control
+              required
+              placeholder={
+                "Username / email for accessing the project repository"
+              }
+              onChange={(event) => {
+                setAuthUsername(event.target.value);
+              }}
+            />
+            <Form.Control.Feedback type="invalid">
+              Please enter a username / email address.
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group as={Col}>
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              required
+              type="password"
+              placeholder={"Password for accessing the project repository"}
+              onChange={(event) => {
+                setAuthPassword(event.target.value);
+              }}
+            />
+            <Form.Control.Feedback type="invalid">
+              Please enter a password.
+            </Form.Control.Feedback>
+          </Form.Group>
+        </Form.Row>
         <br />
         <Form.Group as={Row}>
           <Form.Label column sm={1}>
@@ -208,6 +265,7 @@ function CreateProjectForm(props) {
           <Col />
         </Form.Group>
         <br />
+        <TextSmall colour={formSubmitMsgColour}>{formSubmitMsg}</TextSmall>
         <Form.Row>
           <Form.Group as={Col} md={2}>
             <Button variant="primary" type="submit">

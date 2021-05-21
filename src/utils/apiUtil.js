@@ -1,4 +1,5 @@
 import axios from "axios";
+import { encrypt } from "./encrypt/encrypt_helper";
 
 export const asyncGetRequest = async (url, token) => {
   try {
@@ -106,6 +107,8 @@ export const createProjectInFirestore = async (projectData, token) => {
     projectType: {},
     yellowWarningPeriod: projectData.yellowWarningPeriod * 8.64e7, // Days to milliseconds
     redWarningPeriod: projectData.redWarningPeriod * 8.64e7,
+    authUsername: encrypt(projectData.authUsername),
+    authPassword: encrypt(projectData.authPassword),
   };
   if (projectData.type === "npm") {
     data.projectType["npm"] = {
@@ -132,6 +135,8 @@ export const updateProjectInFirestore = async (
     projectType: {},
     yellowWarningPeriod: projectData.yellowWarningPeriod * 8.64e7, // Days to milliseconds
     redWarningPeriod: projectData.redWarningPeriod * 8.64e7,
+    authUsername: encrypt(projectData.authUsername),
+    authPassword: encrypt(projectData.authPassword),
   };
   if (projectData.projectType === "npm") {
     console.log("NPM");
@@ -162,4 +167,28 @@ export const deleteProjectInFirestore = async (projectId, token) => {
       throw error;
     }
   );
+};
+
+// OTHER
+
+// if we can get the url for package.json with the supplied credentials,
+// they are good
+export const npmProjectCredentialsCheck = async (
+  username,
+  password,
+  packageJsonUrl
+) => {
+  return await axios
+    .get(packageJsonUrl, {
+      auth: {
+        username: username,
+        password: password,
+      },
+    })
+    .then(() => {
+      return true;
+    })
+    .catch(() => {
+      return false;
+    });
 };
