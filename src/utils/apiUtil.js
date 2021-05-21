@@ -166,3 +166,25 @@ export const deleteProjectInFirestore = async (projectId, token) => {
     }
   );
 };
+
+// OTHER
+
+// if we can get the url for package.json with the supplied credentials,
+// they are good
+export const npmProjectCredentialsCheck = async(
+  username, 
+  password, 
+  packageJsonUrl,
+  ) => {
+    await axios.get(packageJsonUrl, {
+      auth: {
+        username: username,
+        password: password,
+      },
+    }).then((response) => {
+      if(response.status === 200) {
+        return true
+      }
+      return false
+    });
+}
