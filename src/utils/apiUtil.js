@@ -78,6 +78,10 @@ export const getAllProjectsForUser = async (uid, token) => {
   return await asyncGetRequest(`/api/getAllProjectsForUser?uid=${uid}`, token);
 };
 
+export const getNotificationsForUser = async (token) => {
+  return await asyncGetRequest(`/api/getNotificationsForUser`, token);
+};
+
 // CREATE
 
 export const createTeamInFirestore = async (teamData, token) => {
@@ -140,6 +144,14 @@ export const updateProjectInFirestore = async (
   }
   console.log(data);
   return await asyncPostRequest(`/api/project/${projectId}`, data, token);
+};
+
+export const acknowledgeNotification = async (notificationId, token) => {
+  return await asyncPostRequest(
+    `/api/notification/${notificationId}`,
+    {},
+    token
+  );
 };
 
 // DELETE

@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import TextMedium from "../../../../atoms/text/medium/textMedium";
-import DashboardItem from "../../../../molecules/ui/dashboardItem/dashboardItem";
+import DashboardItem from "../../../../molecules/ui/dashboard/dashboardItem/dashboardItem";
 
 import Classes from "./dashboardSummary.module.scss";
 
