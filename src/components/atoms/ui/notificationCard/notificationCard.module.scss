@@ -12,8 +12,7 @@
   border-radius: 5px;
   padding: 5px;
   margin-bottom: 5px;
-  transition: transform .3s ease-in-out, opacity .3s ease-in-out;
-  opacity: 1;
+  transition: .3s;
   &:hover {
     background-color: darken($color: $colour-light-grey, $amount: 5);
   }
