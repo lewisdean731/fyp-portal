@@ -176,15 +176,14 @@ export const npmProjectCredentialsCheck = async(
   password, 
   packageJsonUrl,
   ) => {
-    await axios.get(packageJsonUrl, {
+    return await axios.get(packageJsonUrl, {
       auth: {
         username: username,
         password: password,
       },
-    }).then((response) => {
-      if(response.status === 200) {
-        return true
-      }
-      return false
+    }).then(() => {
+      return true;
+    }).catch(() => {
+      return false;
     });
 }
