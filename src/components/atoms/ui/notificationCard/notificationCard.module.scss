@@ -12,7 +12,7 @@
   border-radius: 5px;
   padding: 5px;
   margin-bottom: 5px;
-  transition: .3s;
+  transition: 0.3s;
   &:hover {
     background-color: darken($color: $colour-light-grey, $amount: 5);
   }
@@ -22,8 +22,8 @@
 }
 .goingInvisible {
   transform: scale(0);
-  transition: transform .3s ease-in-out, opacity .3s ease-in-out;
-  animation: anim .3s ease-in;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  animation: anim 0.3s ease-in;
   animation-fill-mode: forwards;
 }
 .invisible {

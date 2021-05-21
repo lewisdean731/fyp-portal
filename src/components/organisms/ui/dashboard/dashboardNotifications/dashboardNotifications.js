@@ -10,7 +10,10 @@ function dashboardNotifications(props) {
       <TextMedium colour={"grey"}>Notifications</TextMedium>
       <Row className="justify-content-md-center">
         <Col className={Classes.col}>
-          <DashboardNotificationsDisplay notificationsData={props.notificationsData} token={props.token}/>
+          <DashboardNotificationsDisplay
+            notificationsData={props.notificationsData}
+            token={props.token}
+          />
         </Col>
       </Row>
     </Container>
