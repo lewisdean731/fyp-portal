@@ -31,7 +31,11 @@ function NotificationCard(props) {
               <Col md={4}>
                 <Row>
                   <Col md={6}>
-                    <Button variant="primary" href={`/project/${props.projectId}`}>
+                    <Button 
+                      variant="primary" 
+                      onClick={() => props.dismissed(props.index, props.notificationId)}
+                      href={`/project/${props.projectId}`}
+                    >
                       Go to Project
                     </Button>
                   </Col>
