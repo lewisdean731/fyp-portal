@@ -146,6 +146,10 @@ export const updateProjectInFirestore = async (
   return await asyncPostRequest(`/api/project/${projectId}`, data, token);
 };
 
+export const acknowledgeNotification = async (notificationId, token) => {
+  return await asyncPostRequest(`/api/notification/${notificationId}`, {}, token);
+}
+
 // DELETE
 
 export const deleteProjectInFirestore = async (projectId, token) => {
