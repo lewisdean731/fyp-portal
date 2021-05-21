@@ -6,6 +6,8 @@ function DashboardNotificationsDisplay(props) {
   console.log(`Rendering`);
   const [notifications, setNotifications] = useState(props.notificationsData); //Handle no notifs in props
   
+  notifications.sort((a,b) => (a.timestamp < b.timestamp) ? 1 : ((b.timestamp < a.timestamp) ? -1 : 0))
+  
   useEffect(() => {
 
     }, [notifications]);

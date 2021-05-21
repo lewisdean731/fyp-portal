@@ -22,6 +22,7 @@ function NotificationCard(props) {
               <Col md={6}>
                 <TextMedium className={Classes.center}>{props.projectName}</TextMedium>
                 <TextSmall className={Classes.center}>{props.message}</TextSmall>
+                <TextSmall className={`${Classes.center} text-muted`}>{new Date(props.timestamp).toLocaleString()}</TextSmall>
               </Col>
               <Col md={2}>
                 <Row>
