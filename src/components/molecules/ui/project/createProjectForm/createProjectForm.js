@@ -11,6 +11,8 @@ function CreateProjectForm(props) {
   const [npmPackageLockUrl, setNpmPackageLockUrl] = useState();
   const [yellowWarningPeriod, setYellowWarningPeriod] = useState(10);
   const [redWarningPeriod, setRedWarningPeriod] = useState(15);
+  const [authUsername, setAuthUsername] = useState();
+  const [authPassword, setAuthPassword] = useState();
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = (event) => {
@@ -28,6 +30,8 @@ function CreateProjectForm(props) {
       packageLockUrl: npmPackageLockUrl,
       yellowWarningPeriod: yellowWarningPeriod,
       redWarningPeriod: redWarningPeriod,
+      authUsername: authUsername,
+      authPassword: authPassword,
     };
     createProjectInFirestore(projectData, props.token);
   };
@@ -138,6 +142,35 @@ function CreateProjectForm(props) {
         </Form.Row>
         <br />
         {projectTypeHandler(projectType)}
+        <Form.Row>
+          <Form.Group as={Col}>
+            <Form.Label>Username</Form.Label>
+            <Form.Control
+              required
+              placeholder={"Username / email for accessing the project repository"}
+              onChange={(event) => {
+                setAuthUsername(event.target.value);
+              }}
+            />
+            <Form.Control.Feedback type="invalid">
+              Please enter a username / email address.
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group as={Col}>
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              required
+              type="password"
+              placeholder={"Password for accessing the project repository"}
+              onChange={(event) => {
+                setAuthPassword(event.target.value);
+              }}
+            />
+            <Form.Control.Feedback type="invalid">
+              Please enter a password.
+            </Form.Control.Feedback>
+          </Form.Group>
+        </Form.Row>
         <br />
         <Form.Group as={Row}>
           <Form.Label column sm={1}>
