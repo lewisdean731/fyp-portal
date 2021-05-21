@@ -38,10 +38,10 @@ function NotificationCard(props) {
                   <Col md={4}>
                     <Row>
                       <Button variant="primary" onClick={async () => {
+                        props.dismissed(props.index, props.notificationId);
                         setCssClass1("goingInvisible");
                         await new Promise((resolve) => setTimeout(resolve, 350));
                         setCssClass2("invisible");
-                        props.dismissed(props.index);
                       }}>
                         Dismiss
                       </Button>
