@@ -8,4 +8,4 @@ export const encrypt = (input) => {
   return encrypted;
 };
 
-export default { decrypt };
+export default { encrypt };
