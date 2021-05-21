@@ -18,31 +18,35 @@ function CreateProjectForm(props) {
   const [formSubmitMsgColour, setFormSubmitMsgColour] = useState("");
   const [validated, setValidated] = useState(false);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     const form = event.currentTarget;
     setFormSubmitMsgColour("red");
     setFormSubmitMsg("");
+    event.preventDefault();
+    event.stopPropagation();
     setValidated(true);
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    } else {
-      if(!npmProjectCredentialsCheck(authUsername, authPassword, npmPackageJsonUrl)){
+    if (form.checkValidity() === true) {
+      await npmProjectCredentialsCheck(authUsername, authPassword, npmPackageJsonUrl)
+      .then(async(response) => {
+        console.log(response)
+        if(response) {
+          const projectData = {
+            name: projectName,
+            type: projectType,
+            teamId: projectTeam,
+            packageJsonUrl: npmPackageJsonUrl,
+            packageLockUrl: npmPackageLockUrl,
+            yellowWarningPeriod: yellowWarningPeriod,
+            redWarningPeriod: redWarningPeriod,
+            authUsername: authUsername,
+            authPassword: authPassword,
+          };
+          await createProjectInFirestore(projectData, props.token)
+          .then(() => window.location.replace(""))
+          .catch((error) => setFormSubmitMsg(error));
+        }
         setFormSubmitMsg("package.json could not be retrieved. Please check URL / credentials");
-      } else {
-        const projectData = {
-          name: projectName,
-          type: projectType,
-          teamId: projectTeam,
-          packageJsonUrl: npmPackageJsonUrl,
-          packageLockUrl: npmPackageLockUrl,
-          yellowWarningPeriod: yellowWarningPeriod,
-          redWarningPeriod: redWarningPeriod,
-          authUsername: authUsername,
-          authPassword: authPassword,
-        };
-        createProjectInFirestore(projectData, props.token);
-      }
+      })
     }
   };
 
