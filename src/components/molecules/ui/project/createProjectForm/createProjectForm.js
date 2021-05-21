@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
-import { createProjectInFirestore, npmProjectCredentialsCheck } from "../../../../../utils/apiUtil";
+import {
+  createProjectInFirestore,
+  npmProjectCredentialsCheck,
+} from "../../../../../utils/apiUtil";
 import TextSmall from "../../../../atoms/text/small/textSmall";
 import Classes from "./createProjectForm.module.scss";
 
@@ -18,7 +21,7 @@ function CreateProjectForm(props) {
   const [formSubmitMsgColour, setFormSubmitMsgColour] = useState("");
   const [validated, setValidated] = useState(false);
 
-  const handleSubmit = async(event) => {
+  const handleSubmit = async (event) => {
     const form = event.currentTarget;
     setFormSubmitMsgColour("red");
     setFormSubmitMsg("");
@@ -26,10 +29,13 @@ function CreateProjectForm(props) {
     event.stopPropagation();
     setValidated(true);
     if (form.checkValidity() === true) {
-      await npmProjectCredentialsCheck(authUsername, authPassword, npmPackageJsonUrl)
-      .then(async(response) => {
-        console.log(response)
-        if(response) {
+      await npmProjectCredentialsCheck(
+        authUsername,
+        authPassword,
+        npmPackageJsonUrl
+      ).then(async (response) => {
+        console.log(response);
+        if (response) {
           const projectData = {
             name: projectName,
             type: projectType,
@@ -42,11 +48,13 @@ function CreateProjectForm(props) {
             authPassword: authPassword,
           };
           await createProjectInFirestore(projectData, props.token)
-          .then(() => window.location.replace(""))
-          .catch((error) => setFormSubmitMsg(error));
+            .then(() => window.location.replace(""))
+            .catch((error) => setFormSubmitMsg(error));
         }
-        setFormSubmitMsg("package.json could not be retrieved. Please check URL / credentials");
-      })
+        setFormSubmitMsg(
+          "package.json could not be retrieved. Please check URL / credentials"
+        );
+      });
     }
   };
 
@@ -161,7 +169,9 @@ function CreateProjectForm(props) {
             <Form.Label>Username</Form.Label>
             <Form.Control
               required
-              placeholder={"Username / email for accessing the project repository"}
+              placeholder={
+                "Username / email for accessing the project repository"
+              }
               onChange={(event) => {
                 setAuthUsername(event.target.value);
               }}
