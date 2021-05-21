@@ -6,16 +6,12 @@ function DashboardNotificationsDisplay(props) {
   const [notifications, setNotifications] = useState(props.notificationsData); //Handle no notifs in props
   
   useEffect(() => {
-    setNotifications(props.notificationsData)
+    setNotifications(props.notificationsData ? props.notificationsData : null)
 
     }, [notifications]);
 
-  function dismissed(index) {
-    console.log(`Dismissing ${index}`);
-    console.log(notifications.length)
-    setNotifications(notifications.splice(index, 1));
-    console.log(notifications.length)
-
+  function dismissed(index, notificationId) {
+    console.log(`Dismissing ${index} - ${notificationId}`);
   }
 
   return (
@@ -32,6 +28,7 @@ function DashboardNotificationsDisplay(props) {
                 severity={notification.severity}
                 nextVersion={notification.nextVersion}
                 timestamp={notification.timestamp}
+                notificationId={notification.notificationId}
                 dismissed={dismissed}
               />
             );
