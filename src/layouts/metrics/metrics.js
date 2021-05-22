@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import TextLarge from "../../components/atoms/text/large/textLarge";
+import MetricsDisplay from "../../components/organisms/ui/metrics/dashboardMetrics/metricsDisplay";
 import { 
   getMetricTotalDependencies,
   getMetricGreenDependencies,
@@ -40,6 +41,12 @@ function Metrics(props) {
     return (
       <Container>
         <TextLarge>Metrics</TextLarge>
+        <MetricsDisplay 
+          totalDependencies={totalDependencies}
+          greenDependencies={greenDependencies}
+          yellowDependencies={yellowDependencies}
+          redDependencies={redDependencies}
+        />
       </Container>
     );
   }
