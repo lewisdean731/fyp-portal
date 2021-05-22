@@ -17,19 +17,19 @@ function Metrics(props) {
   useEffect(() => {
     async function fetchData() {
       // Get metrics for user
-      setTotalDependencies(getMetricTotalDependencies(
+      setTotalDependencies(await getMetricTotalDependencies(
         props.userData.user["uid"],
         props.userData.user.stsTokenManager["accessToken"]
       ))
-      setGreenDependencies(getMetricGreenDependencies(
+      setGreenDependencies(await getMetricGreenDependencies(
         props.userData.user["uid"],
         props.userData.user.stsTokenManager["accessToken"]
       ))
-      setYellowDependencies(getMetricYellowDependencies(
+      setYellowDependencies(await getMetricYellowDependencies(
         props.userData.user["uid"],
         props.userData.user.stsTokenManager["accessToken"]
       ))
-      setRedDependencies(getMetricRedDependencies(
+      setRedDependencies(await getMetricRedDependencies(
         props.userData.user["uid"],
         props.userData.user.stsTokenManager["accessToken"]
       ))
