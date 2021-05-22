@@ -87,6 +87,18 @@ export const getMetricTotalDependencies = async (uid, token) => {
   return await asyncGetRequest(`/api/metric/${uid}?metricName=totalDependencies`, token);
 };
 
+export const getMetricGreenDependencies = async (uid, token) => {
+  return await asyncGetRequest(`/api/metric/${uid}?metricName=greenDependencies`, token);
+};
+
+export const getMetricYellowDependencies = async (uid, token) => {
+  return await asyncGetRequest(`/api/metric/${uid}?metricName=yellowDependencies`, token);
+};
+
+export const getMetricRedDependencies = async (uid, token) => {
+  return await asyncGetRequest(`/api/metric/${uid}?metricName=redDependencies`, token);
+};
+
 // CREATE
 
 export const createTeamInFirestore = async (teamData, token) => {
