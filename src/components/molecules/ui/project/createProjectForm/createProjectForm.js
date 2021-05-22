@@ -50,10 +50,11 @@ function CreateProjectForm(props) {
           await createProjectInFirestore(projectData, props.token)
             .then(() => window.location.replace(""))
             .catch((error) => setFormSubmitMsg(error));
-        }
+        } else {
         setFormSubmitMsg(
           "package.json could not be retrieved. Please check URL / credentials"
         );
+        }
       });
     }
   };
