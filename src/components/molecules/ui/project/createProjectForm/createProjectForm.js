@@ -32,7 +32,8 @@ function CreateProjectForm(props) {
       await npmProjectCredentialsCheck(
         authUsername,
         authPassword,
-        npmPackageJsonUrl
+        npmPackageJsonUrl,
+        props.token,
       ).then(async (response) => {
         console.log(response);
         if (response) {
@@ -51,9 +52,9 @@ function CreateProjectForm(props) {
             .then(() => window.location.replace(""))
             .catch((error) => setFormSubmitMsg(error));
         } else {
-        setFormSubmitMsg(
-          "package.json could not be retrieved. Please check URL / credentials"
-        );
+          setFormSubmitMsg(
+            "package.json could not be retrieved. Please check URL / credentials"
+          );
         }
       });
     }
