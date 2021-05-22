@@ -33,7 +33,7 @@ function CreateProjectForm(props) {
         authUsername,
         authPassword,
         npmPackageJsonUrl,
-        props.token,
+        props.token
       ).then(async (response) => {
         console.log(response);
         if (response) {

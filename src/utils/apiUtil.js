@@ -189,11 +189,13 @@ export const npmProjectCredentialsCheck = async (
   packageJsonUrl,
   token
 ) => {
-  return await asyncPostRequest(`/api/auth/verifyProjectCredentials`,
-  {
-    url: packageJsonUrl,
-    username: username,
-    password: password,
-  },
-  token)
+  return await asyncPostRequest(
+    `/api/auth/verifyProjectCredentials`,
+    {
+      url: packageJsonUrl,
+      username: username,
+      password: password,
+    },
+    token
+  );
 };
