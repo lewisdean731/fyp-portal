@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import TextLarge from "../../components/atoms/text/large/textLarge";
-import DashboardMetrics from "../../components/organisms/ui/dashboard/dashboardMetrics/dashboardMetrics";
 import DashboardNotifications from "../../components/organisms/ui/dashboard/dashboardNotifications/dashboardNotifications";
 import DashboardSummary from "../../components/organisms/ui/dashboard/dashboardSummary/dashboardSummary";
 import { getNotificationsForUser } from "../../utils/apiUtil";
@@ -28,7 +27,6 @@ function Dashboard(props) {
           token={props.userData.user.stsTokenManager["accessToken"]}
         />
         <br />
-        <DashboardMetrics />
       </div>
     );
   } else {
