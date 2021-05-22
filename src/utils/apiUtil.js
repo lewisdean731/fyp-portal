@@ -135,8 +135,6 @@ export const updateProjectInFirestore = async (
     projectType: {},
     yellowWarningPeriod: projectData.yellowWarningPeriod * 8.64e7, // Days to milliseconds
     redWarningPeriod: projectData.redWarningPeriod * 8.64e7,
-    authUsername: encrypt(projectData.authUsername),
-    authPassword: encrypt(projectData.authPassword),
   };
   if (projectData.projectType === "npm") {
     console.log("NPM");
@@ -148,6 +146,18 @@ export const updateProjectInFirestore = async (
     };
   }
   console.log(data);
+  return await asyncPostRequest(`/api/project/${projectId}`, data, token);
+};
+
+export const updateProjectCredentialsInFirestore = async (
+  projectId,
+  projectData,
+  token
+) => {
+  let data = {
+    authUsername: encrypt(projectData.authUsername),
+    authPassword: encrypt(projectData.authPassword),
+  };
   return await asyncPostRequest(`/api/project/${projectId}`, data, token);
 };
 
