@@ -11,6 +11,7 @@ import Team from "./layouts/team/team";
 import Teams from "./layouts/team/teams";
 import Project from "./layouts/project/project";
 import Projects from "./layouts/project/projects";
+import Metrics from "./layouts/metrics/metrics";
 
 export const RenderRoutes = (props) => {
   return (
@@ -27,6 +28,8 @@ export const RenderRoutes = (props) => {
         <Route path="/team/:teamId" render={() => <Team {...props} />} />
 
         <Route path="/teams" render={() => <Teams {...props} />} />
+
+        <Route path="/metrics" render={() => <Metrics {...props} />} />
 
         <Route
           path="/project/:projectId"
