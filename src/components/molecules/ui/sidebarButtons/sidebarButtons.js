@@ -10,7 +10,7 @@ export default function SidebarButtons() {
       </Row>
       <Row>
         <Col>
-          <SidebarButton link={"fake.link"}>Fake Link</SidebarButton>
+          <SidebarButton link={"/metrics"}>Metrics</SidebarButton>
         </Col>
       </Row>
       <Row>
