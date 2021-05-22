@@ -176,19 +176,14 @@ export const deleteProjectInFirestore = async (projectId, token) => {
 export const npmProjectCredentialsCheck = async (
   username,
   password,
-  packageJsonUrl
+  packageJsonUrl,
+  token
 ) => {
-  return await axios
-    .get(packageJsonUrl, {
-      auth: {
-        username: username,
-        password: password,
-      },
-    })
-    .then(() => {
-      return true;
-    })
-    .catch(() => {
-      return false;
-    });
+  return await asyncPostRequest(`/api/auth/verifyProjectCredentials`,
+  {
+    url: packageJsonUrl,
+    username: username,
+    password: password,
+  },
+  token)
 };
