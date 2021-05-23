@@ -1,16 +1,27 @@
-import { Accordion, Card, Table, Button } from "react-bootstrap";
+import { Accordion, Card, Table, Button, Row, Col } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import Classes from "./dependencyCard.module.scss";
 function DependencyCard(props) {
   return (
-    <Card bg={"light"} className={Classes.dependencyCard}>
+    <Card bg={"light"}>
       <Accordion.Toggle
         as={Button}
         variant={props.variant}
         eventKey={props.eventKey}
         className={Classes.header}
       >
-        <p className={Classes.name}>{props.name}</p>
-        <p className={Classes.version}>{props.version}</p>
+        <Row className={`${Classes.row} justify-content-md-left`}>
+          <Col md={1}>
+            <FontAwesomeIcon icon={props.icon} className={Classes.icon} />
+          </Col>
+          <Col>
+            <p className={Classes.name}>{props.name}</p>
+          </Col>
+          <Col>
+            <p className={Classes.version}>{props.version}</p>
+          </Col>
+        </Row>
       </Accordion.Toggle>
       <Accordion.Collapse eventKey={props.eventKey}>
         <Card.Body>
