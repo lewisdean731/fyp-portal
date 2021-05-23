@@ -33,6 +33,7 @@ function MetricsDisplay(props) {
       label={"# of dependencies"}
       labels={makeLabels(props.totalDependencies)}
       data={makeData(props.totalDependencies)}
+      colour={"#CDCDCD"}
     />
     }
   }
@@ -43,6 +44,7 @@ function MetricsDisplay(props) {
       label={"# of dependencies"}
       labels={makeLabels(props.greenDependencies)}
       data={makeData(props.greenDependencies)}
+      colour={"#28A745"}
     />
     }
   }
@@ -53,6 +55,7 @@ function MetricsDisplay(props) {
       label={"# of dependencies"}
       labels={makeLabels(props.yellowDependencies)}
       data={makeData(props.yellowDependencies)}
+      colour={"#FFC107"}
     />
     }
   }
@@ -63,6 +66,7 @@ function MetricsDisplay(props) {
       label={"# of dependencies"}
       labels={makeLabels(props.redDependencies)}
       data={makeData(props.redDependencies)}
+      colour={"#DC3545"}
     />
     }
   }

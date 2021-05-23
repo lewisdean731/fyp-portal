@@ -5,20 +5,32 @@ import TextMedium from "../../../text/medium/textMedium";
 export function LineChart(props) {
   //const [data, setData] = useState();
 
-  const data = {
-    labels: props.labels,
-    datasets: [
-      {
-        label: '# of Dependencies',
-        data: props.data,
-        fill: false,
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgba(255, 99, 132, 0.2)',
-      },
-    ],
-  };
+  const data = (canvas) => {
+    const ctx = canvas.getContext("2d");
+    const gradient = ctx.createLinearGradient(0, 0, 0, 200);
+    gradient.addColorStop(0, `${props.colour}FF`);   
+    gradient.addColorStop(1, `${props.colour}00`);
+
+    return {
+      labels: props.labels,
+      datasets: [
+        {
+          label: '# of Dependencies',
+          backgroundColor : gradient, // Put the gradient here as a fill color
+          borderColor : "#ffffff",
+          borderWidth: 2,
+          data: props.data,
+          fill: 'origin',
+          pointRadius: 0,
+        }
+      ]
+    }
+  }
   
   const options = {
+    legend: {
+      display: false
+    },
     scales: {
       xAxes: [
         {
@@ -30,7 +42,14 @@ export function LineChart(props) {
             }
           }
         }
-      ]
+      ],
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+          },
+        },
+      ],
     }
   };
 
