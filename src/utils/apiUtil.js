@@ -83,6 +83,17 @@ export const getNotificationsForUser = async (token) => {
   return await asyncGetRequest(`/api/getNotificationsForUser`, token);
 };
 
+export const getTimeSeriesMetric = async (uid, metricName, token) => {
+  return await asyncGetRequest(
+    `/api/metric/${uid}?metricName=${metricName}`,
+    token
+  );
+};
+
+export const getMetrics = async (uid, token) => {
+  return await asyncGetRequest(`/api/metric/${uid}`, token);
+};
+
 // CREATE
 
 export const createTeamInFirestore = async (teamData, token) => {

@@ -34,8 +34,10 @@ export default function CreateAccountForm(props) {
                 displayName: userName,
               })
               .then(() => {
-                createUserInFirestore(user.uid, user.getIdToken()).then(() => {
-                  window.location.replace("");
+                user.getIdToken().then((idToken) => {
+                  createUserInFirestore(user.uid, idToken).then(() => {
+                    window.location.replace("");
+                  });
                 });
               });
           })
