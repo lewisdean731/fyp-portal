@@ -43,7 +43,7 @@ function CreateProject(props) {
     );
   }
 
-  if (teamsData.length === 0){
+  if (teamsData.length === 0) {
     return (
       <Container fluid className={Classes.createProject}>
         <TextMedium colour={"grey"}>Create Project</TextMedium>

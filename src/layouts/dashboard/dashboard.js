@@ -14,10 +14,12 @@ function Dashboard(props) {
         props.userData.user.stsTokenManager["accessToken"]
       ).then((data) => setNotificationsData(data.notificationsData));
 
-      setMetrics(await getMetrics(
-        props.userData.user["uid"],
-        props.userData.user.stsTokenManager["accessToken"]
-      ))
+      setMetrics(
+        await getMetrics(
+          props.userData.user["uid"],
+          props.userData.user.stsTokenManager["accessToken"]
+        )
+      );
     }
     fetchData();
   }, [props.userData.user.stsTokenManager["accessToken"]]);
@@ -26,7 +28,7 @@ function Dashboard(props) {
     return (
       <div>
         <TextLarge>Dashboard</TextLarge>
-        <DashboardSummary metrics={metrics}/>
+        <DashboardSummary metrics={metrics} />
         <br />
         <DashboardNotifications
           notificationsData={notificationsData}

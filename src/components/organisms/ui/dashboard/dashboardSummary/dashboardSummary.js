@@ -7,7 +7,6 @@ import DashboardItem from "../../../../molecules/ui/dashboard/dashboardItem/dash
 import Classes from "./dashboardSummary.module.scss";
 
 function DashboardSummary(props) {
-
   return (
     <Container className={Classes.dashboardSummary}>
       <TextMedium colour={"grey"}>At a Glance</TextMedium>

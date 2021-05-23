@@ -38,7 +38,7 @@ export default function CreateAccountForm(props) {
                   createUserInFirestore(user.uid, idToken).then(() => {
                     window.location.replace("");
                   });
-                })
+                });
               });
           })
           .catch((error) => {
