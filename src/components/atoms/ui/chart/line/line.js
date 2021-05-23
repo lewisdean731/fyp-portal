@@ -9,7 +9,7 @@ export function LineChart(props) {
     labels: props.labels,
     datasets: [
       {
-        label: '# of Votes',
+        label: '# of Dependencies',
         data: props.data,
         fill: false,
         backgroundColor: 'rgb(255, 99, 132)',
@@ -24,7 +24,10 @@ export function LineChart(props) {
         {
           type: 'time',
           time: {
-            unit: 'days'
+            unit: 'days',
+            displayFormats: {
+              days: "DD/MM/YY"
+            }
           }
         }
       ]
