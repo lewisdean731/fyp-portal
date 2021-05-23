@@ -48,8 +48,11 @@ export function LineChart(props) {
           ticks: {
             beginAtZero: true,
           },
-        },
-      ],
+          gridLines: {
+            display: false,
+          }
+        }
+      ]
     }
   };
 
