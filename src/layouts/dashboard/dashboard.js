@@ -22,7 +22,7 @@ function Dashboard(props) {
     fetchData();
   }, [props.userData.user.stsTokenManager["accessToken"]]);
 
-  if (notificationsData) {
+  if (notificationsData && metrics) {
     return (
       <div>
         <TextLarge>Dashboard</TextLarge>
