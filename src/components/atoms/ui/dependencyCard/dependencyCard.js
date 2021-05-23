@@ -1,4 +1,4 @@
-import { Accordion, Card, Table, Button, Row, Col } from "react-bootstrap";
+import { Accordion, Card, Table, Button, Row, Col, Badge } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Classes from "./dependencyCard.module.scss";
@@ -18,7 +18,10 @@ function DependencyCard(props) {
           <Col>
             <p className={Classes.name}>{props.name}</p>
           </Col>
-          <Col>
+          <Col md={2}>
+            <Badge className={Classes.badge} variant={props.badgeVariant}>{props.badgeMessage}</Badge>
+          </Col>
+          <Col md={1}>
             <p className={Classes.version}>{props.version}</p>
           </Col>
         </Row>

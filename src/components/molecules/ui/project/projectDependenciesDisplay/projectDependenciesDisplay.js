@@ -12,6 +12,25 @@ function howOutOfDate(releaseDate) {
   return currentDate - new Date(releaseDate).getTime();
 }
 
+// Work out whether update is major, minor or patch
+// Only really works for SemVer-following dependencies
+// (which SHOULD be all of them)
+function updateType(dependency){
+  let currentVersionArray = dependency.version.split(".");
+  let latestVersionArray = dependency.latest_version.split(".");
+
+  if (currentVersionArray[0] !== latestVersionArray[0]) {
+    return {type: "MAJOR UPDATE", variant: "danger"}
+  }
+  if (currentVersionArray[1] !== latestVersionArray[1]) {
+    return {type: "MINOR UPDATE", variant: "warning"}
+  }
+  if (currentVersionArray[2] !== latestVersionArray[2]) {
+    return {type: "PATCH UPDATE", variant: "light"}
+  }
+  return {type: "", variant: "light"}
+}
+
 function ProjectDependenciesDisplay(props) {
   return (
     <div>
@@ -42,11 +61,9 @@ function ProjectDependenciesDisplay(props) {
                 key={dependency.name}
                 eventKey={count.toString()}
                 name={dependency.name}
-                version={
-                  dependency.version == dependency.latest_version
-                    ? dependency.version
-                    : `${dependency.version} => ${dependency.latest_version}`
-                }
+                version={dependency.version}
+                badgeVariant={updateType(dependency).variant}
+                badgeMessage={updateType(dependency).type}
                 releaseDate={dependency.release_date}
                 nextVersion={dependency.next_version}
                 nextReleaseDate={dependency.next_release_date}
