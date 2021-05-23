@@ -15,7 +15,7 @@ function howOutOfDate(releaseDate) {
 function ProjectDependenciesDisplay(props) {
   return (
     <div>
-      <Accordion>
+      <Accordion defaultActiveKey="0">
         {props.projectData.projectDependencies.directDependencies.map(
           (dependency, count) => {
             // Check dependency for out of date, etc.
