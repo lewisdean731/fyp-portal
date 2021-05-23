@@ -3,10 +3,7 @@ import { Container } from "react-bootstrap";
 import TextLarge from "../../components/atoms/text/large/textLarge";
 import MetricsDisplay from "../../components/organisms/ui/metrics/dashboardMetrics/metricsDisplay";
 import { 
-  getMetricTotalDependencies,
-  getMetricGreenDependencies,
-  getMetricYellowDependencies,
-  getMetricRedDependencies
+  getTimeSeriesMetric
   } from "../../utils/apiUtil";
 function Metrics(props) {
   const [totalDependencies, setTotalDependencies] = useState()
@@ -17,20 +14,24 @@ function Metrics(props) {
   useEffect(() => {
     async function fetchData() {
       // Get metrics for user
-      setTotalDependencies(await getMetricTotalDependencies(
+      setTotalDependencies(await getTimeSeriesMetric(
         props.userData.user["uid"],
+        "totalDependencies",
         props.userData.user.stsTokenManager["accessToken"]
       ))
-      setGreenDependencies(await getMetricGreenDependencies(
+      setGreenDependencies(await getTimeSeriesMetric(
         props.userData.user["uid"],
+        "greenDependencies",
         props.userData.user.stsTokenManager["accessToken"]
       ))
-      setYellowDependencies(await getMetricYellowDependencies(
+      setYellowDependencies(await getTimeSeriesMetric(
         props.userData.user["uid"],
+        "yellowDependencies",
         props.userData.user.stsTokenManager["accessToken"]
       ))
-      setRedDependencies(await getMetricRedDependencies(
+      setRedDependencies(await getTimeSeriesMetric(
         props.userData.user["uid"],
+        "redDependencies",
         props.userData.user.stsTokenManager["accessToken"]
       ))
     }

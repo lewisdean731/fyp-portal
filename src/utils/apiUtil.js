@@ -83,20 +83,12 @@ export const getNotificationsForUser = async (token) => {
   return await asyncGetRequest(`/api/getNotificationsForUser`, token);
 };
 
-export const getMetricTotalDependencies = async (uid, token) => {
-  return await asyncGetRequest(`/api/metric/${uid}?metricName=totalDependencies`, token);
+export const getTimeSeriesMetric = async (uid, metricName, token) => {
+  return await asyncGetRequest(`/api/metric/${uid}?metricName=${metricName}`, token);
 };
 
-export const getMetricGreenDependencies = async (uid, token) => {
-  return await asyncGetRequest(`/api/metric/${uid}?metricName=greenDependencies`, token);
-};
-
-export const getMetricYellowDependencies = async (uid, token) => {
-  return await asyncGetRequest(`/api/metric/${uid}?metricName=yellowDependencies`, token);
-};
-
-export const getMetricRedDependencies = async (uid, token) => {
-  return await asyncGetRequest(`/api/metric/${uid}?metricName=redDependencies`, token);
+export const getMetrics = async (uid, token) => {
+  return await asyncGetRequest(`/api/metric/${uid}`, token);
 };
 
 // CREATE
