@@ -23,11 +23,11 @@ function DashboardNotificationsDisplay(props) {
     acknowledgeNotification(notificationId, props.token);
   }
 
-  function iconBySeverity(severity){
-    if(severity === "yellow"){
+  function iconBySeverity(severity) {
+    if (severity === "yellow") {
       return faExclamationTriangle;
     }
-    if(severity === "red"){
+    if (severity === "red") {
       return faTimesCircle;
     }
     return faExclamation;

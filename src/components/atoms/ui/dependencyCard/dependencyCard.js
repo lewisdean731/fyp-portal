@@ -1,4 +1,12 @@
-import { Accordion, Card, Table, Button, Row, Col, Badge } from "react-bootstrap";
+import {
+  Accordion,
+  Card,
+  Table,
+  Button,
+  Row,
+  Col,
+  Badge,
+} from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Classes from "./dependencyCard.module.scss";
@@ -20,7 +28,9 @@ function DependencyCard(props) {
             <p className={Classes.name}>{props.name}</p>
           </Col>
           <Col md={2}>
-            <Badge className={Classes.badge} variant={props.badgeVariant}>{props.badgeMessage}</Badge>
+            <Badge className={Classes.badge} variant={props.badgeVariant}>
+              {props.badgeMessage}
+            </Badge>
           </Col>
           <Col md={1}>
             <p className={Classes.version}>{props.version}</p>
@@ -34,7 +44,13 @@ function DependencyCard(props) {
               <TextMedium className={Classes.name}>{props.name}</TextMedium>
             </Col>
             <Col md={4}>
-              <TextMedium className={Classes.daysOutOfDate}><FontAwesomeIcon icon={props.icon} className={Classes.iconSmall} />{props.daysOutOfDate}</TextMedium>
+              <TextMedium className={Classes.daysOutOfDate}>
+                <FontAwesomeIcon
+                  icon={props.icon}
+                  className={Classes.iconSmall}
+                />
+                {props.daysOutOfDate}
+              </TextMedium>
             </Col>
           </Row>
           <Table striped>
@@ -67,8 +83,7 @@ function DependencyCard(props) {
                 View on NPM Registry
               </Button>
             </Col>
-            <Col>
-            </Col>
+            <Col></Col>
           </Row>
         </Card.Body>
       </Accordion.Collapse>

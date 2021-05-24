@@ -13,7 +13,10 @@ function NotificationCard(props) {
     <Row className={`${Classes[cssClass1]} ${Classes[cssClass2]}`}>
       <Col>
         <Media className={Classes.notificationCard}>
-          <FontAwesomeIcon icon={props.icon} className={`${Classes.icon} mr-3 ${Classes[props.severity]}`} />
+          <FontAwesomeIcon
+            icon={props.icon}
+            className={`${Classes.icon} mr-3 ${Classes[props.severity]}`}
+          />
           <Media.Body>
             <Row className="align-items-center">
               <Col md={6}>

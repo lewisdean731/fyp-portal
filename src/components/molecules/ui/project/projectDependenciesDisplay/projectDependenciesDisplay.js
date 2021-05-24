@@ -6,7 +6,10 @@ import {
   faExclamationTriangle,
   faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import { howOutOfDate, updateType } from "../../../../../utils/dependency/dependencyUtil";
+import {
+  howOutOfDate,
+  updateType,
+} from "../../../../../utils/dependency/dependencyUtil";
 
 function ProjectDependenciesDisplay(props) {
   return (
@@ -20,7 +23,9 @@ function ProjectDependenciesDisplay(props) {
             let daysOutOfDate = "Using latest version";
             if (dependency.version !== dependency.latest_version) {
               const dateDiff = howOutOfDate(dependency.next_release_date);
-              daysOutOfDate = `${Math.round(dateDiff / 8.64e7)} days out of date`;
+              daysOutOfDate = `${Math.round(
+                dateDiff / 8.64e7
+              )} days out of date`;
               if (dateDiff > props.projectData.redWarningPeriod) {
                 variant = "danger";
                 icon = faTimesCircle;
@@ -43,11 +48,17 @@ function ProjectDependenciesDisplay(props) {
                 version={dependency.version}
                 badgeVariant={updateType(dependency).variant}
                 badgeMessage={updateType(dependency).type}
-                releaseDate={new Date(dependency.release_date).toLocaleDateString()}
+                releaseDate={new Date(
+                  dependency.release_date
+                ).toLocaleDateString()}
                 nextVersion={dependency.next_version}
-                nextReleaseDate={new Date(dependency.next_release_date).toLocaleDateString()}
+                nextReleaseDate={new Date(
+                  dependency.next_release_date
+                ).toLocaleDateString()}
                 latestVersion={dependency.latest_version}
-                latestReleaseDate={new Date(dependency.latest_release_date).toLocaleDateString()}
+                latestReleaseDate={new Date(
+                  dependency.latest_release_date
+                ).toLocaleDateString()}
                 variant={variant}
                 icon={icon}
                 daysOutOfDate={daysOutOfDate}
