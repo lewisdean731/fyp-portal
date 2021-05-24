@@ -16,9 +16,6 @@ export default function Topbar(props) {
             <Nav.Link href="/teams">Teams</Nav.Link>
             <Nav.Link href="/projects">Projects</Nav.Link>
           </Nav>
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          </Form>
           <Nav className={"mr"}>
             <NavDropdown
               title={props.userData.user["displayName"]}
@@ -27,7 +24,7 @@ export default function Topbar(props) {
             >
               <NavDropdown.Item href="/user">Account Settings</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/" onClick={props.signOut}>
+              <NavDropdown.Item href="/dashboard" onClick={props.signOut}>
                 Sign Out
               </NavDropdown.Item>
             </NavDropdown>
