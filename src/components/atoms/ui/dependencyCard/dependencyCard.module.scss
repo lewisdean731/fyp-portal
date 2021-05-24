@@ -1,17 +1,46 @@
+@import "../../../../styles/resources.scss";
+
 .header {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   padding: 10px;
+  border-radius: 0px;
 }
 .name {
   font-size: 1.5em;
   text-align: left;
   margin: 0;
-  width: 30%;
 }
 .version {
   font-size: 1.2em;
+  text-align: left;
+  margin: 0;
+}
+.icon {
+  font-size: 2em;
+  text-align: left;
+  margin: 0;
+  margin-right: 10px;
+}
+.row {
+  width: 100%;
+  align-items: center;
+}
+.badge {
+  font-size: 0.85em;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.daysOutOfDate {
+  font-size: 1.2em;
   text-align: right;
   margin: 0;
+}
+.iconSmall {
+  font-size: 1.2em;
+  text-align: left;
+  margin-right: 10px;
+}
+.cardBackground {
+  background-color: $colour-white-bright;
 }

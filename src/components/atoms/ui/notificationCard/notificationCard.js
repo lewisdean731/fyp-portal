@@ -3,6 +3,7 @@ import Classes from "./notificationCard.module.scss";
 import TextSmall from "../../text/small/textSmall";
 import TextMedium from "../../text/medium/textMedium";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function NotificationCard(props) {
   const [cssClass1, setCssClass1] = useState("");
@@ -11,12 +12,10 @@ function NotificationCard(props) {
   return (
     <Row className={`${Classes[cssClass1]} ${Classes[cssClass2]}`}>
       <Col>
-        <Media className={Classes.xxx}>
-          <Image
-            width={64}
-            height={64}
-            className="mr-3"
-            src="https://via.placeholder.com/55"
+        <Media className={Classes.notificationCard}>
+          <FontAwesomeIcon
+            icon={props.icon}
+            className={`${Classes.icon} mr-3 ${Classes[props.severity]}`}
           />
           <Media.Body>
             <Row className="align-items-center">

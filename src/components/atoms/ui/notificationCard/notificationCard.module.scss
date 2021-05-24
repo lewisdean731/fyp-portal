@@ -1,11 +1,6 @@
 @import "../../../../styles/resources.scss";
 
 .notificationCard {
-  align-items: center;
-  justify-content: space-between;
-  padding: 5px;
-}
-.xxx {
   background-color: $colour-light-grey;
   align-items: center;
   text-align: left;
@@ -16,6 +11,15 @@
   &:hover {
     background-color: darken($color: $colour-light-grey, $amount: 5);
   }
+}
+.yellow {
+  color: $colour-yellow;
+}
+.red {
+  color: $colour-red;
+}
+.icon {
+  font-size: 3em;
 }
 .center {
   margin-bottom: 0;
