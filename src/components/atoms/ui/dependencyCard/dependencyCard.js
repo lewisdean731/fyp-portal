@@ -29,12 +29,12 @@ function DependencyCard(props) {
       </Accordion.Toggle>
       <Accordion.Collapse eventKey={props.eventKey}>
         <Card.Body>
-          <Row>
+          <Row className={`${Classes.row}`}>
             <Col>
               <TextMedium className={Classes.name}>{props.name}</TextMedium>
             </Col>
-            <Col>
-              <TextMedium className={Classes.daysOutOfDate}>{props.daysOutOfDate}</TextMedium>
+            <Col md={4}>
+              <TextMedium className={Classes.daysOutOfDate}><FontAwesomeIcon icon={props.icon} className={Classes.iconSmall} />{props.daysOutOfDate}</TextMedium>
             </Col>
           </Row>
           <Table striped>
