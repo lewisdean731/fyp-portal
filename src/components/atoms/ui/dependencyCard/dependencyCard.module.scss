@@ -1,8 +1,11 @@
+@import "../../../../styles/resources.scss";
+
 .header {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   padding: 10px;
+  border-radius: 0px;
 }
 .name {
   font-size: 1.5em;
@@ -37,4 +40,7 @@
   font-size: 1.2em;
   text-align: left;
   margin-right: 10px;
+}
+.cardBackground {
+  background-color: $colour-white-bright;
 }

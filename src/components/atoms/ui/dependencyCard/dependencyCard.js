@@ -5,7 +5,7 @@ import Classes from "./dependencyCard.module.scss";
 import TextMedium from "../../text/medium/textMedium";
 function DependencyCard(props) {
   return (
-    <Card bg={"light"}>
+    <Card className={Classes.cardBackground}>
       <Accordion.Toggle
         as={Button}
         variant={props.variant}
