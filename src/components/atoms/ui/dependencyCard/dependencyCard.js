@@ -1,4 +1,4 @@
-import { Accordion, Card, Table, Button, Row, Col, Badge, Alert } from "react-bootstrap";
+import { Accordion, Card, Table, Button, Row, Col, Badge } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Classes from "./dependencyCard.module.scss";
