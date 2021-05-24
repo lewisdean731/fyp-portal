@@ -52,6 +52,15 @@ function DependencyCard(props) {
               </tr>
             </tbody>
           </Table>
+          <Row>
+            <Col md={3}>
+              <Button href={`https://www.npmjs.com/package/${props.name}`}>
+                View on NPM Registry
+              </Button>
+            </Col>
+            <Col>
+            </Col>
+          </Row>
         </Card.Body>
       </Accordion.Collapse>
     </Card>
