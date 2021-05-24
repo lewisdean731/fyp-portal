@@ -41,11 +41,9 @@ function App() {
                 <Topbar userData={userJson} signOut={signOut} />
                 <Container fluid>
                   <Row>
-                    <Col className={Classes.sidebar}>
-                      <Sidebar />
-                    </Col>
                     <Col>
                       <RenderRoutes userData={userJson} />
+                      <br />
                     </Col>
                   </Row>
                 </Container>
