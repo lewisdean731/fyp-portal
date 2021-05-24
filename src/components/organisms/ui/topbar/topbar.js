@@ -24,7 +24,9 @@ export default function Topbar(props) {
           >
             <NavDropdown.Item href="/user">Account Settings</NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item href="#">Sign Out</NavDropdown.Item>
+            <NavDropdown.Item href="/" onClick={props.signOut}>
+              Sign Out
+            </NavDropdown.Item>
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>

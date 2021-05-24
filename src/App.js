@@ -17,7 +17,9 @@ import Topbar from "./components/organisms/ui/topbar/topbar";
 import Login from "./layouts/login/login";
 import { RenderRoutes } from "./routes";
 
-import { verifyToken } from "./utils/auth/authUtil";
+const signOut = () => {
+  firebase.auth().signOut();
+};
 
 function App() {
   return (
@@ -36,7 +38,7 @@ function App() {
             console.log(userJson);
             return (
               <div className={Classes.app}>
-                <Topbar userData={userJson} />
+                <Topbar userData={userJson} signOut={signOut} />
                 <Container fluid>
                   <Row>
                     <Col className={Classes.sidebar}>
@@ -52,34 +54,6 @@ function App() {
           }}
         </FirebaseAuthConsumer>
       </IfFirebaseAuthed>
-      <div className={Classes.debugAuthButtons}>
-        <button
-          onClick={() => {
-            firebase.auth().signOut();
-          }}
-        >
-          Sign Out
-        </button>
-        <button
-          onClick={() => {
-            firebase.auth().signInAnonymously();
-          }}
-        >
-          Sign In Anon.
-        </button>
-        <button
-          onClick={() => {
-            firebase
-              .auth()
-              .currentUser.getIdToken(/* forceRefresh */ true)
-              .then(function (idToken) {
-                verifyToken(idToken);
-              });
-          }}
-        >
-          Verify Token
-        </button>
-      </div>
     </FirebaseAuthProvider>
   );
 }
