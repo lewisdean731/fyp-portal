@@ -18,8 +18,8 @@ import Login from "./layouts/login/login";
 import { RenderRoutes } from "./routes";
 
 const signOut = () => {
-    firebase.auth().signOut();
-}
+  firebase.auth().signOut();
+};
 
 function App() {
   return (
@@ -38,7 +38,7 @@ function App() {
             console.log(userJson);
             return (
               <div className={Classes.app}>
-                <Topbar userData={userJson} signOut={signOut}/>
+                <Topbar userData={userJson} signOut={signOut} />
                 <Container fluid>
                   <Row>
                     <Col className={Classes.sidebar}>
