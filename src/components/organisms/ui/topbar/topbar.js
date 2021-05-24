@@ -3,7 +3,7 @@ import Classes from "./topbar.module.scss";
 export default function Topbar(props) {
   return (
     <>
-      <Navbar bg="light" expand="lg" className={Classes.topbar}>
+      <Navbar variant="dark" bg="dark" expand="lg" className={Classes.topbar}>
         <Navbar.Brand href="/dashboard">
           <img className={Classes.logo} src="/logo200.png" alt="logo" />
         </Navbar.Brand>
