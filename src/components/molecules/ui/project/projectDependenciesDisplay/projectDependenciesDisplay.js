@@ -40,8 +40,10 @@ function ProjectDependenciesDisplay(props) {
             // Check dependency for out of date, etc.
             let variant = "success";
             let icon = faCheckSquare;
+            let daysOutOfDate = "Using latest version";
             if (dependency.version !== dependency.latest_version) {
               const dateDiff = howOutOfDate(dependency.next_release_date);
+              daysOutOfDate = `${Math.round(dateDiff / 8.64e7)} days out of date`;
               if (dateDiff > props.projectData.redWarningPeriod) {
                 variant = "danger";
                 icon = faTimesCircle;
@@ -64,13 +66,14 @@ function ProjectDependenciesDisplay(props) {
                 version={dependency.version}
                 badgeVariant={updateType(dependency).variant}
                 badgeMessage={updateType(dependency).type}
-                releaseDate={dependency.release_date}
+                releaseDate={new Date(dependency.release_date).toLocaleDateString()}
                 nextVersion={dependency.next_version}
-                nextReleaseDate={dependency.next_release_date}
+                nextReleaseDate={new Date(dependency.next_release_date).toLocaleDateString()}
                 latestVersion={dependency.latest_version}
-                latestReleaseDate={dependency.latest_release_date}
+                latestReleaseDate={new Date(dependency.latest_release_date).toLocaleDateString()}
                 variant={variant}
                 icon={icon}
+                daysOutOfDate={daysOutOfDate}
               />
             );
           }

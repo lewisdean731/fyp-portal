@@ -1,7 +1,8 @@
-import { Accordion, Card, Table, Button, Row, Col, Badge } from "react-bootstrap";
+import { Accordion, Card, Table, Button, Row, Col, Badge, Alert } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Classes from "./dependencyCard.module.scss";
+import TextMedium from "../../text/medium/textMedium";
 function DependencyCard(props) {
   return (
     <Card bg={"light"}>
@@ -28,27 +29,35 @@ function DependencyCard(props) {
       </Accordion.Toggle>
       <Accordion.Collapse eventKey={props.eventKey}>
         <Card.Body>
-          <Table striped bordered hover>
+          <Row>
+            <Col>
+              <TextMedium className={Classes.name}>{props.name}</TextMedium>
+            </Col>
+            <Col>
+              <TextMedium className={Classes.daysOutOfDate}>{props.daysOutOfDate}</TextMedium>
+            </Col>
+          </Row>
+          <Table striped>
             <thead>
               <tr>
                 <th></th>
                 <th>Current Version</th>
-                <th>Latest Version</th>
                 <th>Next Available Version</th>
+                <th>Latest Version</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>Version</td>
                 <td>{props.version}</td>
-                <td>{props.latestVersion}</td>
                 <td>{props.nextVersion}</td>
+                <td>{props.latestVersion}</td>
               </tr>
               <tr>
                 <td>Release Date</td>
                 <td>{props.releaseDate}</td>
-                <td>{props.latestReleaseDate}</td>
                 <td>{props.nextReleaseDate}</td>
+                <td>{props.latestReleaseDate}</td>
               </tr>
             </tbody>
           </Table>
