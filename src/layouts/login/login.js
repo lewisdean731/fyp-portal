@@ -32,12 +32,12 @@ export default function Login(props) {
       <Row className={`${Classes.login} ${"justify-content-md-center"}`}>
         <Col>
           <LoginUsernamePassword
-            className={Classes.usernamePassword}
+            className={Classes.loginOption}
             clicked={createAccountButtonHandler}
           />
         </Col>
         <Col>
-          <GoogleLogin />
+          <GoogleLogin className={Classes.loginOption}/>
         </Col>
       </Row>
       {showCreateAccount ? (
