@@ -39,9 +39,10 @@ function App() {
             return (
               <div className={Classes.app}>
                 <Topbar userData={userJson} signOut={signOut} />
-                <Container fluid>
+                <Container className={Classes.appCentre}>
                   <Row>
                     <Col>
+                      <br />
                       <RenderRoutes userData={userJson} />
                       <br />
                     </Col>

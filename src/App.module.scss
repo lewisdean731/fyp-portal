@@ -2,21 +2,11 @@
 
 .app {
   text-align: center;
-  background-color: $colour-white-bright;
+  background-color: $colour-white-light;
   min-height: 100vh;
   font-family: Roboto;
 }
-.topbar {
-  min-height: 112px; // topbar + 48px for space between it and the content below
-}
-.sidebar {
-  max-width: 240px;
-  margin: 0;
-}
-
-.debugAuthButtons {
-  position: fixed;
-  z-index: 10000;
-  left: 50%;
-  top: 0;
+.appCentre {
+  background-color: $colour-white-bright;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.1);
 }
