@@ -13,7 +13,7 @@ function Footer(props) {
       </Row>
       <Row>
         <Col>
-          <TextSmall>&copy; Lewis Dean</TextSmall>
+          <TextSmall>&copy; Lewis Dean 2021</TextSmall>
         </Col>
       </Row>
     </div>
