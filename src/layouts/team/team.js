@@ -1,4 +1,4 @@
-import { Container } from "react-bootstrap";
+import { Container, Alert } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import TextLarge from "../../components/atoms/text/large/textLarge";
@@ -51,6 +51,16 @@ function Team(props) {
         <br />
         <TeamOptionsForm teamData={teamData} />
       </Container>
+    );
+  }
+
+  if (teamData && (projectsData == [])){
+    return (
+      <Alert variant="info">
+        Team contains no projects. Please
+        <Alert.Link href="/projects"> create a project </Alert.Link>and assign it
+        to {teamData.teamName}.
+      </Alert>
     );
   }
 

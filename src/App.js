@@ -11,11 +11,11 @@ import {
 
 import { Container, Row, Col } from "react-bootstrap";
 import Classes from "./App.module.scss";
-import Sidebar from "./components/organisms/ui/sidebar/sidebar";
 import Topbar from "./components/organisms/ui/topbar/topbar";
 
 import Login from "./layouts/login/login";
 import { RenderRoutes } from "./routes";
+import Footer from "./components/molecules/ui/footer/footer";
 
 const signOut = () => {
   firebase.auth().signOut();
@@ -37,16 +37,21 @@ function App() {
             );
             console.log(userJson);
             return (
-              <div className={Classes.app}>
-                <Topbar userData={userJson} signOut={signOut} />
-                <Container className={Classes.appCentre}>
-                  <Row>
-                    <Col>
-                      <br />
-                      <RenderRoutes userData={userJson} />
-                      <br />
-                    </Col>
-                  </Row>
+              <div>
+                <div className={Classes.app}>
+                  <Topbar userData={userJson} signOut={signOut} />
+                  <Container className={Classes.appCentre}>
+                    <Row>
+                      <Col>
+                        <br />
+                        <RenderRoutes userData={userJson} />
+                        <br />
+                      </Col>
+                    </Row>
+                  </Container>
+                </div>
+                <Container className={Classes.footer}>
+                  <Footer />
                 </Container>
               </div>
             );

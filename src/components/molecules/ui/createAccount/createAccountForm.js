@@ -101,13 +101,6 @@ export default function CreateAccountForm(props) {
                 Please enter a password.
               </Form.Control.Feedback>
             </Col>
-            <Col>
-              <Button type="submit">Create Account</Button>
-            </Col>
-          </Form.Row>
-        </Form.Group>
-        <Form.Group>
-          <Form.Row>
             <Col md={6}>
               <Form.Control
                 required
@@ -121,6 +114,15 @@ export default function CreateAccountForm(props) {
                 Please confirm your password.
               </Form.Control.Feedback>
             </Col>
+          </Form.Row>
+        </Form.Group>
+        <Form.Group>
+          <Form.Row>
+            <Col>
+              <Button type="submit">Create Account</Button>
+            </Col>
+          </Form.Row>
+          <Form.Row>
             <Col>
               <LoginErrors errMessage={errMessage} errCode={errCode} />
             </Col>
